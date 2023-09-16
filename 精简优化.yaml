@@ -1,0 +1,363 @@
+mixed-port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+external-controller: :9090
+ipv6: true
+dns:
+  enable: true
+  ipv6: false
+  default-nameserver: [223.5.5.5, 119.29.29.29]
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  use-hosts: true
+  nameserver: ['https://doh.pub/dns-query', 'https://dns.alidns.com/dns-query']
+  fallback: ['https://doh.dns.sb/dns-query', 'https://dns.cloudflare.com/dns-query', 'https://dns.twnic.tw/dns-query', 'tls://8.8.4.4:853']
+  fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
+
+proxies:
+  - {name: ☁️ NAS, server: 'nas.murgo.eu.org', port: 7898, type: socks5 }
+
+  #节点直连
+  - {"name":"🇸🇬 直连","type":"vless","server":"sgv4.murgo.eu.org","port":20100,"uuid":"59e69dee-e968-4cc6-9408-5c44bd5c8dbd","tls":false,"servername":"sgv4.murgo.eu.org","skip-cert-verify":true,"network":"ws","ws-opts":{"path":"/","headers":{"host":"sgv4.murgo.eu.org"}}}
+  - {"name":"🇫🇮 直连","type":"ss","server":"fin4.murgo.eu.org","port":23832,"cipher":"xchacha20-ietf-poly1305","password":8JCsPssfgS8tiRwiMlhARg==,}
+
+  #TUIC
+  - name: 🇸🇬 TUIC
+    server: sgv4.murgo.eu.org
+    port: 20118
+    type: tuic
+    uuid: c5d0fac0-53c4-4799-90af-02ef4f0ba853
+    password: f03d167e
+    ip: 51.79.178.15
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    request-timeout: 8000
+    udp-relay-mode: quic
+    congestion-controller: bbr
+  - name: 🇭🇰 GCP TUIC
+    server: hk.murgo.eu.org
+    port: 13240
+    type: tuic
+    uuid: b60f4531-d513-4ae7-ae53-e2aabbc87101
+    password: 918da817
+    ip: 34.150.97.245
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    request-timeout: 8000
+    udp-relay-mode: quic
+    congestion-controller: bbr
+  - name: 🇫🇮 TUIC
+    server: fin4.murgo.eu.org
+    port: 23845
+    type: tuic
+    uuid: eb383494-8109-4392-8213-0c00d6c3a62f
+    password: 9ccd4689
+    ip: 95.217.89.204
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    request-timeout: 8000
+    udp-relay-mode: quic
+    congestion-controller: bbr
+
+  #CF优选ip：8.219.91.92, 152.70.250.4, cfip.murgo.eu.org
+  - {"name":"🇸🇬 CF 优选","type":"vmess","server":"cfip.murgo.eu.org","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"sg.murgo.eu.org"}}}
+  - {"name":"🇫🇮 CF 优选","type":"vmess","server":"cfip.murgo.eu.org","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
+
+  #NNR节点
+  - {"name":"🇸🇬 NNR","type":"ss","server":"183.240.232.210","port":26958,"password":"8JCsPssfgS8tiRwiMlhARg==","cipher":"aes-128-gcm"}
+  - {"name":"🇫🇮 NNR","type":"ss","server":"183.240.232.193","port":25057,"password":"8JCsPssfgS8tiRwiMlhARg==","cipher":"xchacha20-ietf-poly1305"}
+  - {"name":"🇭🇰 NNR","type":"ss","server":"183.240.117.2","port":25633,"password":"8JCsPssfgS8tiRwiMlhARg==","cipher":"xchacha20-ietf-poly1305"}
+
+  #CF
+  - {"name":"🏴‍☠️ CF pages","type":"vless","server":"edgetunnel-cdd.pages.dev","port":443,"uuid":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","tls":true,"servername":"edgetunnel-cdd.pages.dev","network":"ws","ws-opts":{"path":"/vless/2029fbaa-0b26-4fee-be68-700ed79a3a0e?ed=2048","headers":{"host":"edgetunnel-cdd.pages.dev"}},"client-fingerprint":"randomized"}
+  - type: vless
+    name: 🏴‍☠️ CF worker
+    server: 140.238.10.178
+    port: 443
+    uuid: 2029fbaa-0b26-4fee-be68-700ed79a3a0e
+    network: ws
+    tls: true
+    udp: false
+    sni: cfcdn.66.now.cc
+    client-fingerprint: chrome
+    ws-opts:
+      path: "/?ed=2048"
+      headers:
+        host: cfcdn.66.now.cc
+
+  #Replit
+  - {"name":"🇮🇳 印度 Vless","type":"vless","server":"repl-nodes.Murgoa.repl.co","port":443,"uuid":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","tls":true,"servername":"repl-nodes.Murgoa.repl.co","network":"ws","ws-opts":{"path":"/2029fbaa-0b26-4fee-be68-700ed79a3a0e-vl?ed=2048","headers":{"host":"repl-nodes.Murgoa.repl.co"}}}
+  - {"name":"🇮🇳 印度 Trojan","type":"trojan","server":"repl-nodes.Murgoa.repl.co","port":443,"udp":true,"password":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","skip-cert-verify":true,"network":"ws","ws-opts":{"path":"/2029fbaa-0b26-4fee-be68-700ed79a3a0e-tr?ed=2048","headers":{"host":"repl-nodes.Murgoa.repl.co"}}}
+  - {"name":"🇮🇳 印度 Vmess","type":"vmess","server":"repl-nodes.Murgoa.repl.co","port":443,"cipher":"auto","uuid":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","alterId":0,"tls":true,"skip-cert-verify":true,"network":"ws","ws-opts":{"path":"/2029fbaa-0b26-4fee-be68-700ed79a3a0e-vm?ed=2048","headers":{"host":"repl-nodes.Murgoa.repl.co"}}}
+  - {"name":"🇮🇳 印度 SS","type":"ss","server":"repl-nodes.Murgoa.repl.co","port":443,"cipher":"chacha20-ietf-poly1305","password":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","plugin":"v2ray-plugin","plugin-opts":{"mode":"websocket","tls":true,"skip-cert-verify":true,"host":"repl-nodes.Murgoa.repl.co","path":"/2029fbaa-0b26-4fee-be68-700ed79a3a0e-ss?ed=2048","mux":false,"headers":{"host":"repl-nodes.Murgoa.repl.co"}}}
+
+  #ChromeGo节点
+  - name: "🇺🇸 ChromeGo 1"
+    type: hysteria
+    server: 167.160.91.115
+    port: 13928
+    auth_str: BF0LL4L2jlqSdW3KxjQv81AiFFjj90vWRHeUoqUuTVPeDAGvq3 # 将会在未来某个时候删除
+    alpn:
+      - h3
+    protocol: udp # 支持 udp/wechat-video/faketcp
+    up: "30 Mbps" # 若不写单位，默认为 Mbps
+    down: "200 Mbps" # 若不写单位，默认为 Mbps
+    sni: paypal.com
+    skip-cert-verify: true
+  - name: "🇺🇸 ChromeGo 2"
+    type: hysteria
+    server: 51.158.54.46
+    port: 49139
+    auth_str: dongtaiwang.com
+    alpn:
+      - h3
+    protocol: udp # 支持 udp/wechat-video/faketcp
+    up: "30 Mbps" # 若不写单位，默认为 Mbps
+    down: "200 Mbps" # 若不写单位，默认为 Mbps
+    sni: www.paypal.com
+    skip-cert-verify: true
+  - name: "🇺🇸 ChromeGo 3"
+    type: hysteria
+    server: 173.234.25.52
+    port: 20164
+    auth_str: Ljg6NNEATDqP97hdAdHe1lJv7ggtKc0h7zmCCZKCX3qY0LR64F
+    alpn:
+      - h3
+    protocol: udp # 支持 udp/wechat-video/faketcp
+    up: "30 Mbps" # 若不写单位，默认为 Mbps
+    down: "200 Mbps" # 若不写单位，默认为 Mbps
+    sni: www.microsoft.com
+    skip-cert-verify: true
+  - name: "🇺🇸 ChromeGo 4"
+    type: hysteria
+    server: 166.1.18.191
+    port: 16542
+    ports: 21000-22000
+    auth_str: PidedzMQ9WgikepaWKUdAaC2hLDFqxK5z1Aw19dxAluufRwpll
+    alpn:
+      - h3
+    protocol: udp # 支持 udp/wechat-video/faketcp
+    up: "30 Mbps" # 若不写单位，默认为 Mbps
+    down: "200 Mbps" # 若不写单位，默认为 Mbps
+    sni: www.microsoft.com
+    skip-cert-verify: true
+
+  #Warp
+  - {"name": "🏴‍☠️ CF Warp 1", "type": "wireguard", "server": "188.114.97.234", "port": 942, "mtu": 1280, "ip": "172.16.0.2/32", "ipv6": "2606:4700:110:845f:c46b:7b99:33a6:24fc/128", "private-key": "mGx7/n86b590qWcQ38e+O/KiM7f/OPhDxk4IKVOJCUs=", "public-key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=", "udp": true}
+  - {"name": "🏴‍☠️ CF Warp 2", "type": "wireguard", "server": "188.114.97.144", "port": 942, "mtu": 1280, "ip": "172.16.0.2/32", "ipv6": "2606:4700:110:845f:c46b:7b99:33a6:24fc/128", "private-key": "mGx7/n86b590qWcQ38e+O/KiM7f/OPhDxk4IKVOJCUs=", "public-key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=", "udp": true}
+  - {"name": "🏴‍☠️ CF Warp 3", "type": "wireguard", "server": "188.114.96.137", "port": 8886, "mtu": 1280, "ip": "172.16.0.2/32", "ipv6": "2606:4700:110:845f:c46b:7b99:33a6:24fc/128", "private-key": "mGx7/n86b590qWcQ38e+O/KiM7f/OPhDxk4IKVOJCUs=", "public-key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=", "udp": true}
+
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - ☁️ NAS
+      - 🇮🇳 印度 Repl
+      - 🇸🇬 CF 优选
+      - 🇫🇮 CF 优选
+      - 🇸🇬 负载均衡
+      - 🇸🇬 TUIC
+      - 🇫🇮 TUIC
+      - 🇭🇰 GCP TUIC
+      - 🇭🇰 NNR
+      - 🇸🇬 NNR
+      - ♻️ ChromeGo
+      - DIRECT
+
+  - name: ♻️ 自动选择
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+        - 🇸🇬 CF 优选
+        - 🇸🇬 TUIC
+        - 🇭🇰 GCP TUIC
+
+  - name: 📹 油管视频
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🇸🇬 新加坡节点
+      - 🇭🇰 GCP TUIC
+      - 🏴‍☠️ CF worker
+
+  - name: 🔯 故障转移
+    type: fallback
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies: 
+      - 🇸🇬 CF 优选
+      - 🇸🇬 TUIC
+      - 🇭🇰 GCP TUIC
+      - ♻️ ChromeGo
+      - ☁️ NAS
+      - 🇫🇮 CF 优选
+      - 🇫🇮 TUIC
+      - 🇮🇳 印度 Repl
+      - 🏴‍☠️ CF worker
+      - 🏴‍☠️ CF Warp
+
+  - name: ♻️ ChromeGo
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+        - 🇺🇸 ChromeGo 1
+        - 🇺🇸 ChromeGo 2
+        - 🇺🇸 ChromeGo 3
+        - 🇺🇸 ChromeGo 4
+
+  - {"name": "🇸🇬 新加坡节点", "type": "fallback", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选", "🇸🇬 TUIC", "🇸🇬 NNR", "🇸🇬 链式 CF"]}
+
+  - {"name": "🇸🇬 链式 CF", "type": "relay", "proxies": ["🇭🇰 GCP TUIC", "🇸🇬 直连"]}
+  - {"name": "🇫🇮 链式代理", "type": "relay", "proxies": ["🇭🇰 GCP TUIC", "🇫🇮 直连"]}
+        
+  - {"name": "🇸🇬 负载均衡", "type": "load-balance", "strategy": "sticky-sessions", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 TUIC", "🇸🇬 NNR", "🇸🇬 CF 优选"]}
+
+  - {"name": "🏴‍☠️ CF Warp", "type": "load-balance", "strategy": "sticky-sessions", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🏴‍☠️ CF Warp 1", "🏴‍☠️ CF Warp 2", "🏴‍☠️ CF Warp 3"]}
+
+  - {"name": "🇮🇳 印度 Repl", "type": "load-balance", "strategy": "sticky-sessions", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇮🇳 印度 Vless", "🇮🇳 印度 Trojan", "🇮🇳 印度 SS", "🇮🇳 印度 Vmess"]}
+
+rule-providers:
+  reject:
+    {"type": "http", "behavior": "domain", "url": "https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt", "path": "./ruleset/reject.yaml", "interval": 86400}
+
+  icloud:
+    {"type":"http","behavior":"domain","url":"https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/icloud.txt","path":"./ruleset/icloud.yaml","interval":86400}
+
+  apple:
+    {"type":"http","behavior":"domain","url":"https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/apple.txt","path":"./ruleset/apple.yaml","interval":86400}
+
+  google:
+    {"type":"http","behavior":"domain","url":"https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/google.txt","path":"./ruleset/google.yaml","interval":86400}
+
+  proxy:
+    {"type":"http","behavior":"domain","url":"https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/proxy.txt","path":"./ruleset/proxy.yaml","interval":86400}
+
+  direct:
+    {"type":"http","behavior":"domain","url":"https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt","path":"./ruleset/direct.yaml","interval":86400}
+
+  private:
+    {"type":"http","behavior":"domain","url":"https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/private.txt","path":"./ruleset/private.yaml","interval":86400}
+
+  gfw:
+    {"type":"http","behavior":"domain","url":"https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.txt","path":"./ruleset/gfw.yaml","interval":86400}
+
+  greatfire:
+    {"type":"http","behavior":"domain","url":"https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/greatfire.txt","path":"./ruleset/greatfire.yaml","interval":86400}
+
+  tld-not-cn:
+    type: http
+    behavior: domain
+    url: "https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/tld-not-cn.txt"
+    path: ./ruleset/tld-not-cn.yaml
+    interval: 86400
+
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt"
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
+
+  lancidr:
+    type: http
+    behavior: ipcidr
+    url: "https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/lancidr.txt"
+    path: ./ruleset/lancidr.yaml
+    interval: 86400
+
+  applications:
+    type: http
+    behavior: classical
+    url: "https://ghproxy.com/https://raw.githubusercontent.com/Murgoa/Murgoa.github.io/main/applications.txt"
+    path: ./ruleset/applications.yaml
+    interval: 86400
+
+rules:
+  - DOMAIN-KEYWORD,parallels,REJECT
+  - DOMAIN-KEYWORD,binance,♻️ 自动选择
+  - DOMAIN-SUFFIX,binance.com,♻️ 自动选择
+  - DOMAIN-SUFFIX,comicat.org,♻️ 自动选择
+  - DOMAIN-SUFFIX,torrentdownloads.info,♻️ 自动选择
+  - DOMAIN-SUFFIX,torrentapi.org,♻️ 自动选择
+  - DOMAIN-SUFFIX,perplexity.ai,♻️ 自动选择
+  
+  - DOMAIN-SUFFIX,figma.com,🚀 节点选择
+  - DOMAIN-SUFFIX,openai.com,🚀 节点选择
+  - PROCESS-NAME,ddns-go.exe,DIRECT
+  - PROCESS-NAME,qbittorrent.exe,DIRECT
+  - DOMAIN-SUFFIX,1337x.to,🚀 节点选择
+  - DOMAIN-SUFFIX,thepiratebay.org,🚀 节点选择
+  - DOMAIN-SUFFIX,apibay.org,🚀 节点选择
+  - DOMAIN-SUFFIX,mikanani.me,🚀 节点选择
+  - DOMAIN-SUFFIX,thefappeningblog.com,🚀 节点选择
+  - DOMAIN-SUFFIX,pttime.org,🚀 节点选择
+  - DOMAIN-SUFFIX,parsec.app,🚀 节点选择
+  - DOMAIN-KEYWORD,tmdb,🚀 节点选择
+  - DOMAIN-KEYWORD,themoviedb,🚀 节点选择
+  - DOMAIN-SUFFIX,notion.so,🚀 节点选择
+
+  - DOMAIN-KEYWORD,youtube,📹 油管视频
+  - DOMAIN,youtubei.googleapis.com,📹 油管视频
+  - DOMAIN,yt3.ggpht.com,📹 油管视频
+  - DOMAIN,bard.google.com,🚀 节点选择
+  - DOMAIN-SUFFIX,googlevideo.com,📹 油管视频
+  - DOMAIN-SUFFIX,gvt2.com,📹 油管视频
+  - DOMAIN-SUFFIX,withyoutube.com,📹 油管视频
+  - DOMAIN-SUFFIX,youtu.be,📹 油管视频
+  - DOMAIN-SUFFIX,youtube-nocookie.com,📹 油管视频
+  - DOMAIN-SUFFIX,youtube.com,📹 油管视频
+  - DOMAIN-SUFFIX,youtubeeducation.com,📹 油管视频
+  - DOMAIN-SUFFIX,youtubegaming.com,📹 油管视频
+  - DOMAIN-SUFFIX,youtubekids.com,📹 油管视频
+  - DOMAIN-SUFFIX,yt.be,📹 油管视频
+  - DOMAIN-SUFFIX,ytimg.com,📹 油管视频
+
+  - DOMAIN-KEYWORD,bilibili,☁️ NAS
+  - DOMAIN-KEYWORD,bilivideo,☁️ NAS
+  - DOMAIN-KEYWORD,biliapi,☁️ NAS
+  - DOMAIN-SUFFIX,hdslb.com,☁️ NAS
+  - DOMAIN-SUFFIX,eztv.re,DIRECT
+  - DOMAIN-SUFFIX,miobt.com,DIRECT
+  - DOMAIN-SUFFIX,oshen.win,DIRECT
+  - DOMAIN-SUFFIX,hd.ai,DIRECT
+  - DOMAIN-SUFFIX,plex.tv,DIRECT
+  - DOMAIN-KEYWORD,murgo,DIRECT
+  - DOMAIN-SUFFIX,apple.com,DIRECT
+  - DOMAIN-SUFFIX,hd.ai,DIRECT
+
+  - RULE-SET,applications,DIRECT
+  - RULE-SET,telegramcidr,🚀 节点选择
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN,yacd.haishan.me,DIRECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,reject,REJECT
+  - RULE-SET,icloud,DIRECT
+  - RULE-SET,apple,DIRECT
+  - RULE-SET,google,DIRECT
+  - RULE-SET,direct,DIRECT
+  - RULE-SET,lancidr,DIRECT
+  - RULE-SET,cncidr,DIRECT
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - RULE-SET,proxy,🚀 节点选择
+  - MATCH,🚀 节点选择
