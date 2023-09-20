@@ -20,9 +20,8 @@ proxies:
 
   #节点直连
   - {"name":"🇸🇬 直连","type":"vless","server":"sgv4.murgo.eu.org","port":20100,"uuid":"59e69dee-e968-4cc6-9408-5c44bd5c8dbd","tls":false,"servername":"sgv4.murgo.eu.org","skip-cert-verify":true,"network":"ws","ws-opts":{"path":"/","headers":{"host":"sgv4.murgo.eu.org"}}}
-  - {"name":"🇫🇮 直连","type":"ss","server":"fin4.murgo.eu.org","port":23832,"cipher":"xchacha20-ietf-poly1305","password":8JCsPssfgS8tiRwiMlhARg==,}
-  - {"name":"🇭🇰 GCP WS","type":"vmess","server":"hk.murgo.eu.org","port"
-:2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"hk.murgo.eu.org"}}}
+  - {"name":"🇫🇮 直连","type":"ss","server":"fin4.murgo.eu.org","port":23832,"cipher":"xchacha20-ietf-poly1305","password":8JCsPssfgS8tiRwiMlhARg==}
+  - {"name":"🇭🇰 GCP WS","type":"vmess","server":"hk.murgo.eu.org","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"hk.murgo.eu.org"}}}
 
 
   #TUIC
