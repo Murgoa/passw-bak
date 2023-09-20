@@ -21,6 +21,7 @@ proxies:
   #节点直连
   - {"name":"🇸🇬 直连","type":"vless","server":"sgv4.murgo.eu.org","port":20100,"uuid":"59e69dee-e968-4cc6-9408-5c44bd5c8dbd","tls":false,"servername":"sgv4.murgo.eu.org","skip-cert-verify":true,"network":"ws","ws-opts":{"path":"/","headers":{"host":"sgv4.murgo.eu.org"}}}
   - {"name":"🇫🇮 直连","type":"ss","server":"fin4.murgo.eu.org","port":23832,"cipher":"xchacha20-ietf-poly1305","password":8JCsPssfgS8tiRwiMlhARg==,}
+  - {"name":"🇭🇰 GCP WS","type":"ss","server":"hk.murgo.eu.org","port":3832,"cipher":"xchacha20-ietf-poly1305","password":8JCsPssfgS8tiRwiMlhARg==,}
 
   #TUIC
   - name: 🇸🇬 TUIC
@@ -30,19 +31,6 @@ proxies:
     uuid: c5d0fac0-53c4-4799-90af-02ef4f0ba853
     password: f03d167e
     ip: 51.79.178.15
-    alpn: [h3]
-    disable-sni: true
-    reduce-rtt: true
-    request-timeout: 8000
-    udp-relay-mode: quic
-    congestion-controller: bbr
-  - name: 🇭🇰 GCP TUIC
-    server: hk.murgo.eu.org
-    port: 13240
-    type: tuic
-    uuid: b60f4531-d513-4ae7-ae53-e2aabbc87101
-    password: 918da817
-    ip: 34.150.97.245
     alpn: [h3]
     disable-sni: true
     reduce-rtt: true
@@ -159,7 +147,7 @@ proxy-groups:
       - 🏁 负载均衡
       - 🇸🇬 TUIC
       - 🇫🇮 TUIC
-      - 🇭🇰 GCP TUIC
+      - 🇭🇰 GCP WS
       - ♻️ ChromeGo
       - DIRECT
 
@@ -171,7 +159,7 @@ proxy-groups:
     proxies:
         - 🇸🇬 CF 优选
         - 🇸🇬 TUIC
-        - 🇭🇰 GCP TUIC
+        - 🇭🇰 GCP WS
 
   - name: 📹 油管视频
     type: select
@@ -180,7 +168,7 @@ proxy-groups:
       - ♻️ 自动选择
       - 🔯 故障转移
       - 🇸🇬 新加坡节点
-      - 🇭🇰 GCP TUIC
+      - 🇭🇰 GCP WS
       - 🏁 负载均衡
 
   - name: 🔯 故障转移
@@ -191,7 +179,7 @@ proxy-groups:
     proxies: 
       - 🇸🇬 CF 优选
       - 🇸🇬 TUIC
-      - 🇭🇰 GCP TUIC
+      - 🇭🇰 GCP WS
       - ♻️ ChromeGo
       - ☁️ NAS
       - 🇫🇮 CF 优选
@@ -213,10 +201,10 @@ proxy-groups:
 
   - {"name": "🇸🇬 新加坡节点", "type": "fallback", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选", "🇸🇬 TUIC", "🇸🇬 链式 CF"]}
 
-  - {"name": "🇸🇬 链式 CF", "type": "relay", "proxies": ["🇭🇰 GCP TUIC", "🇸🇬 直连"]}
-  - {"name": "🇫🇮 链式代理", "type": "relay", "proxies": ["🇭🇰 GCP TUIC", "🇫🇮 直连"]}
+  - {"name": "🇸🇬 链式 CF", "type": "relay", "proxies": ["🇭🇰 GCP WS", "🇸🇬 直连"]}
+  - {"name": "🇫🇮 链式代理", "type": "relay", "proxies": ["🇭🇰 GCP WS", "🇫🇮 直连"]}
         
-  - {"name": "🏁 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 TUIC", "🇸🇬 CF 优选", "🇫🇮 TUIC", "🇭🇰 GCP TUIC"]}
+  - {"name": "🏁 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 TUIC", "🇸🇬 CF 优选", "🇫🇮 TUIC", "🇭🇰 GCP WS"]}
 
   - {"name": "🏴‍☠️ CF Warp", "type": "load-balance", "strategy": "sticky-sessions", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🏴‍☠️ CF Warp 1", "🏴‍☠️ CF Warp 2", "🏴‍☠️ CF Warp 3"]}
 
