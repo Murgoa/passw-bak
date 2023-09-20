@@ -52,9 +52,11 @@ proxies:
     udp-relay-mode: quic
     congestion-controller: bbr
 
-  #CF优选ip：8.219.91.92, 152.70.250.4, cfip.murgo.eu.org
-  - {"name":"🇸🇬 CF 优选","type":"vmess","server":"cfip.murgo.eu.org","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"sg.murgo.eu.org"}}}
-  - {"name":"🇫🇮 CF 优选","type":"vmess","server":"speedip.eu.org","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
+  #CF优选ip：8.219.91.92, 152.70.250.4, cfip.murgo.eu.org, speedip.eu.org
+  - {"name":"🇸🇬 CF 优选 1","type":"vmess","server":"cfip.murgo.eu.org","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"sg.murgo.eu.org"}}}
+  - {"name":"🇸🇬 CF 优选 2","type":"vmess","server":"speedip.eu.org","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"sg.murgo.eu.org"}}}
+  - {"name":"🇫🇮 CF 优选 1","type":"vmess","server":"speedip.eu.org","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
+  - {"name":"🇫🇮 CF 优选 2","type":"vmess","server":"cfip.murgo.eu.org","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
 
   #CF
   - {"name":"🏴‍☠️ CF pages","type":"vless","server":"edgetunnel-cdd.pages.dev","port":443,"uuid":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","tls":true,"servername":"edgetunnel-cdd.pages.dev","network":"ws","ws-opts":{"path":"/vless/2029fbaa-0b26-4fee-be68-700ed79a3a0e?ed=2048","headers":{"host":"edgetunnel-cdd.pages.dev"}},"client-fingerprint":"randomized"}
@@ -143,8 +145,8 @@ proxy-groups:
       - 🔯 故障转移
       - ☁️ NAS
       - 🇮🇳 印度 Repl
-      - 🇸🇬 CF 优选
-      - 🇫🇮 CF 优选
+      - 🇸🇬 CF 优选 1
+      - 🇫🇮 CF 优选 1
       - 🏁 负载均衡
       - 🇸🇬 TUIC
       - 🇫🇮 TUIC
@@ -158,7 +160,7 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies:
-        - 🇸🇬 CF 优选
+        - 🇸🇬 CF 优选 1
         - 🇸🇬 TUIC
         - 🇭🇰 GCP WS
 
@@ -178,13 +180,15 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies: 
-      - 🇸🇬 CF 优选
+      - 🇸🇬 CF 优选 1
       - 🇸🇬 TUIC
       - 🇭🇰 GCP WS
       - ♻️ ChromeGo
+      - 🇸🇬 CF 优选 2
       - ☁️ NAS
-      - 🇫🇮 CF 优选
       - 🇫🇮 TUIC
+      - 🇫🇮 CF 优选 1
+      - 🇫🇮 CF 优选 2
       - 🇮🇳 印度 Repl
       - 🏴‍☠️ CF worker
       - 🏴‍☠️ CF Warp
@@ -200,12 +204,12 @@ proxy-groups:
         - 🇺🇸 ChromeGo 3
         - 🇺🇸 ChromeGo 4
 
-  - {"name": "🇸🇬 新加坡节点", "type": "fallback", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选", "🇸🇬 TUIC", "🇸🇬 链式 CF"]}
+  - {"name": "🇸🇬 新加坡节点", "type": "fallback", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选 1", "🇸🇬 TUIC", "🇸🇬 链式 CF"]}
 
   - {"name": "🇸🇬 链式 CF", "type": "relay", "proxies": ["🇭🇰 GCP WS", "🇸🇬 直连"]}
   - {"name": "🇫🇮 链式代理", "type": "relay", "proxies": ["🇭🇰 GCP WS", "🇫🇮 直连"]}
         
-  - {"name": "🏁 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 TUIC", "🇸🇬 CF 优选", "🇫🇮 TUIC", "🇭🇰 GCP WS"]}
+  - {"name": "🏁 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 TUIC", "🇸🇬 CF 优选 1", "🇫🇮 TUIC", "🇭🇰 GCP WS"]}
 
   - {"name": "🏴‍☠️ CF Warp", "type": "load-balance", "strategy": "sticky-sessions", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🏴‍☠️ CF Warp 1", "🏴‍☠️ CF Warp 2", "🏴‍☠️ CF Warp 3"]}
 
