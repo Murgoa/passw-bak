@@ -54,7 +54,7 @@ proxies:
 
   #CF优选ip：8.219.91.92, 152.70.250.4, cfip.murgo.eu.org
   - {"name":"🇸🇬 CF 优选","type":"vmess","server":"cfip.murgo.eu.org","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"sg.murgo.eu.org"}}}
-  - {"name":"🇫🇮 CF 优选","type":"vmess","server":"cfip.murgo.eu.org","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
+  - {"name":"🇫🇮 CF 优选","type":"vmess","server":"speedip.eu.org","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
 
   #CF
   - {"name":"🏴‍☠️ CF pages","type":"vless","server":"edgetunnel-cdd.pages.dev","port":443,"uuid":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","tls":true,"servername":"edgetunnel-cdd.pages.dev","network":"ws","ws-opts":{"path":"/vless/2029fbaa-0b26-4fee-be68-700ed79a3a0e?ed=2048","headers":{"host":"edgetunnel-cdd.pages.dev"}},"client-fingerprint":"randomized"}
