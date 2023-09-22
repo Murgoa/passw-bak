@@ -264,7 +264,7 @@ rule-providers:
   applications:
     type: http
     behavior: classical
-    url: "https://ghproxy.com/https://raw.githubusercontent.com/Murgoa/Murgoa.github.io/main/applications.txt"
+    url: "https://raw.fgit.cf/Murgoa/passw-bak/main/app.txt"
     path: ./ruleset/applications.yaml
     interval: 86400
 
