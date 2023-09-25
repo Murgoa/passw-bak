@@ -153,6 +153,7 @@ proxy-groups:
       - 🇫🇮 TUIC
       - 🇭🇰 GCP WS
       - ♻️ ChromeGo
+      - 🏴‍☠️ CF worker
       - DIRECT
 
   - name: ♻️ 自动选择
