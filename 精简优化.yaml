@@ -172,6 +172,7 @@ proxy-groups:
       - 🔯 故障转移
       - 🇸🇬 新加坡节点
       - 🇭🇰 GCP WS
+      - ♻️ ChromeGo
       - 🏁 负载均衡
 
   - name: 🔯 故障转移
