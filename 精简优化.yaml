@@ -56,7 +56,7 @@ proxies:
   - {"name":"🇸🇬 CF 优选 1","type":"vmess","server":"cfip.murgo.eu.org","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"sg.murgo.eu.org"}}}
   - {"name":"🇸🇬 CF 优选 2","type":"vmess","server":"speedip.eu.org","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"sg.murgo.eu.org"}}}
   - {"name":"🇸🇬 CF 优选 3","type":"vmess","server":"cdn.chigua.tk","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"sg.murgo.eu.org"}}}
-  - {"name":"🇫🇮 CF 优选 1","type":"vmess","server":"speedip.eu.org","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
+  - {"name":"🇫🇮 CF 优选 1","type":"vmess","server":"cdn.chigua.tk","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
   - {"name":"🇫🇮 CF 优选 2","type":"vmess","server":"cfip.murgo.eu.org","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
 
   #CF
@@ -181,6 +181,7 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies: 
+      - 🇸🇬 负载均衡
       - 🇸🇬 CF 优选 1
       - 🇸🇬 TUIC
       - ♻️ ChromeGo
@@ -195,10 +196,11 @@ proxy-groups:
 
   - {"name": "♻️ ChromeGo", "type": "url-test", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇺🇸 ChromeGo 3", "🇺🇸 ChromeGo 2", "🇺🇸 ChromeGo 1", "🇺🇸 ChromeGo 4"]}
 
-  - {"name": "🇸🇬 新加坡节点", "type": "select", "proxies": ["🇸🇬 CF 优选 1", "🇸🇬 TUIC", "🇸🇬 CF 优选 3", "🇸🇬 CF 优选 2", "🇸🇬 链式代理"]}
+  - {"name": "🇸🇬 新加坡节点", "type": "select", "proxies": ["🇸🇬 CF 优选 1", "🇸🇬 TUIC", "🇸🇬 CF 优选 3", "🇸🇬 CF 优选 2", "🇸🇬 负载均衡"]}
   - {"name": "🇫🇮 芬兰节点", "type": "select", "proxies": ["🇫🇮 TUIC", "🇫🇮 CF 优选 1", "🇫🇮 CF 优选 2", "🇫🇮 链式代理"]}
 
-  - {"name": "🇸🇬 链式代理", "type": "relay", "proxies": ["🇭🇰 GCP WS", "🇸🇬 直连"]}
+  - {"name": "🇸🇬 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选 1", "🇸🇬 TUIC"]}
+
   - {"name": "🇫🇮 链式代理", "type": "relay", "proxies": ["🇭🇰 GCP WS", "🇫🇮 直连"]}
         
   - {"name": "🏁 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 TUIC", "🇸🇬 CF 优选 1", "🇫🇮 TUIC", "🇭🇰 GCP WS"]}
