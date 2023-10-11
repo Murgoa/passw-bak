@@ -87,26 +87,24 @@ proxies:
     type: hysteria
     server: 167.160.91.115
     port: 13928
-    auth_str: BF0LL4L2jlqSdW3KxjQv81AiFFjj90vWRHeUoqUuTVPeDAGvq3 # 将会在未来某个时候删除
+    auth_str: BF0LL4L2jlqSdW3KxjQv81AiFFjj90vWRHeUoqUuTVPeDAGvq3
     alpn:
       - h3
-    protocol: udp # 支持 udp/wechat-video/faketcp
-    up: "30 Mbps" # 若不写单位，默认为 Mbps
-    down: "200 Mbps" # 若不写单位，默认为 Mbps
+    protocol: udp
+    up: "30 Mbps"
+    down: "200 Mbps"
     sni: paypal.com
     skip-cert-verify: true
   - name: "🇺🇸 ChromeGo 2"
     type: hysteria
-    server: 51.158.54.46
-    port: 49139
-    auth_str: dongtaiwang.com
+    server: clash1.dtku47.xyz
+    port: 11223
+    auth-str: O5tQQiW2xKf5
     alpn:
       - h3
-    protocol: udp # 支持 udp/wechat-video/faketcp
-    up: "30 Mbps" # 若不写单位，默认为 Mbps
-    down: "200 Mbps" # 若不写单位，默认为 Mbps
-    sni: www.paypal.com
-    skip-cert-verify: true
+    protocol: udp
+    up: "50 Mbps"
+    down: "100 Mbps"
   - name: "🇺🇸 ChromeGo 3"
     type: hysteria
     server: 173.234.25.52
@@ -121,17 +119,38 @@ proxies:
     skip-cert-verify: true
   - name: "🇺🇸 ChromeGo 4"
     type: hysteria
-    server: 166.1.18.191
-    port: 16542
-    ports: 21000-22000
-    auth_str: PidedzMQ9WgikepaWKUdAaC2hLDFqxK5z1Aw19dxAluufRwpll
+    server: hy2.dtku47.xyz
+    port: 15566
+    auth-str: jQrGpwSqp34P
     alpn:
       - h3
-    protocol: udp # 支持 udp/wechat-video/faketcp
-    up: "30 Mbps" # 若不写单位，默认为 Mbps
-    down: "200 Mbps" # 若不写单位，默认为 Mbps
-    sni: www.microsoft.com
+    protocol: udp
+    up: "50 Mbps"
+    down: "100 Mbps"
+  - name: "🇺🇸 ChromeGo 5"
+    type: hysteria
+    server: hy1.dtku47.xyz
+    port: 11257
+    auth-str: oO5q7L6QPSuJ
+    alpn:
+      - h3
+    protocol: udp
+    up: "50 Mbps"
+    down: "100 Mbps"
+  - name: "🇺🇸 ChromeGo 6"
+    type: hysteria2
+    server: 167.160.90.252
+    port: 60930
+    password: yourpassword
+    # obfs: salamander # 默认为空，如果填写则开启obfs，目前仅支持salamander
+    # obfs-password: yourpassword
+    sni: www.bing.com
     skip-cert-verify: true
+    # fingerprint: xxxx
+    # alpn:
+    #   - h3
+    # ca: "./my.ca"
+    # ca-str: "xyz"
 
   #Warp
   - {"name": "🏴‍☠️ CF Warp 1", "type": "wireguard", "server": "188.114.97.234", "port": 942, "mtu": 1280, "ip": "172.16.0.2/32", "ipv6": "2606:4700:110:845f:c46b:7b99:33a6:24fc/128", "private-key": "mGx7/n86b590qWcQ38e+O/KiM7f/OPhDxk4IKVOJCUs=", "public-key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=", "udp": true}
@@ -194,7 +213,7 @@ proxy-groups:
       - 🏴‍☠️ CF worker
       - 🏴‍☠️ CF Warp
 
-  - {"name": "♻️ ChromeGo", "type": "url-test", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇺🇸 ChromeGo 3", "🇺🇸 ChromeGo 2", "🇺🇸 ChromeGo 1", "🇺🇸 ChromeGo 4"]}
+  - {"name": "♻️ ChromeGo", "type": "url-test", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇺🇸 ChromeGo 3", "🇺🇸 ChromeGo 2", "🇺🇸 ChromeGo 1", "🇺🇸 ChromeGo 4", "🇺🇸 ChromeGo 5", "🇺🇸 ChromeGo 6"]}
 
   - {"name": "🇸🇬 新加坡节点", "type": "select", "proxies": ["🇸🇬 CF 优选 1", "🇸🇬 TUIC", "🇸🇬 CF 优选 3", "🇸🇬 CF 优选 2", "🇸🇬 负载均衡"]}
   - {"name": "🇫🇮 芬兰节点", "type": "select", "proxies": ["🇫🇮 TUIC", "🇫🇮 CF 优选 1", "🇫🇮 CF 优选 2", "🇫🇮 链式代理"]}
