@@ -214,7 +214,7 @@ proxy-groups:
   - {"name": "♻️ ChromeGo", "type": "url-test", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇺🇸 ChromeGo 3", "🇺🇸 ChromeGo 2", "🇺🇸 ChromeGo 1", "🇺🇸 ChromeGo 4", "🇺🇸 ChromeGo 5", "🇺🇸 ChromeGo 6"]}
 
   - {"name": "🇸🇬 新加坡节点", "type": "select", "proxies": ["🇸🇬 CF 优选 1", "🇸🇬 TUIC", "🇸🇬 CF 优选 3", "🇸🇬 CF 优选 2", "🇸🇬 负载均衡"]}
-  - {"name": "🇫🇮 芬兰节点", "type": "select", "proxies": ["🇫🇮 TUIC", "🇫🇮 CF 优选 1", "🇫🇮 CF 优选 2", "🇫🇮 链式代理"]}
+  - {"name": "🇫🇮 芬兰节点", "type": "select", "proxies": ["🇫🇮 TUIC", "🇫🇮 CF 优选 1", "🇫🇮 CF 优选 2"]}
 
   - {"name": "🇸🇬 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选 1", "🇸🇬 TUIC"]}
         
