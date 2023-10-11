@@ -141,7 +141,7 @@ proxies:
     type: hysteria2
     server: 167.160.90.252
     port: 60930
-    password: yourpassword
+    password: fc4488ef
     # obfs: salamander # 默认为空，如果填写则开启obfs，目前仅支持salamander
     # obfs-password: yourpassword
     sni: www.bing.com
