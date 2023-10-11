@@ -168,7 +168,6 @@ proxy-groups:
       - 🇸🇬 新加坡节点
       - 🇫🇮 芬兰节点
       - 🏁 负载均衡
-      - 🇭🇰 GCP WS
       - ♻️ ChromeGo
       - 🏴‍☠️ CF worker
       - DIRECT
@@ -181,7 +180,6 @@ proxy-groups:
     proxies:
         - 🇸🇬 CF 优选 1
         - 🇸🇬 TUIC
-        - 🇭🇰 GCP WS
 
   - name: 📹 油管视频
     type: select
@@ -219,10 +217,8 @@ proxy-groups:
   - {"name": "🇫🇮 芬兰节点", "type": "select", "proxies": ["🇫🇮 TUIC", "🇫🇮 CF 优选 1", "🇫🇮 CF 优选 2", "🇫🇮 链式代理"]}
 
   - {"name": "🇸🇬 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选 1", "🇸🇬 TUIC"]}
-
-  - {"name": "🇫🇮 链式代理", "type": "relay", "proxies": ["🇭🇰 GCP WS", "🇫🇮 直连"]}
         
-  - {"name": "🏁 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 TUIC", "🇸🇬 CF 优选 1", "🇫🇮 TUIC", "🇭🇰 GCP WS"]}
+  - {"name": "🏁 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 TUIC", "🇸🇬 CF 优选 1", "🇫🇮 TUIC", "🇺🇸 ChromeGo 3"]}
 
   - {"name": "🏴‍☠️ CF Warp", "type": "load-balance", "strategy": "sticky-sessions", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🏴‍☠️ CF Warp 1", "🏴‍☠️ CF Warp 2", "🏴‍☠️ CF Warp 3"]}
 
