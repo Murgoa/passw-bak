@@ -185,12 +185,12 @@ proxy-groups:
       - 🇸🇬 负载均衡
       - 🇸🇬 CF 优选 1
       - 🇸🇬 TUIC
-      - ♻️ ChromeGo
       - 🇸🇬 CF 优选 3
       - ☁️ NAS
       - 🇫🇮 TUIC
       - 🇫🇮 CF 优选 1
       - 🇫🇮 CF 优选 2
+      - ♻️ ChromeGo
       - 🇮🇳 印度 Repl
       - 🏴‍☠️ CF worker
       - 🏴‍☠️ CF Warp
@@ -311,10 +311,6 @@ rules:
   - DOMAIN-SUFFIX,yt.be,📹 油管视频
   - DOMAIN-SUFFIX,ytimg.com,📹 油管视频
 
-  - DOMAIN-KEYWORD,bilibili,☁️ NAS
-  - DOMAIN-KEYWORD,bilivideo,☁️ NAS
-  - DOMAIN-KEYWORD,biliapi,☁️ NAS
-  - DOMAIN-SUFFIX,hdslb.com,☁️ NAS
   - DOMAIN-SUFFIX,eztv.re,DIRECT
   - DOMAIN-SUFFIX,miobt.com,DIRECT
   - DOMAIN-SUFFIX,oshen.win,DIRECT
