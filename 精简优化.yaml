@@ -151,9 +151,9 @@ proxy-groups:
       - 🇮🇳 印度 Repl
       - 🇸🇬 新加坡节点
       - 🇫🇮 芬兰节点
-      - 🏁 负载均衡
       - ♻️ ChromeGo
       - 🏴‍☠️ CF worker
+      - 🏴‍☠️ CF pages
       - DIRECT
 
   - name: ♻️ 自动选择
@@ -162,8 +162,10 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies:
-        - 🇸🇬 CF 优选 1
+        - 🇫🇮 TUIC
         - 🇸🇬 TUIC
+        - 🇫🇮 CF 优选 1
+        - 🇸🇬 CF 优选 1
 
   - name: 📹 油管视频
     type: select
@@ -172,9 +174,8 @@ proxy-groups:
       - ♻️ 自动选择
       - 🔯 故障转移
       - 🇸🇬 新加坡节点
-      - 🇭🇰 GCP WS
+      - ☁️ NAS
       - ♻️ ChromeGo
-      - 🏁 负载均衡
 
   - name: 🔯 故障转移
     type: fallback
@@ -182,7 +183,6 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies: 
-      - 🇸🇬 负载均衡
       - 🇸🇬 CF 优选 1
       - 🇸🇬 TUIC
       - 🇸🇬 CF 优选 3
@@ -197,7 +197,7 @@ proxy-groups:
 
   - {"name": "♻️ ChromeGo", "type": "url-test", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇺🇸 ChromeGo 3", "🇺🇸 ChromeGo 2", "🇺🇸 ChromeGo 1", "🇺🇸 ChromeGo 4", "🇺🇸 ChromeGo 5", "🇺🇸 ChromeGo 6"]}
 
-  - {"name": "🇸🇬 新加坡节点", "type": "select", "proxies": ["🇸🇬 CF 优选 1", "🇸🇬 TUIC", "🇸🇬 CF 优选 3", "🇸🇬 CF 优选 2", "🇸🇬 负载均衡"]}
+  - {"name": "🇸🇬 新加坡节点", "type": "fallback", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选 1", "🇸🇬 TUIC", "🇸🇬 CF 优选 3", "🇸🇬 CF 优选 2"]}
   - {"name": "🇫🇮 芬兰节点", "type": "url-test", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇫🇮 TUIC", "🇫🇮 CF 优选 1", "🇫🇮 CF 优选 2"]}
 
   - {"name": "🇸🇬 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选 1", "🇸🇬 TUIC"]}
