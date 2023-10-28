@@ -149,6 +149,8 @@ proxy-groups:
       - 🔯 故障转移
       - ☁️ NAS
       - 🇮🇳 印度 Repl
+      - 🇸🇬 CF 优选 2
+      - 🇫🇮 CF 优选 2
       - 🇸🇬 新加坡节点
       - 🇫🇮 芬兰节点
       - ♻️ ChromeGo
@@ -166,6 +168,8 @@ proxy-groups:
         - 🇸🇬 TUIC
         - 🇫🇮 CF 优选 1
         - 🇸🇬 CF 优选 1
+        - 🇸🇬 CF 优选 2
+        - 🇫🇮 CF 优选 2
 
   - name: 📹 油管视频
     type: select
