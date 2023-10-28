@@ -180,6 +180,8 @@ proxy-groups:
       - 🇸🇬 新加坡节点
       - ☁️ NAS
       - ♻️ ChromeGo
+      - 🏴‍☠️ CF worker
+      - 🏴‍☠️ CF pages
 
   - name: 🔯 故障转移
     type: fallback
