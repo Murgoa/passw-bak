@@ -63,7 +63,7 @@ proxies:
   - {"name":"🏴‍☠️ CF pages","type":"vless","server":"cfip.gay","port":443,"uuid":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","tls":true,"servername":"edgetunnel-cdd.pages.dev","network":"ws","ws-opts":{"path":"/vless/2029fbaa-0b26-4fee-be68-700ed79a3a0e?ed=2048","headers":{"host":"edgetunnel-cdd.pages.dev"}},"client-fingerprint":"randomized"}
   - type: vless
     name: 🏴‍☠️ CF worker
-    server: cfip.gay
+    server: www.who.int
     port: 443
     uuid: 2029fbaa-0b26-4fee-be68-700ed79a3a0e
     network: ws
