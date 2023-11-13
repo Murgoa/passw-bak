@@ -38,32 +38,20 @@ proxies:
     request-timeout: 8000
     udp-relay-mode: quic
     congestion-controller: bbr
-  - name: 🇫🇮 TUIC
-    server: fin4.murgo.eu.org
-    port: 23845
-    type: tuic
-    uuid: eb383494-8109-4392-8213-0c00d6c3a62f
-    password: 9ccd4689
-    ip: 95.217.89.204
-    alpn: [h3]
-    disable-sni: true
-    reduce-rtt: true
-    request-timeout: 8000
-    udp-relay-mode: quic
-    congestion-controller: bbr
-  - name: 🇫🇮 TUICv6
-    server: fin6.murgo.eu.org
-    port: 23845
-    type: tuic
-    uuid: eb383494-8109-4392-8213-0c00d6c3a62f
-    password: 9ccd4689
-    ip: 2a01:4f9:4a:1d8e:d6::adb9
-    alpn: [h3]
-    disable-sni: true
-    reduce-rtt: true
-    request-timeout: 8000
-    udp-relay-mode: quic
-    congestion-controller: bbr
+  - name: 🇫🇮 Hy2
+    type: hysteria2
+    server: fin4.66.now.cc
+    port: 23832
+    password: omgishy2
+    sni: fin4.murgo.eu.org
+    skip-cert-verify: true
+  - name: 🇫🇮 Hy2v6
+    type: hysteria2
+    server: fin6.66.now.cc
+    port: 23832
+    password: omgishy2
+    sni: fin4.murgo.eu.org
+    skip-cert-verify: true
 
   #CF优选ip：8.219.91.92, 152.70.250.4, cfip.murgo.eu.org, speedip.eu.org
   - {"name":"🇸🇬 CF 优选 1","type":"vmess","server":"cfip.murgo.eu.org","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"sg.murgo.eu.org"}}}
@@ -166,7 +154,7 @@ proxy-groups:
       - 🇫🇮 CF 优选 2
       - 🇸🇬 新加坡节点
       - 🇫🇮 芬兰节点
-      - 🇫🇮 TUICv6
+      - 🇫🇮 Hy2v6
       - ♻️ ChromeGo
       - 🏴‍☠️ CF worker
       - 🏴‍☠️ CF pages
@@ -178,7 +166,7 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies:
-        - 🇫🇮 TUIC
+        - 🇫🇮 Hy2
         - 🇸🇬 TUIC
         - 🇫🇮 CF 优选 1
         - 🇸🇬 CF 优选 1
@@ -207,7 +195,7 @@ proxy-groups:
       - 🇸🇬 TUIC
       - 🇸🇬 CF 优选 3
       - ☁️ NAS
-      - 🇫🇮 TUIC
+      - 🇫🇮 Hy2
       - 🇫🇮 CF 优选 1
       - 🇫🇮 CF 优选 2
       - ♻️ ChromeGo
@@ -218,11 +206,11 @@ proxy-groups:
   - {"name": "♻️ ChromeGo", "type": "url-test", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇺🇸 ChromeGo 3", "🇺🇸 ChromeGo 2", "🇺🇸 ChromeGo 1", "🇺🇸 ChromeGo 4", "🇺🇸 ChromeGo 5", "🇺🇸 ChromeGo 6"]}
 
   - {"name": "🇸🇬 新加坡节点", "type": "fallback", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选 1", "🇸🇬 TUIC", "🇸🇬 CF 优选 3", "🇸🇬 CF 优选 2"]}
-  - {"name": "🇫🇮 芬兰节点", "type": "url-test", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇫🇮 TUIC", "🇫🇮 CF 优选 1", "🇫🇮 CF 优选 2"]}
+  - {"name": "🇫🇮 芬兰节点", "type": "url-test", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇫🇮 Hy2", "🇫🇮 CF 优选 1", "🇫🇮 CF 优选 2"]}
 
   - {"name": "🇸🇬 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选 1", "🇸🇬 TUIC"]}
         
-  - {"name": "🏁 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 TUIC", "🇸🇬 CF 优选 1", "🇫🇮 TUIC", "🇺🇸 ChromeGo 3"]}
+  - {"name": "🏁 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 TUIC", "🇸🇬 CF 优选 1", "🇫🇮 Hy2", "🇺🇸 ChromeGo 3"]}
 
   - {"name": "🏴‍☠️ CF Warp", "type": "load-balance", "strategy": "sticky-sessions", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🏴‍☠️ CF Warp 1", "🏴‍☠️ CF Warp 2", "🏴‍☠️ CF Warp 3"]}
 
