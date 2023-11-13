@@ -183,7 +183,7 @@ proxy-groups:
       - ☁️ NAS
       - ♻️ ChromeGo
       - 🏴‍☠️ CF worker
-      - 🏴‍☠️ CF pages
+      - 🏁 负载均衡
 
   - name: 🔯 故障转移
     type: fallback
