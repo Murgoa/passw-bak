@@ -21,8 +21,6 @@ proxies:
   #节点直连
   - {"name":"🇸🇬 直连","type":"vless","server":"sgv4.murgo.eu.org","port":20100,"uuid":"59e69dee-e968-4cc6-9408-5c44bd5c8dbd","tls":false,"servername":"sgv4.murgo.eu.org","skip-cert-verify":true,"network":"ws","ws-opts":{"path":"/","headers":{"host":"sgv4.murgo.eu.org"}}}
   - {"name":"🇫🇮 直连","type":"ss","server":"fin4.murgo.eu.org","port":23832,"cipher":"xchacha20-ietf-poly1305","password":8JCsPssfgS8tiRwiMlhARg==}
-  - {"name":"🇭🇰 GCP WS","type":"vmess","server":"hk.murgo.eu.org","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"hk.murgo.eu.org"}}}
-
 
   #TUIC
   - name: 🇸🇬 TUIC
@@ -64,7 +62,7 @@ proxies:
   - {"name":"🏴‍☠️ CF pages","type":"vless","server":"cdn.chigua.tk","port":443,"uuid":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","tls":true,"servername":"edgetunnel-cdd.pages.dev","network":"ws","ws-opts":{"path":"/vless/2029fbaa-0b26-4fee-be68-700ed79a3a0e?ed=2048","headers":{"host":"edgetunnel-cdd.pages.dev"}},"client-fingerprint":"randomized"}
   - type: vless
     name: 🏴‍☠️ CF worker
-    server: cdn.chigua.tk
+    server: www.who.int
     port: 443
     uuid: 2029fbaa-0b26-4fee-be68-700ed79a3a0e
     network: ws
@@ -154,7 +152,6 @@ proxy-groups:
       - 🇫🇮 CF 优选 2
       - 🇸🇬 新加坡节点
       - 🇫🇮 芬兰节点
-      - 🇫🇮 Hy2v6
       - ♻️ ChromeGo
       - 🏴‍☠️ CF worker
       - 🏴‍☠️ CF pages
