@@ -473,7 +473,13 @@ rules:
   - DOMAIN-SUFFIX,torrentdownloads.info,♻️ 自动选择
   - DOMAIN-SUFFIX,torrentapi.org,♻️ 自动选择
   - DOMAIN-SUFFIX,perplexity.ai,♻️ 自动选择
-  
+
+  #ChromeGo分流
+  - DOMAIN-SUFFIX,twitter.com,♻️ ChromeGo
+  - DOMAIN-SUFFIX,twimg.com,♻️ ChromeGo
+  - DOMAIN-SUFFIX,behance.net,♻️ ChromeGo
+  - DOMAIN-SUFFIX,x.com,♻️ ChromeGo
+
   - DOMAIN-SUFFIX,figma.com,🚀 节点选择
   - DOMAIN-SUFFIX,openai.com,🚀 节点选择
   - PROCESS-NAME,ddns-go.exe,DIRECT
