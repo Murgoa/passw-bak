@@ -331,8 +331,12 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies:
-        - 🇫🇮 芬兰节点
-        - 🇸🇬 新加坡节点
+        - 🇫🇮 Hy2
+        - 🇸🇬 TUIC
+        - 🇫🇮 CF 优选 1
+        - 🇸🇬 CF 优选 1
+        - 🇸🇬 CF 优选 2
+        - 🇫🇮 CF 优选 2
 
   - name: 📹 油管视频
     type: select
@@ -471,10 +475,9 @@ rules:
   - DOMAIN-SUFFIX,perplexity.ai,♻️ 自动选择
 
   #ChromeGo分流
-  - DOMAIN-SUFFIX,twitter.com,♻️ ChromeGo
-  - DOMAIN-SUFFIX,twimg.com,♻️ ChromeGo
-  - DOMAIN-SUFFIX,behance.net,♻️ ChromeGo
-  - DOMAIN-SUFFIX,x.com,♻️ ChromeGo
+  - DOMAIN-SUFFIX,zimuku.org,♻️ 自动选择
+  - DOMAIN-SUFFIX,subhd.tv,♻️ 自动选择
+  - DOMAIN-SUFFIX,pornhub.com,♻️ 自动选择
 
   - DOMAIN-SUFFIX,figma.com,🚀 节点选择
   - DOMAIN-SUFFIX,openai.com,🚀 节点选择
