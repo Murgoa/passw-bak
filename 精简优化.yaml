@@ -331,12 +331,8 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies:
-        - 🇫🇮 Hy2
-        - 🇸🇬 TUIC
-        - 🇫🇮 CF 优选 1
-        - 🇸🇬 CF 优选 1
-        - 🇸🇬 CF 优选 2
-        - 🇫🇮 CF 优选 2
+        - 🇫🇮 芬兰节点
+        - 🇸🇬 新加坡节点
 
   - name: 📹 油管视频
     type: select
