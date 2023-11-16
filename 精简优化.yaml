@@ -474,6 +474,7 @@ rules:
   - DOMAIN-SUFFIX,zimuku.org,♻️ 自动选择
   - DOMAIN-SUFFIX,subhd.tv,♻️ 自动选择
   - DOMAIN-SUFFIX,pornhub.com,♻️ 自动选择
+  - DOMAIN-SUFFIX,phncdn.com,♻️ 自动选择
 
   - DOMAIN-SUFFIX,figma.com,🚀 节点选择
   - DOMAIN-SUFFIX,openai.com,🚀 节点选择
