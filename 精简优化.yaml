@@ -310,7 +310,7 @@ proxy-groups:
       - 🔯 故障转移
       - ☁️ NAS
       - 🇮🇳 印度 Repl
-      - 🇸🇬 CF 优选 2
+      - 🇸🇬 负载均衡
       - 🇫🇮 CF 优选 2
       - 🇸🇬 新加坡节点
       - 🇫🇮 芬兰节点
@@ -335,7 +335,6 @@ proxy-groups:
       - ♻️ 自动选择
       - 🔯 故障转移
       - 🇸🇬 新加坡节点
-      - 🇸🇬 负载均衡
       - ☁️ NAS
       - ♻️ ChromeGo
       - 🏴‍☠️ CF worker
@@ -384,7 +383,7 @@ proxy-groups:
       - hysteria2_2
       - hysteria2_3
 
-  - {"name": "🇸🇬 新加坡节点", "type": "fallback", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选 1", "🇸🇬 Hy2", "🇸🇬 CF 优选 3", "🇸🇬 CF 优选 2"]}
+  - {"name": "🇸🇬 新加坡节点", "type": "fallback", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选 1", "🇸🇬 负载均衡", "🇸🇬 CF 优选 3", "🇸🇬 CF 优选 2"]}
   - {"name": "🇫🇮 芬兰节点", "type": "url-test", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇫🇮 CF 优选 2", "🇫🇮 CF 优选 1", "🇫🇮 Hy2"]}
 
   - {"name": "🇸🇬 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选 3", "🇸🇬 Hy2"]}
