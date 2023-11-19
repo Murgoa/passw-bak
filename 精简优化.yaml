@@ -335,6 +335,7 @@ proxy-groups:
       - ♻️ 自动选择
       - 🔯 故障转移
       - 🇸🇬 新加坡节点
+      - 🇸🇬 负载均衡
       - ☁️ NAS
       - ♻️ ChromeGo
       - 🏴‍☠️ CF worker
