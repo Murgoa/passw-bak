@@ -360,7 +360,7 @@ proxy-groups:
 
   - name: ♻️ ChromeGo
     type: load-balance
-    strategy: sticky-sessions
+    strategy: round-robin
     url: https://cp.cloudflare.com/generate_204
     interval: 300
     tolerance: 50
