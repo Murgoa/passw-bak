@@ -359,7 +359,8 @@ proxy-groups:
       - 🏴‍☠️ CF Warp
 
   - name: ♻️ ChromeGo
-    type: url-test
+    type: load-balance
+    strategy: sticky-sessions
     url: https://cp.cloudflare.com/generate_204
     interval: 300
     tolerance: 50
