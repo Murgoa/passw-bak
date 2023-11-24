@@ -471,6 +471,7 @@ rules:
   - DOMAIN-SUFFIX,pornhub.com,♻️ 自动选择
   - DOMAIN-SUFFIX,phncdn.com,♻️ 自动选择
   - DOMAIN-SUFFIX,dodi-repacks.site,♻️ 自动选择
+  - DOMAIN-SUFFIX,yts.mx,♻️ 自动选择
 
   - DOMAIN-SUFFIX,figma.com,🚀 节点选择
   - DOMAIN-SUFFIX,openai.com,🚀 节点选择
