@@ -23,40 +23,26 @@ proxies:
   - {"name":"🇫🇮 直连","type":"ss","server":"fin4.murgo.eu.org","port":23832,"cipher":"xchacha20-ietf-poly1305","password":8JCsPssfgS8tiRwiMlhARg==}
 
   #🇺🇸圣何塞
-  - name: 🇺🇸 Reality
-    type: vless
-    server: 107.175.194.42                           
-    port: 36350                                
-    uuid: 4247825e-4efc-43ca-b102-4e1a757d22cc   
-    network: tcp
-    udp: true
-    tls: true
-    flow: xtls-rprx-vision
-    servername: www.yahoo.com                 
-    reality-opts: 
-      public-key: VNXSci95v6078Gl75ozZX4DqkhvxHXLWZKqTraU9_3M    
-      short-id: 33e6d202                      
-    client-fingerprint: chrome                  
   - name: 🇺🇸 Vmess
     type: vmess
     server: cdn.chigua.tk
     port: 2086
-    uuid: 4247825e-4efc-43ca-b102-4e1a757d22cc       
+    uuid: 969d5bac-fc4a-4497-8b43-750b20d9ab50
     alterId: 0
     cipher: auto
     udp: true
     tls: false
     network: ws
-    servername: us.66.now.cc         
+    servername: us.66.now.cc
     ws-opts:
-      path: "4247825e-4efc-43ca-b102-4e1a757d22cc-vm"                             
+      path: "969d5bac-fc4a-4497-8b43-750b20d9ab50-vm"                             
       headers:
         Host: us.66.now.cc
   - name: 🇺🇸 Hy2
     type: hysteria2                                      
     server: us.66.now.cc
-    port: 13154                                
-    password: 4247825e-4efc-43ca-b102-4e1a757d22cc                              
+    port: 5674                                
+    password: 969d5bac-fc4a-4497-8b43-750b20d9ab50                     
     alpn:
       - h3
     sni: www.bing.com                               
@@ -64,10 +50,10 @@ proxies:
     fast-open: true
   - name: 🇺🇸 TUIC
     server: 107.175.194.42                      
-    port: 15094                                    
+    port: 37574                                    
     type: tuic
-    uuid: 4247825e-4efc-43ca-b102-4e1a757d22cc       
-    password: 4247825e-4efc-43ca-b102-4e1a757d22cc   
+    uuid: 969d5bac-fc4a-4497-8b43-750b20d9ab50
+    password: 969d5bac-fc4a-4497-8b43-750b20d9ab50
     alpn: [h3]
     disable-sni: true
     reduce-rtt: true
