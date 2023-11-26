@@ -22,6 +22,60 @@ proxies:
   - {"name":"🇸🇬 直连","type":"vless","server":"sgv4.murgo.eu.org","port":20100,"uuid":"59e69dee-e968-4cc6-9408-5c44bd5c8dbd","tls":false,"servername":"sgv4.murgo.eu.org","skip-cert-verify":true,"network":"ws","ws-opts":{"path":"/","headers":{"host":"sgv4.murgo.eu.org"}}}
   - {"name":"🇫🇮 直连","type":"ss","server":"fin4.murgo.eu.org","port":23832,"cipher":"xchacha20-ietf-poly1305","password":8JCsPssfgS8tiRwiMlhARg==}
 
+  #🇺🇸圣何塞
+  - name: 🇺🇸 Reality
+  type: vless
+  server: 107.175.194.42                           
+  port: 36350                                
+  uuid: 4247825e-4efc-43ca-b102-4e1a757d22cc   
+  network: tcp
+  udp: true
+  tls: true
+  flow: xtls-rprx-vision
+  servername: www.yahoo.com                 
+  reality-opts: 
+    public-key: VNXSci95v6078Gl75ozZX4DqkhvxHXLWZKqTraU9_3M    
+    short-id: 33e6d202                      
+  client-fingerprint: chrome                  
+- name: 🇺🇸 Vmess                        
+  type: vmess
+  server: 107.175.194.42                        
+  port: 2095                                     
+  uuid: 4247825e-4efc-43ca-b102-4e1a757d22cc       
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  network: ws
+  servername: www.bing.com                    
+  ws-opts:
+    path: "4247825e-4efc-43ca-b102-4e1a757d22cc-vm"                             
+    headers:
+      Host: www.bing.com                     
+- name: 🇺🇸 Hy2
+  type: hysteria2                                      
+  server: 107.175.194.42                               
+  port: 13154                                
+  password: 4247825e-4efc-43ca-b102-4e1a757d22cc                              
+  alpn:
+    - h3
+  sni: www.bing.com                               
+  skip-cert-verify: true
+  fast-open: true
+- name: 🇺🇸 TUIC
+  server: 107.175.194.42                      
+  port: 15094                                    
+  type: tuic
+  uuid: 4247825e-4efc-43ca-b102-4e1a757d22cc       
+  password: 4247825e-4efc-43ca-b102-4e1a757d22cc   
+  alpn: [h3]
+  disable-sni: true
+  reduce-rtt: true
+  udp-relay-mode: native
+  congestion-controller: bbr
+  sni: www.bing.com                                
+  skip-cert-verify: true
+
   #TUIC
   - name: 🇸🇬 Hy2
     type: hysteria2
@@ -37,13 +91,6 @@ proxies:
     password: omgishy2
     sni: fin4.murgo.eu.org
     skip-cert-verify: true
-  - name: 🇺🇸 Hy2
-    type: hysteria2
-    server: us.66.now.cc
-    port: 23833
-    password: omgishy2
-    sni: us4.murgo.eu.org
-    skip-cert-verify: true
   - name: 🇫🇮 Hy2v6
     type: hysteria2
     server: fin6.66.now.cc
@@ -58,8 +105,6 @@ proxies:
   - {"name":"🇸🇬 CF 优选 3","type":"vmess","server":"cdn.chigua.tk","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"sg.murgo.eu.org"}}}
   - {"name":"🇫🇮 CF 优选 1","type":"vmess","server":"cdn.chigua.tk","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
   - {"name":"🇫🇮 CF 优选 2","type":"vmess","server":"www.who.int","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
-  - {"name":"🇺🇸 CF 优选 2","type":"vmess","server":"www.who.int","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"uscdn.66.now.cc"}}}
-
 
   #CF
   - {"name":"🏴‍☠️ CF pages","type":"vless","server":"cdn.chigua.tk","port":443,"uuid":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","tls":true,"servername":"edgetunnel-cdd.pages.dev","network":"ws","ws-opts":{"path":"/vless/2029fbaa-0b26-4fee-be68-700ed79a3a0e?ed=2048","headers":{"host":"edgetunnel-cdd.pages.dev"}},"client-fingerprint":"randomized"}
@@ -324,7 +369,7 @@ proxy-groups:
       - 🇫🇮 芬兰节点
       - 🇸🇬 新加坡节点
       - 🇺🇸 Hy2
-      - 🇺🇸 CF 优选 2
+      - 🇺🇸 美国节点
       - ♻️ ChromeGo
       - 🏴‍☠️ CF worker
       - DIRECT
@@ -397,7 +442,9 @@ proxy-groups:
 
   - {"name": "🇸🇬 新加坡节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选 3", "🇸🇬 CF 优选 1", "🇸🇬 Hy2"]}
   - {"name": "🇫🇮 芬兰节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇫🇮 CF 优选 2", "🇫🇮 Hy2"]}
-  - {"name": "🤯 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选 3", "🇸🇬 Hy2", "🇫🇮 Hy2", "🏴‍☠️ CF worker", "🇺🇸 Hy2", "🇺🇸 CF 优选 2"]}
+  - {"name": "🇺🇸 美国节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇺🇸 Reality", "🇺🇸 Vmess", "🇺🇸 Hy2", "🇺🇸 TUIC"]}
+
+  - {"name": "🤯 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选 3", "🇸🇬 Hy2", "🇫🇮 Hy2", "🏴‍☠️ CF worker"]}
         
   - {"name": "🏴‍☠️ CF Warp", "type": "load-balance", "strategy": "sticky-sessions", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🏴‍☠️ CF Warp 1", "🏴‍☠️ CF Warp 2", "🏴‍☠️ CF Warp 3"]}
 
