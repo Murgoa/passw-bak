@@ -24,57 +24,57 @@ proxies:
 
   #🇺🇸圣何塞
   - name: 🇺🇸 Reality
-  type: vless
-  server: 107.175.194.42                           
-  port: 36350                                
-  uuid: 4247825e-4efc-43ca-b102-4e1a757d22cc   
-  network: tcp
-  udp: true
-  tls: true
-  flow: xtls-rprx-vision
-  servername: www.yahoo.com                 
-  reality-opts: 
-    public-key: VNXSci95v6078Gl75ozZX4DqkhvxHXLWZKqTraU9_3M    
-    short-id: 33e6d202                      
-  client-fingerprint: chrome                  
-- name: 🇺🇸 Vmess                        
-  type: vmess
-  server: 107.175.194.42                        
-  port: 2095                                     
-  uuid: 4247825e-4efc-43ca-b102-4e1a757d22cc       
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  network: ws
-  servername: www.bing.com                    
-  ws-opts:
-    path: "4247825e-4efc-43ca-b102-4e1a757d22cc-vm"                             
-    headers:
-      Host: www.bing.com                     
-- name: 🇺🇸 Hy2
-  type: hysteria2                                      
-  server: 107.175.194.42                               
-  port: 13154                                
-  password: 4247825e-4efc-43ca-b102-4e1a757d22cc                              
-  alpn:
-    - h3
-  sni: www.bing.com                               
-  skip-cert-verify: true
-  fast-open: true
-- name: 🇺🇸 TUIC
-  server: 107.175.194.42                      
-  port: 15094                                    
-  type: tuic
-  uuid: 4247825e-4efc-43ca-b102-4e1a757d22cc       
-  password: 4247825e-4efc-43ca-b102-4e1a757d22cc   
-  alpn: [h3]
-  disable-sni: true
-  reduce-rtt: true
-  udp-relay-mode: native
-  congestion-controller: bbr
-  sni: www.bing.com                                
-  skip-cert-verify: true
+    type: vless
+    server: 107.175.194.42                           
+    port: 36350                                
+    uuid: 4247825e-4efc-43ca-b102-4e1a757d22cc   
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: www.yahoo.com                 
+    reality-opts: 
+      public-key: VNXSci95v6078Gl75ozZX4DqkhvxHXLWZKqTraU9_3M    
+      short-id: 33e6d202                      
+    client-fingerprint: chrome                  
+  - name: 🇺🇸 Vmess                        
+    type: vmess
+    server: 107.175.194.42                        
+    port: 2095                                     
+    uuid: 4247825e-4efc-43ca-b102-4e1a757d22cc       
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: false
+    network: ws
+    servername: www.bing.com                    
+    ws-opts:
+      path: "4247825e-4efc-43ca-b102-4e1a757d22cc-vm"                             
+      headers:
+        Host: www.bing.com                     
+  - name: 🇺🇸 Hy2
+    type: hysteria2                                      
+    server: 107.175.194.42                               
+    port: 13154                                
+    password: 4247825e-4efc-43ca-b102-4e1a757d22cc                              
+    alpn:
+      - h3
+    sni: www.bing.com                               
+    skip-cert-verify: true
+    fast-open: true
+  - name: 🇺🇸 TUIC
+    server: 107.175.194.42                      
+    port: 15094                                    
+    type: tuic
+    uuid: 4247825e-4efc-43ca-b102-4e1a757d22cc       
+    password: 4247825e-4efc-43ca-b102-4e1a757d22cc   
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    udp-relay-mode: native
+    congestion-controller: bbr
+    sni: www.bing.com                                
+    skip-cert-verify: true
 
   #TUIC
   - name: 🇸🇬 Hy2
