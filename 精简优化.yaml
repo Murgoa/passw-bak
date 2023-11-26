@@ -37,24 +37,24 @@ proxies:
       public-key: VNXSci95v6078Gl75ozZX4DqkhvxHXLWZKqTraU9_3M    
       short-id: 33e6d202                      
     client-fingerprint: chrome                  
-  - name: 🇺🇸 Vmess                        
+  - name: 🇺🇸 Vmess
     type: vmess
-    server: 107.175.194.42                        
-    port: 2095                                     
+    server: cdn.chigua.tk
+    port: 2086
     uuid: 4247825e-4efc-43ca-b102-4e1a757d22cc       
     alterId: 0
     cipher: auto
     udp: true
     tls: false
     network: ws
-    servername: www.bing.com                    
+    servername: us.66.now.cc         
     ws-opts:
       path: "4247825e-4efc-43ca-b102-4e1a757d22cc-vm"                             
       headers:
-        Host: www.bing.com                     
+        Host: us.66.now.cc
   - name: 🇺🇸 Hy2
     type: hysteria2                                      
-    server: 107.175.194.42                               
+    server: us.66.now.cc
     port: 13154                                
     password: 4247825e-4efc-43ca-b102-4e1a757d22cc                              
     alpn:
@@ -442,7 +442,7 @@ proxy-groups:
 
   - {"name": "🇸🇬 新加坡节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选 3", "🇸🇬 CF 优选 1", "🇸🇬 Hy2"]}
   - {"name": "🇫🇮 芬兰节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇫🇮 CF 优选 2", "🇫🇮 Hy2"]}
-  - {"name": "🇺🇸 美国节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇺🇸 Reality", "🇺🇸 Vmess", "🇺🇸 Hy2", "🇺🇸 TUIC"]}
+  - {"name": "🇺🇸 美国节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇺🇸 Vmess", "🇺🇸 Hy2", "🇺🇸 TUIC"]}
 
   - {"name": "🤯 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选 3", "🇸🇬 Hy2", "🇫🇮 Hy2", "🏴‍☠️ CF worker"]}
         
