@@ -427,7 +427,7 @@ proxy-groups:
   - {"name": "🇸🇬 新加坡节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选 3", "🇸🇬 CF 优选 1", "🇸🇬 Hy2"]}
   - {"name": "🇫🇮 芬兰节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇫🇮 CF 优选 2", "🇫🇮 Hy2"]}
   - {"name": "🇺🇸 美国节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "proxies": ["🇺🇸 Hy2", "🇺🇸 TUIC", "🇺🇸 Vmess"]}
-  - {"name": "🤯 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "proxies": ["🇺🇸 Hy2", "🇸🇬 Hy2", "🇺🇸 Vmess", "🇺🇸 TUIC", "🇫🇮 Hy2"]}
+  - {"name": "🤯 负载均衡", "type": "load-balance", "strategy": "consistent-hashing", "url": "http://www.gstatic.com/generate_204", "interval": 300, "proxies": ["🇺🇸 Hy2", "🇸🇬 Hy2", "🇺🇸 Vmess", "🇺🇸 TUIC", "🇫🇮 Hy2"]}
         
   - {"name": "🏴‍☠️ CF Warp", "type": "load-balance", "strategy": "sticky-sessions", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🏴‍☠️ CF Warp 1", "🏴‍☠️ CF Warp 2", "🏴‍☠️ CF Warp 3"]}
 
