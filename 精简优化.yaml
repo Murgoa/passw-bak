@@ -5,7 +5,7 @@ log-level: info
 external-controller: :9090
 ipv6: true
 dns:
-  enable: false
+  enable: true
   ipv6: false
   default-nameserver: [223.5.5.5, 119.29.29.29]
   enhanced-mode: fake-ip
