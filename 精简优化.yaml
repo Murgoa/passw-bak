@@ -5,7 +5,7 @@ log-level: info
 external-controller: :9090
 ipv6: true
 dns:
-  enable: true
+  enable: false
   ipv6: false
   default-nameserver: [223.5.5.5, 119.29.29.29]
   enhanced-mode: fake-ip
@@ -93,7 +93,7 @@ proxies:
   - {"name":"🇫🇮 CF 优选 2","type":"vmess","server":"www.who.int","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
 
   #CF
-  - {"name":"🏴‍☠️ CF pages","type":"vless","server":"cdn.chigua.tk","port":443,"uuid":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","tls":true,"servername":"edgetunnel-cdd.pages.dev","network":"ws","ws-opts":{"path":"/vless/2029fbaa-0b26-4fee-be68-700ed79a3a0e?ed=2048","headers":{"host":"edgetunnel-cdd.pages.dev"}},"client-fingerprint":"randomized"}
+  - {"name":"🏴‍☠️ CF pages","type":"vless","server":"www.who.int","port":443,"uuid":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","tls":true,"servername":"edgetunnel-cdd.pages.dev","network":"ws","ws-opts":{"path":"/vless/2029fbaa-0b26-4fee-be68-700ed79a3a0e?ed=2048","headers":{"host":"edgetunnel-cdd.pages.dev"}},"client-fingerprint":"randomized"}
   - type: vless
     name: 🏴‍☠️ CF worker
     server: www.who.int
@@ -427,7 +427,7 @@ proxy-groups:
   - {"name": "🇸🇬 新加坡节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选 3", "🇸🇬 CF 优选 1", "🇸🇬 Hy2"]}
   - {"name": "🇫🇮 芬兰节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇫🇮 CF 优选 2", "🇫🇮 Hy2"]}
   - {"name": "🇺🇸 美国节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "proxies": ["🇺🇸 Hy2", "🇺🇸 TUIC", "🇺🇸 Vmess"]}
-  - {"name": "🤯 负载均衡", "type": "load-balance", "strategy": "consistent-hashing", "url": "http://www.gstatic.com/generate_204", "interval": 300, "proxies": ["🇺🇸 Hy2", "🇸🇬 Hy2", "🇺🇸 Vmess", "🇺🇸 TUIC", "🇫🇮 Hy2"]}
+  - {"name": "🤯 负载均衡", "type": "load-balance", "strategy": "consistent-hashing", "url": "http://www.gstatic.com/generate_204", "interval": 300, "proxies": ["🇺🇸 Hy2", "🇸🇬 Hy2", "🇺🇸 Vmess", "🇺🇸 TUIC", "🇫🇮 Hy2", "🏴‍☠️ CF worker", "🏴‍☠️ CF pages"]}
         
   - {"name": "🏴‍☠️ CF Warp", "type": "load-balance", "strategy": "sticky-sessions", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🏴‍☠️ CF Warp 1", "🏴‍☠️ CF Warp 2", "🏴‍☠️ CF Warp 3"]}
 
