@@ -386,8 +386,8 @@ proxy-groups:
     interval: 300
     proxies: 
       - 🇸🇬 CF 优选 1
-      - 🇸🇬 Hy2
-      - 🇸🇬 CF 优选 3
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
       - ☁️ NAS
       - ♻️ ChromeGo
       - 🇫🇮 Hy2
