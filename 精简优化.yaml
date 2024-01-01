@@ -376,6 +376,8 @@ proxy-groups:
       - 🔯 故障转移
       - 🤯 负载均衡
       - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+      - 🇫🇮 芬兰节点
       - ☁️ NAS
       - ♻️ ChromeGo
       - 🏴‍☠️ CF worker
