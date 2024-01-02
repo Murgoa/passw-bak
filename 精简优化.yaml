@@ -62,14 +62,17 @@ proxies:
     sni: www.bing.com                                
     skip-cert-verify: true
 
-  #TUIC
+  #Hy2
   - name: 🇸🇬 Hy2
     type: hysteria2
     server: sgv4.murgo.eu.org
     port: 20101
-    password: omgishy2
-    sni: sgv4.murgo.eu.org
+    password: 10311cc8-a669-4802-86e8-da722b022633
+    alpn:
+      - h3
+    sni: www.bing.com                               
     skip-cert-verify: true
+    fast-open: false
   - name: 🇫🇮 Hy2
     type: hysteria2
     server: fin4.66.now.cc
