@@ -89,7 +89,7 @@ proxies:
     skip-cert-verify: true
 
   #CF优选ip：8.219.91.92, 152.70.250.4, cfip.murgo.eu.org, speedip.eu.org
-  - {"name":"🇸🇬 CF 优选 1","type":"vmess","server":"achk.cloudflarest.link","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"sg.murgo.eu.org"}}}
+  - {"name":"🇸🇬 CF 优选 1","type":"vmess","server":"visa.com","port":2086,"cipher":"chacha20-poly1305","uuid":"f9267ec4-3f67-4bc8-8e57-4433ab80ac01","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"f9267ec4-3f67-4bc8-8e57-4433ab80ac01-vm","headers":{"host":"sg.murgo.eu.org"}}}
   - {"name":"🇸🇬 CF 优选 2","type":"vmess","server":"jp.cloudflarest.link","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"sg.murgo.eu.org"}}}
   - {"name":"🇸🇬 CF 优选 3","type":"vmess","server":"inb.who.int","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"sg.murgo.eu.org"}}}
   - {"name":"🇫🇮 CF 优选 1","type":"vmess","server":"cdn.chigua.tk","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
@@ -369,7 +369,7 @@ proxy-groups:
     tolerance: 50
     proxies:
       - 🇺🇸 美国节点
-      - 🇸🇬 新加坡节点
+      - 🇸🇬 CF 优选 1
 
   - name: 📹 油管视频
     type: select
@@ -429,7 +429,7 @@ proxy-groups:
       - hysteria2_2
       - hysteria2_3
 
-  - {"name": "🇸🇬 新加坡节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选 3", "🇸🇬 CF 优选 1", "🇸🇬 Hy2"]}
+  - {"name": "🇸🇬 新加坡节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选 1", "🇸🇬 Hy2"]}
   - {"name": "🇫🇮 芬兰节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇫🇮 CF 优选 2", "🇫🇮 Hy2"]}
   - {"name": "🇺🇸 美国节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "proxies": ["🇺🇸 Hy2", "🇺🇸 TUIC", "🇺🇸 Vmess"]}
   - {"name": "🤯 负载均衡", "type": "load-balance", "strategy": "consistent-hashing", "url": "http://www.gstatic.com/generate_204", "interval": 300, "proxies": ["🇺🇸 Hy2", "🇸🇬 Hy2", "🏴‍☠️ CF worker"]}
