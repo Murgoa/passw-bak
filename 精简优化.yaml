@@ -277,7 +277,7 @@ rules:
   - DOMAIN-SUFFIX,mikanani.me,🚀 节点选择
   - DOMAIN-SUFFIX,thefappeningblog.com,🚀 节点选择
   - DOMAIN-SUFFIX,pttime.org,🚀 节点选择
-  - DOMAIN-SUFFIX,parsec.app,🚀 节点选择
+  - DOMAIN-SUFFIX,parsec.app,DIRECT
   - DOMAIN-KEYWORD,tmdb,🚀 节点选择
   - DOMAIN-KEYWORD,themoviedb,🚀 节点选择
   - DOMAIN-SUFFIX,notion.so,🚀 节点选择
