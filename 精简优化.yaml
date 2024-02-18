@@ -19,7 +19,6 @@ proxies:
   - {name: ☁️ NAS, server: 'nas.murgo.eu.org', port: 7898, type: socks5 }
 
   #节点直连
-  - {"name":"🇸🇬 直连","type":"vless","server":"sgv4.murgo.eu.org","port":20100,"uuid":"59e69dee-e968-4cc6-9408-5c44bd5c8dbd","tls":false,"servername":"sgv4.murgo.eu.org","skip-cert-verify":true,"network":"ws","ws-opts":{"path":"/","headers":{"host":"sgv4.murgo.eu.org"}}}
   - {"name":"🇫🇮 直连","type":"ss","server":"fin4.murgo.eu.org","port":23832,"cipher":"xchacha20-ietf-poly1305","password":8JCsPssfgS8tiRwiMlhARg==}
 
   #🇺🇸圣何塞
@@ -63,16 +62,6 @@ proxies:
     skip-cert-verify: true
 
   #Hy2
-  - name: 🇸🇬 Hy2
-    type: hysteria2
-    server: sgv4.murgo.eu.org
-    port: 20101
-    password: 10311cc8-a669-4802-86e8-da722b022633
-    alpn:
-      - h3
-    sni: www.bing.com                               
-    skip-cert-verify: true
-    fast-open: false
   - name: 🇫🇮 Hy2
     type: hysteria2
     server: fin4.66.now.cc
@@ -89,9 +78,7 @@ proxies:
     skip-cert-verify: true
 
   #CF优选ip：8.219.91.92, 152.70.250.4, cfip.murgo.eu.org, speedip.eu.org
-  - {"name":"🇸🇬 CF 优选 1","type":"vmess","server":"visa.com","port":2086,"cipher":"chacha20-poly1305","uuid":"f9267ec4-3f67-4bc8-8e57-4433ab80ac01","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"f9267ec4-3f67-4bc8-8e57-4433ab80ac01-vm","headers":{"host":"sg.murgo.eu.org"}}}
-  - {"name":"🇸🇬 CF 优选 2","type":"vmess","server":"jp.cloudflarest.link","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"sg.murgo.eu.org"}}}
-  - {"name":"🇸🇬 CF 优选 3","type":"vmess","server":"inb.who.int","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"sg.murgo.eu.org"}}}
+path":"/","headers":{"host":"sg.murgo.eu.org"}}}
   - {"name":"🇫🇮 CF 优选 1","type":"vmess","server":"cdn.chigua.tk","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
   - {"name":"🇫🇮 CF 优选 2","type":"vmess","server":"inb.who.int","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
 
@@ -133,7 +120,6 @@ proxy-groups:
       - 🇮🇳 印度 Repl
       - 🤯 负载均衡
       - 🇫🇮 芬兰节点
-      - 🇸🇬 新加坡节点
       - 🇺🇸 Vmess
       - 🇺🇸 美国节点
       - 🏴‍☠️ CF worker
@@ -146,7 +132,7 @@ proxy-groups:
     tolerance: 50
     proxies:
       - 🇺🇸 美国节点
-      - 🇸🇬 CF 优选 1
+      - 🇫🇮 芬兰节点
 
   - name: 📹 油管视频
     type: select
@@ -155,7 +141,6 @@ proxy-groups:
       - ♻️ 自动选择
       - 🔯 故障转移
       - 🤯 负载均衡
-      - 🇸🇬 新加坡节点
       - 🇺🇸 美国节点
       - 🇫🇮 芬兰节点
       - ☁️ NAS
@@ -166,8 +151,6 @@ proxy-groups:
     url: https://cp.cloudflare.com/generate_204
     interval: 300
     proxies: 
-      - 🇸🇬 CF 优选 1
-      - 🇸🇬 新加坡节点
       - 🇺🇸 美国节点
       - ☁️ NAS
       - 🇫🇮 Hy2
@@ -177,7 +160,6 @@ proxy-groups:
       - 🏴‍☠️ CF worker
       - 🏴‍☠️ CF Warp
 
-  - {"name": "🇸🇬 新加坡节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇸🇬 CF 优选 1", "🇸🇬 Hy2"]}
   - {"name": "🇫🇮 芬兰节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇫🇮 CF 优选 2", "🇫🇮 Hy2"]}
   - {"name": "🇺🇸 美国节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "proxies": ["🇺🇸 Hy2", "🇺🇸 TUIC", "🇺🇸 Vmess"]}
   - {"name": "🤯 负载均衡", "type": "load-balance", "strategy": "consistent-hashing", "url": "http://www.gstatic.com/generate_204", "interval": 300, "proxies": ["🇺🇸 Hy2", "🇸🇬 Hy2", "🏴‍☠️ CF worker"]}
