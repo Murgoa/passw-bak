@@ -24,7 +24,7 @@ proxies:
   #🇺🇸圣何塞
   - name: 🇺🇸 Vmess
     type: vmess
-    server: cdn.chigua.tk
+    server: visa.com
     port: 2086
     uuid: 969d5bac-fc4a-4497-8b43-750b20d9ab50
     alterId: 0
