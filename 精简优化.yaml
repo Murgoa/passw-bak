@@ -99,10 +99,8 @@ proxies:
         host: cfcdn.66.now.cc
 
   #Replit
-  - {"name":"🇮🇳 印度 Vless","type":"vless","server":"repl-nodes.Murgoa.repl.co","port":443,"uuid":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","tls":true,"servername":"repl-nodes.Murgoa.repl.co","network":"ws","ws-opts":{"path":"/2029fbaa-0b26-4fee-be68-700ed79a3a0e-vl?ed=2048","headers":{"host":"repl-nodes.Murgoa.repl.co"}}}
-  - {"name":"🇮🇳 印度 Trojan","type":"trojan","server":"repl-nodes.Murgoa.repl.co","port":443,"udp":true,"password":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","skip-cert-verify":true,"network":"ws","ws-opts":{"path":"/2029fbaa-0b26-4fee-be68-700ed79a3a0e-tr?ed=2048","headers":{"host":"repl-nodes.Murgoa.repl.co"}}}
-  - {"name":"🇮🇳 印度 Vmess","type":"vmess","server":"repl-nodes.Murgoa.repl.co","port":443,"cipher":"auto","uuid":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","alterId":0,"tls":true,"skip-cert-verify":true,"network":"ws","ws-opts":{"path":"/2029fbaa-0b26-4fee-be68-700ed79a3a0e-vm?ed=2048","headers":{"host":"repl-nodes.Murgoa.repl.co"}}}
-  - {"name":"🇮🇳 印度 SS","type":"ss","server":"repl-nodes.Murgoa.repl.co","port":443,"cipher":"chacha20-ietf-poly1305","password":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","plugin":"v2ray-plugin","plugin-opts":{"mode":"websocket","tls":true,"skip-cert-verify":true,"host":"repl-nodes.Murgoa.repl.co","path":"/2029fbaa-0b26-4fee-be68-700ed79a3a0e-ss?ed=2048","mux":false,"headers":{"host":"repl-nodes.Murgoa.repl.co"}}}
+  #- {"name":"🇮🇳 印度 Vless","type":"vless","server":"repl-nodes.Murgoa.repl.co","port":443,"uuid":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","tls":true,"servername":"repl-nodes.Murgoa.repl.co","network":"ws","ws-opts":{"path":"/2029fbaa-0b26-4fee-be68-700ed79a3a0e-vl?ed=2048","headers":{"host":"repl-nodes.Murgoa.repl.co"}}}
+  #- {"name":"🇮🇳 印度 Vmess","type":"vmess","server":"repl-nodes.Murgoa.repl.co","port":443,"cipher":"auto","uuid":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","alterId":0,"tls":true,"skip-cert-verify":true,"network":"ws","ws-opts":{"path":"/2029fbaa-0b26-4fee-be68-700ed79a3a0e-vm?ed=2048","headers":{"host":"repl-nodes.Murgoa.repl.co"}}}
 
   #Warp
   - {"name": "🏴‍☠️ CF Warp 1", "type": "wireguard", "server": "188.114.97.234", "port": 942, "mtu": 1280, "ip": "172.16.0.2/32", "ipv6": "2606:4700:110:845f:c46b:7b99:33a6:24fc/128", "private-key": "mGx7/n86b590qWcQ38e+O/KiM7f/OPhDxk4IKVOJCUs=", "public-key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=", "udp": true}
@@ -116,7 +114,6 @@ proxy-groups:
       - ♻️ 自动选择
       - 🔯 故障转移
       - ☁️ NAS
-      - 🇮🇳 印度 Repl
       - 🤯 负载均衡
       - 🇫🇮 芬兰节点
       - 🇺🇸 Vmess
@@ -155,7 +152,6 @@ proxy-groups:
       - 🇫🇮 Hy2
       - 🇫🇮 CF 优选 1
       - 🇫🇮 CF 优选 2
-      - 🇮🇳 印度 Repl
       - 🏴‍☠️ CF worker
       - 🏴‍☠️ CF Warp
 
@@ -165,7 +161,7 @@ proxy-groups:
         
   - {"name": "🏴‍☠️ CF Warp", "type": "load-balance", "strategy": "sticky-sessions", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🏴‍☠️ CF Warp 1", "🏴‍☠️ CF Warp 2", "🏴‍☠️ CF Warp 3"]}
 
-  - {"name": "🇮🇳 印度 Repl", "type": "load-balance", "strategy": "sticky-sessions", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇮🇳 印度 Vless", "🇮🇳 印度 Trojan", "🇮🇳 印度 SS", "🇮🇳 印度 Vmess"]}
+  #- {"name": "🇮🇳 印度 Repl", "type": "load-balance", "strategy": "sticky-sessions", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇮🇳 印度 Vless", "🇮🇳 印度 Trojan", "🇮🇳 印度 SS", "🇮🇳 印度 Vmess"]}
 
 rule-providers:
   reject:
