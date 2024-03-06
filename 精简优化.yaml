@@ -71,12 +71,12 @@ proxies:
     skip-cert-verify: true
 
   - {"name":"🇫🇷 法国","type":"hysteria2","server":"38.60.134.149","port":48848,"password":"BvSoVaUFTW","sni":"bing.com","skip-cert-verify":true}
-  - {"name":"🇩🇪 德国","type":"hysteria2","server":"185.110.188.27","port":39626,"password":"0ZbTtMJjeq","sni":"bing.com","skip-cert-verify":true}
+  - {"name":"🇲🇾 马来","type":"hysteria2","server":"38.54.125.10","port":39566,"password":"KMnxVOgFLN","sni":"bing.com","skip-cert-verify":true}
   - {"name":"🇭🇰 香港 1","type":"hysteria2","server":"43.132.164.103","port":8443,"password":"lwWXpEZgSK","sni":"bing.com","skip-cert-verify":true}
   - {"name":"🇭🇰 香港 2","type":"hysteria2","server":"43.240.12.112","port":8443,"password":"Aa5jfIpUzR","sni":"bing.com","skip-cert-verify":true}
-  - {"name":"🇸🇬 新加坡","type":"vmess","server":"8.219.40.167","port":80,"cipher":"auto","uuid":"5076341e-c932-459e-a1ca-1425365e1d4b","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/"}}
+  - {"name":"🇸🇬 新加坡","type":"hysteria2","server":"15.235.137.51","port":22629,"password":"quSH1EYeRp","sni":"bing.com","skip-cert-verify":true}
   - {"name":"🇬🇧 伦敦","type":"hysteria2","server":"51.77.100.166","port":45411,"password":"9gozQNAX5u","sni":"www.bing.com","skip-cert-verify":true}
-
+  - {"name":"🇮🇩 印尼","type":"hysteria2","server":"103.174.67.194","port":39920,"password":"PbOaRlLEQZ","sni":"hk.520858.xyz","skip-cert-verify":true,"obfs":"salamander","obfs-password":"bing.com"}
 
   #CF优选ip：8.219.91.92, 152.70.250.4, cfip.murgo.eu.org, speedip.eu.org
   - {"name":"🇫🇮 CF 优选 1","type":"vmess","server":"cdn.chigua.tk","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
@@ -126,7 +126,7 @@ proxy-groups:
     proxies:
       - 🇺🇸 美国节点
       - 🇭🇰 香港 1
-      - 🇭🇰 香港 2
+      - 🇸🇬 新加坡
 
   - name: 📹 油管视频
     type: select
@@ -145,11 +145,12 @@ proxy-groups:
     url: https://cp.cloudflare.com/generate_204
     interval: 300
     proxies: 
-      - 🇺🇸 美国节点
       - 🇭🇰 香港 1
-      - 🇭🇰 香港 2
+      - 🇸🇬 新加坡
+      - 🇮🇩 印尼
+      - 🇺🇸 美国节点
       - 🇫🇷 法国
-      - 🇩🇪 德国
+      - 🇲🇾 马来
       - 🇬🇧 伦敦
       - ☁️ NAS
       - 🇫🇮 Hy2
@@ -159,7 +160,7 @@ proxy-groups:
 
   - {"name": "🇫🇮 芬兰节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇫🇮 CF 优选 1", "🇫🇮 Hy2"]}
   - {"name": "🇺🇸 美国节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "proxies": ["🇺🇸 Hy2", "🇺🇸 TUIC"]}
-  - {"name": "🤯 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "http://www.gstatic.com/generate_204", "interval": 300, "proxies": ["🇭🇰 香港 1", "🇭🇰 香港 2", "🇫🇷 法国", "🇩🇪 德国", "🇬🇧 伦敦"]}
+  - {"name": "🤯 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "http://www.gstatic.com/generate_204", "interval": 300, "proxies": ["🇭🇰 香港 1", "🇸🇬 新加坡", "🇮🇩 印尼", "🇲🇾 马来", "🇬🇧 伦敦"]}
         
   - {"name": "🏴‍☠️ CF Warp", "type": "load-balance", "strategy": "sticky-sessions", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🏴‍☠️ CF Warp 1", "🏴‍☠️ CF Warp 2", "🏴‍☠️ CF Warp 3"]}
 
