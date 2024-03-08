@@ -134,12 +134,8 @@ proxy-groups:
       - 🇸🇪 瑞典2
       - 🇸🇪 瑞典3
       - 🇸🇪 瑞典4
-      - 🇨🇦 加拿大
       - 🇫🇷 法国
       - 🇬🇧 伦敦
-      
-      
-      - 🇨🇦 加拿大
 
   - name: 📹 油管视频
     type: select
@@ -168,7 +164,7 @@ proxy-groups:
 
   - {"name": "🇫🇮 芬兰节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇫🇮 CF 优选 1", "🇫🇮 Hy2"]}
   - {"name": "🇺🇸 美国节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "proxies": ["🇺🇸 Hy2", "🇺🇸 TUIC"]}
-  - {"name": "🤯 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "http://www.gstatic.com/generate_204", "interval": 300, "proxies": ["🇨🇦 加拿大", "🇸🇬 新加坡", "🇮🇩 印尼", "🇲🇾 马来", "🇬🇧 伦敦"]}
+  - {"name": "🤯 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "http://www.gstatic.com/generate_204", "interval": 300, "proxies": ["🇸🇬 新加坡", "🇮🇩 印尼", "🇲🇾 马来", "🇬🇧 伦敦"]}
         
   - {"name": "🏴‍☠️ CF Warp", "type": "load-balance", "strategy": "sticky-sessions", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🏴‍☠️ CF Warp 1", "🏴‍☠️ CF Warp 2", "🏴‍☠️ CF Warp 3"]}
 
