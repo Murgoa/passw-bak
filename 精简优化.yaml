@@ -229,6 +229,7 @@ rule-providers:
 
 rules:
   - DOMAIN-KEYWORD,parallels,REJECT
+  - DOMAIN-SUFFIX,adobe.io,REJECT
   - DOMAIN-KEYWORD,binance,♻️ 自动选择
   - DOMAIN-SUFFIX,binance.com,♻️ 自动选择
   - DOMAIN-SUFFIX,comicat.org,♻️ 自动选择
