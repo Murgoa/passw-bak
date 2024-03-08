@@ -156,7 +156,7 @@ proxy-groups:
     proxies: 
       - 🇺🇸 美国节点
       - ♻️ 自动选择
-      - ☁️ NAS
+      - 🇺🇸 Vmess
       - 🇫🇮 Hy2
       - 🇫🇮 CF 优选 1
       - 🏴‍☠️ CF worker
