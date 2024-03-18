@@ -110,6 +110,7 @@ proxies:
 proxy-groups:
   - name: 🚀 节点选择
     type: select
+    url: http://www.gstatic.com/generate_204
     proxies:
       - ♻️ 自动选择
       - 🔯 故障转移
