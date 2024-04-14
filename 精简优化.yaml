@@ -68,13 +68,9 @@ proxies:
     port: 23832
     password: omgishy2
     sni: fin4.murgo.eu.org
-    skip-cert-verify: true
-
-  - {"name":"🇫🇷 法国","type":"hysteria2","server":"38.60.134.149","port":48848,"password":"BvSoVaUFTW","sni":"bing.com","skip-cert-verify":true}
-  - {"name":"🇲🇾 马来","type":"hysteria2","server":"38.54.125.10","port":39566,"password":"KMnxVOgFLN","sni":"bing.com","skip-cert-verify":true}
-  - {"name":"🇨🇦 加拿大","type":"hysteria2","server":"15.235.137.51","port":22629,"password":"lwWXpEZgSK","sni":"bing.com","skip-cert-verify":true}
-  - {"name":"🇸🇪 瑞典","type":"hysteria2","server":"217.196.107.111","port":59244,"password":"2bmrQzEV5p","sni":"bing.com","skip-cert-verify":true}
-  - {"name":"🇸🇪 瑞典2","type":"hysteria2","server":"77.232.142.147","port":54646,"password":"V5YJHVzKiY","skip-cert-verify":true}
+    skip-cert-verify: true 
+  
+  - {"name":"🇺🇸 弗吉尼亚","type":"vmess","server":"visa.com","port":80,"cipher":"none","uuid":"ece2d6e0-fa10-11ee-a986-1239d0255272","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/vmws","headers":{"host":"us1.socifiles.com"}}}
   - {"name":"🇸🇪 瑞典3","type":"hysteria2","server":"147.45.72.0","port":42198,"password":"sTvFAuDVxE","sni":"bing.com","skip-cert-verify":true}
   - {"name":"🇸🇪 瑞典4","type":"hysteria2","server":"147.45.75.144","port":33218,"password":"VO53v9MYS3","sni":"bing.com","skip-cert-verify":true}
   - {"name":"🇸🇬 新加坡","type":"hysteria2","server":"15.235.137.51","port":22629,"password":"quSH1EYeRp","sni":"bing.com","skip-cert-verify":true}
@@ -127,16 +123,9 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    proxies:      
-      - 🇸🇬 新加坡
-      - 🇮🇩 印尼
+    proxies: 
       - 🇲🇾 马来
-      - 🇸🇪 瑞典
-      - 🇸🇪 瑞典2
-      - 🇸🇪 瑞典3
-      - 🇸🇪 瑞典4
-      - 🇫🇷 法国
-      - 🇬🇧 伦敦
+      - 🇺🇸 弗吉尼亚
 
   - name: 📹 油管视频
     type: select
