@@ -74,7 +74,7 @@ proxies:
   - {"name":"🇺🇸 弗吉尼亚","type":"vmess","server":"visa.com","port":80,"cipher":"none","uuid":"ece2d6e0-fa10-11ee-a986-1239d0255272","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/vmws","headers":{"host":"us1.socifiles.com"}}}
 
   #CF优选ip：8.219.91.92, 152.70.250.4, cfip.murgo.eu.org, speedip.eu.org
-  - {"name":"🇫🇮 CF 优选 1","type":"vmess","server":"cdn.chigua.tk","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
+  - {"name":"🇫🇮 CF 优选 1","type":"vmess","server":"visa.com","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
   - {"name":"🇫🇮 CF 优选 2","type":"vmess","server":"inb.who.int","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
 
   #CF
@@ -134,6 +134,7 @@ proxy-groups:
       - 🇫🇮 芬兰节点
       - ☁️ NAS
       - 🏴‍☠️ CF worker
+      - 🏴‍☠️ CF pages
 
   - name: 🔯 故障转移
     type: fallback
@@ -145,6 +146,7 @@ proxy-groups:
       - 🇺🇸 Vmess
       - 🇫🇮 Hy2
       - 🇫🇮 CF 优选 1
+      - 🏴‍☠️ CF pages
       - 🏴‍☠️ CF worker
       - 🏴‍☠️ CF Warp
 
