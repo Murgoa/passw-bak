@@ -78,10 +78,10 @@ proxies:
   - {"name":"🇫🇮 CF 优选 2","type":"vmess","server":"inb.who.int","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
 
   #CF
-  - {"name":"🏴‍☠️ CF pages","type":"vless","server":"inb.who.int","port":443,"uuid":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","tls":true,"servername":"edgetunnel-cdd.pages.dev","network":"ws","ws-opts":{"path":"/vless/2029fbaa-0b26-4fee-be68-700ed79a3a0e?ed=2048","headers":{"host":"edgetunnel-cdd.pages.dev"}},"client-fingerprint":"randomized"}
+  - {"name":"🏴‍☠️ CF pages","type":"vless","server":"visa.com","port":443,"uuid":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","tls":true,"servername":"edgetunnel-cdd.pages.dev","network":"ws","ws-opts":{"path":"/vless/2029fbaa-0b26-4fee-be68-700ed79a3a0e?ed=2048","headers":{"host":"edgetunnel-cdd.pages.dev"}},"client-fingerprint":"randomized"}
   - type: vless
     name: 🏴‍☠️ CF worker
-    server: inb.who.int
+    server: visa.com
     port: 443
     uuid: 2029fbaa-0b26-4fee-be68-700ed79a3a0e
     network: ws
