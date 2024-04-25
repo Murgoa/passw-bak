@@ -222,22 +222,23 @@ rule-providers:
 rules:
   - DOMAIN-KEYWORD,parallels,REJECT
   - DOMAIN-SUFFIX,adobe.io,REJECT
-  - DOMAIN-KEYWORD,binance,♻️ 自动选择
-  - DOMAIN-SUFFIX,binance.com,♻️ 自动选择
-  - DOMAIN-SUFFIX,comicat.org,♻️ 自动选择
-  - DOMAIN-SUFFIX,torrentdownloads.info,♻️ 自动选择
-  - DOMAIN-SUFFIX,torrentapi.org,♻️ 自动选择
-  - DOMAIN-SUFFIX,perplexity.ai,♻️ 自动选择
+  - DOMAIN-KEYWORD,binance,🇫🇮 芬兰节点
+  - DOMAIN-SUFFIX,binance.com,🇫🇮 芬兰节点
+  - DOMAIN-SUFFIX,comicat.org,🚀 节点选择
+  - DOMAIN-SUFFIX,torrentdownloads.info,🚀 节点选择
+  - DOMAIN-SUFFIX,torrentapi.org,🚀 节点选择
+  - DOMAIN-SUFFIX,perplexity.ai,🚀 节点选择
 
   #ChromeGo分流
-  - DOMAIN-SUFFIX,zimuku.org,♻️ 自动选择
-  - DOMAIN-SUFFIX,subhd.tv,♻️ 自动选择
-  - DOMAIN-SUFFIX,pornhub.com,♻️ 自动选择
-  - DOMAIN-SUFFIX,phncdn.com,♻️ 自动选择
-  - DOMAIN-SUFFIX,dodi-repacks.site,♻️ 自动选择
-  - DOMAIN-SUFFIX,yts.mx,♻️ 自动选择
+  - DOMAIN-SUFFIX,zimuku.org,🚀 节点选择
+  - DOMAIN-SUFFIX,subhd.tv,🚀 节点选择
+  - DOMAIN-SUFFIX,pornhub.com,🚀 节点选择
+  - DOMAIN-SUFFIX,phncdn.com,🚀 节点选择
+  - DOMAIN-SUFFIX,dodi-repacks.site,🚀 节点选择
+  - DOMAIN-SUFFIX,yts.mx,🚀 节点选择
 
   - DOMAIN-SUFFIX,reddit.com,🏴‍☠️ CF worker
+  - DOMAIN-KEYWORD,zimuku,🚀 节点选择
   - DOMAIN-SUFFIX,figma.com,🚀 节点选择
   - DOMAIN-SUFFIX,srtku.com,🚀 节点选择
   - DOMAIN-SUFFIX,zimuku.com,🚀 节点选择
