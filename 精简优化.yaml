@@ -239,6 +239,9 @@ rules:
 
   - DOMAIN-SUFFIX,reddit.com,🏴‍☠️ CF worker
   - DOMAIN-SUFFIX,figma.com,🚀 节点选择
+  - DOMAIN-SUFFIX,srtku.com,🚀 节点选择
+  - DOMAIN-SUFFIX,zimuku.com,🚀 节点选择
+  - DOMAIN-SUFFIX,subhd.tv,🚀 节点选择
   - DOMAIN-SUFFIX,openai.com,🚀 节点选择
   - PROCESS-NAME,ddns-go.exe,DIRECT
   - PROCESS-NAME,qbittorrent.exe,DIRECT
