@@ -110,6 +110,7 @@ proxy-groups:
       - 🤯 负载均衡
       - 🇫🇮 芬兰节点
       - 🇺🇸 Vmess
+      - 🇺🇸 Hy2
       - 🇺🇸 美国节点
       - 🏴‍☠️ CF worker
       - DIRECT
@@ -120,8 +121,9 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies:      
-      - 🇺🇸 弗吉尼亚
-      - 🇲🇾 马来
+      - 🇺🇸 美国节点
+      - 🏴‍☠️ CF worker
+      - 🇫🇮 芬兰节点
 
   - name: 📹 油管视频
     type: select
