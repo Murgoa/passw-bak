@@ -217,7 +217,7 @@ rule-providers:
   applications:
     type: http
     behavior: classical
-    url: "https://raw.fgit.cf/Murgoa/passw-bak/main/app.txt"
+    url: "https://cdn.jsdelivr.us/gh/Murgoa/passw-bak@main/app.txt"
     path: ./ruleset/applications.yaml
     interval: 86400
 
