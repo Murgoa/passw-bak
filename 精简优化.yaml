@@ -18,9 +18,6 @@ dns:
 proxies:
   - {name: ☁️ NAS, server: 'nas.murgo.eu.org', port: 7898, type: socks5 }
 
-  #节点直连
-  - {"name":"🇫🇮 直连","type":"ss","server":"fin4.murgo.eu.org","port":23832,"cipher":"xchacha20-ietf-poly1305","password":8JCsPssfgS8tiRwiMlhARg==}
-
   #🇺🇸圣何塞
   - name: 🇺🇸 Vmess
     type: vmess
@@ -61,22 +58,6 @@ proxies:
     sni: www.bing.com                                
     skip-cert-verify: true
 
-  #Hy2
-  - name: 🇫🇮 Hy2
-    type: hysteria2
-    server: fin4.66.now.cc
-    port: 23832
-    password: omgishy2
-    sni: fin4.murgo.eu.org
-    skip-cert-verify: true
-
-  - {"name":"🇲🇾 马来","type":"hysteria2","server":"38.54.125.10","port":39566,"password":"KMnxVOgFLN","sni":"bing.com","skip-cert-verify":true}
-  - {"name":"🇺🇸 弗吉尼亚","type":"vmess","server":"visa.com","port":80,"cipher":"none","uuid":"ece2d6e0-fa10-11ee-a986-1239d0255272","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/vmws","headers":{"host":"us1.socifiles.com"}}}
-
-  #CF优选ip：8.219.91.92, 152.70.250.4, cfip.murgo.eu.org, speedip.eu.org
-  - {"name":"🇫🇮 CF 优选 1","type":"vmess","server":"visa.com","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
-  - {"name":"🇫🇮 CF 优选 2","type":"vmess","server":"inb.who.int","port":2086,"cipher":"chacha20-poly1305","uuid":"71cecc3f-e274-43f5-81a7-af37b1e3b185","alterId":0,"tls":false,"skip-cert-verify":true,"servername":"","network":"ws","ws-opts":{"path":"/","headers":{"host":"fin.66.now.cc"}}}
-
   #CF
   - {"name":"🏴‍☠️ CF pages","type":"vless","server":"visa.com","port":443,"uuid":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","tls":true,"servername":"edgetunnel-cdd.pages.dev","network":"ws","ws-opts":{"path":"/vless/2029fbaa-0b26-4fee-be68-700ed79a3a0e?ed=2048","headers":{"host":"edgetunnel-cdd.pages.dev"}},"client-fingerprint":"randomized"}
   - type: vless
@@ -108,7 +89,6 @@ proxy-groups:
       - 🔯 故障转移
       - ☁️ NAS
       - 🤯 负载均衡
-      - 🇫🇮 芬兰节点
       - 🇺🇸 Vmess
       - 🇺🇸 Hy2
       - 🇺🇸 美国节点
@@ -123,7 +103,6 @@ proxy-groups:
     proxies:      
       - 🇺🇸 美国节点
       - 🏴‍☠️ CF worker
-      - 🇫🇮 芬兰节点
 
   - name: 📹 油管视频
     type: select
@@ -133,7 +112,6 @@ proxy-groups:
       - 🔯 故障转移
       - 🤯 负载均衡
       - 🇺🇸 美国节点
-      - 🇫🇮 芬兰节点
       - ☁️ NAS
       - 🏴‍☠️ CF worker
       - 🏴‍☠️ CF pages
@@ -146,15 +124,12 @@ proxy-groups:
       - 🇺🇸 美国节点
       - ♻️ 自动选择
       - 🇺🇸 Vmess
-      - 🇫🇮 Hy2
-      - 🇫🇮 CF 优选 1
       - 🏴‍☠️ CF pages
       - 🏴‍☠️ CF worker
       - 🏴‍☠️ CF Warp
 
-  - {"name": "🇫🇮 芬兰节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇫🇮 CF 优选 1", "🇫🇮 Hy2"]}
   - {"name": "🇺🇸 美国节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "proxies": ["🇺🇸 Hy2", "🇺🇸 TUIC"]}
-  - {"name": "🤯 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "http://www.gstatic.com/generate_204", "interval": 300, "proxies": ["🏴‍☠️ CF pages", "🏴‍☠️ CF worker", "🇫🇮 CF 优选 1"]}
+  - {"name": "🤯 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "http://www.gstatic.com/generate_204", "interval": 300, "proxies": ["🏴‍☠️ CF pages", "🏴‍☠️ CF worker", "🇺🇸 美国节点"]}
         
   - {"name": "🏴‍☠️ CF Warp", "type": "load-balance", "strategy": "sticky-sessions", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🏴‍☠️ CF Warp 1", "🏴‍☠️ CF Warp 2", "🏴‍☠️ CF Warp 3"]}
 
@@ -224,8 +199,8 @@ rule-providers:
 rules:
   - DOMAIN-KEYWORD,parallels,REJECT
   - DOMAIN-SUFFIX,adobe.io,REJECT
-  - DOMAIN-KEYWORD,binance,🇫🇮 芬兰节点
-  - DOMAIN-SUFFIX,binance.com,🇫🇮 芬兰节点
+  - DOMAIN-KEYWORD,binance,🏴‍☠️ CF worker
+  - DOMAIN-SUFFIX,binance.com,🏴‍☠️ CF worker
   - DOMAIN-SUFFIX,comicat.org,🚀 节点选择
   - DOMAIN-SUFFIX,torrentdownloads.info,🚀 节点选择
   - DOMAIN-SUFFIX,torrentapi.org,🚀 节点选择
