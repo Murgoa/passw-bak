@@ -80,6 +80,11 @@ proxies:
   - {"name": "🏴‍☠️ CF Warp 2", "type": "wireguard", "server": "188.114.97.144", "port": 942, "mtu": 1280, "ip": "172.16.0.2/32", "ipv6": "2606:4700:110:845f:c46b:7b99:33a6:24fc/128", "private-key": "mGx7/n86b590qWcQ38e+O/KiM7f/OPhDxk4IKVOJCUs=", "public-key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=", "udp": true}
   - {"name": "🏴‍☠️ CF Warp 3", "type": "wireguard", "server": "188.114.96.137", "port": 8886, "mtu": 1280, "ip": "172.16.0.2/32", "ipv6": "2606:4700:110:845f:c46b:7b99:33a6:24fc/128", "private-key": "mGx7/n86b590qWcQ38e+O/KiM7f/OPhDxk4IKVOJCUs=", "public-key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=", "udp": true}
 
+  #魔戒机场
+  - { name: 台湾-优化, type: vmess, server: yes.cnmjcn.net, port: 16616, uuid: 4ebd7d8a-cc40-4c32-af1c-c459f9d672ef, alterId: 0, cipher: auto, udp: true, network: ws, ws-opts: { path: /, headers: { Host: e5363d96fabebc514475c1350d536e6d.mobgslb.tbcache.com } }, ws-path: /, ws-headers: { Host: e5363d96fabebc514475c1350d536e6d.mobgslb.tbcache.com } }
+  - { name: 台湾-优化2, type: vmess, server: m.cnmjin.net, port: 16616, uuid: 4ebd7d8a-cc40-4c32-af1c-c459f9d672ef, alterId: 0, cipher: auto, udp: true, network: ws, ws-opts: { path: /, headers: { Host: e5363d96fabebc514475c1350d536e6d.mobgslb.tbcache.com } }, ws-path: /, ws-headers: { Host: e5363d96fabebc514475c1350d536e6d.mobgslb.tbcache.com } }
+  - { name: 台湾-优化3, type: vmess, server: t.cnmjcn.cyou, port: 16616, uuid: 4ebd7d8a-cc40-4c32-af1c-c459f9d672ef, alterId: 0, cipher: auto, udp: true, network: ws, ws-opts: { path: /, headers: { Host: e5363d96fabebc514475c1350d536e6d.mobgslb.tbcache.com } }, ws-path: /, ws-headers: { Host: e5363d96fabebc514475c1350d536e6d.mobgslb.tbcache.com } }
+
 proxy-groups:
   - name: 🚀 节点选择
     type: select
@@ -101,8 +106,9 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies:      
-      - 🇺🇸 美国节点
-      - 🏴‍☠️ CF worker
+      - 台湾-优化
+      - 台湾-优化2
+      - 台湾-优化3
 
   - name: 📹 油管视频
     type: select
@@ -122,10 +128,10 @@ proxy-groups:
     interval: 300
     proxies: 
       - 🇺🇸 美国节点
-      - ♻️ 自动选择
       - 🇺🇸 Vmess
       - 🏴‍☠️ CF pages
       - 🏴‍☠️ CF worker
+      - ♻️ 自动选择
       - 🏴‍☠️ CF Warp
 
   - {"name": "🇺🇸 美国节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "proxies": ["🇺🇸 Hy2", "🇺🇸 TUIC"]}
@@ -199,8 +205,10 @@ rule-providers:
 rules:
   - DOMAIN-KEYWORD,parallels,REJECT
   - DOMAIN-SUFFIX,adobe.io,REJECT
-  - DOMAIN-KEYWORD,binance,🏴‍☠️ CF worker
-  - DOMAIN-SUFFIX,binance.com,🏴‍☠️ CF worker
+  - DOMAIN-KEYWORD,binance,♻️ 自动选择
+  - DOMAIN-SUFFIX,binance.com,♻️ 自动选择
+  - DOMAIN-KEYWORD,spotify,♻️ 自动选择
+  - DOMAIN-SUFFIX,spotify.com,♻️ 自动选择
   - DOMAIN-SUFFIX,comicat.org,🚀 节点选择
   - DOMAIN-SUFFIX,torrentdownloads.info,🚀 节点选择
   - DOMAIN-SUFFIX,torrentapi.org,🚀 节点选择
