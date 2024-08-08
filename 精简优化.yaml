@@ -58,6 +58,67 @@ proxies:
     sni: www.bing.com                                
     skip-cert-verify: true
 
+  #测试节点
+  - name: 🇺🇸 佛罗里达 gullo
+    type: vmess
+    server: visa.cn
+    port: 2086
+    uuid: c1a72e6c-4df7-4cf6-b5be-e61eccfe3c53
+    alterId: 0
+    cipher: chacha20-poly1305
+    udp: true
+    tls: false
+    network: ws
+    servername: fl.66.now.cc
+    ws-opts:
+      path: "c1a72e6c-4df7-4cf6-b5be-e61eccfe3c53-vm"                             
+      headers:
+        Host: fl.66.now.cc
+  - name: 🇺🇸 芝加哥 gullo
+    type: vmess
+    server: visa.com
+    port: 2086
+    uuid: b3eae68c-7769-4210-8498-7065c4066e92
+    alterId: 0
+    cipher: chacha20-poly1305
+    udp: true
+    tls: false
+    network: ws
+    servername: chi.66.now.cc
+    ws-opts:
+      path: "b3eae68c-7769-4210-8498-7065c4066e92-vm"                             
+      headers:
+        Host: chi.66.now.cc
+  - name: 🇺🇸 纽约 gullo
+    type: vmess
+    server: visa.com
+    port: 2095
+    uuid: 629f368a-cce1-4e78-9c0c-6358b6d76681
+    alterId: 0
+    cipher: chacha20-poly1305
+    udp: true
+    tls: false
+    network: ws
+    servername: ny6.66.now.cc
+    ws-opts:
+      path: "629f368a-cce1-4e78-9c0c-6358b6d76681-vm"                             
+      headers:
+        Host: ny6.66.now.cc
+  - name: 🇲🇾 马来西亚BV
+    type: vmess
+    server: visa.com
+    port: 2086
+    uuid: 0894b680-ecd1-49e5-ab7c-f66b0463885f
+    alterId: 0
+    cipher: chacha20-poly1305
+    udp: true
+    tls: false
+    network: ws
+    servername: my.66.now.cc
+    ws-opts:
+      path: "0894b680-ecd1-49e5-ab7c-f66b0463885f-vm"                             
+      headers:
+        Host: my.66.now.cc
   #CF
   - {"name":"🏴‍☠️ CF pages","type":"vless","server":"visa.com","port":443,"uuid":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","tls":true,"servername":"edgetunnel-cdd.pages.dev","network":"ws","ws-opts":{"path":"/vless/2029fbaa-0b26-4fee-be68-700ed79a3a0e?ed=2048","headers":{"host":"edgetunnel-cdd.pages.dev"}},"client-fingerprint":"randomized"}
   - type: vless
@@ -135,7 +196,7 @@ proxy-groups:
       - 🏴‍☠️ CF Warp
 
   - {"name": "🇺🇸 美国节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "proxies": ["🇺🇸 Hy2", "🇺🇸 TUIC"]}
-  - {"name": "🤯 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "http://www.gstatic.com/generate_204", "interval": 300, "proxies": ["🏴‍☠️ CF pages", "🏴‍☠️ CF worker", "🇺🇸 美国节点"]}
+  - {"name": "🤯 负载均衡", "type": "load-balance", "strategy": "round-robin", "url": "http://www.gstatic.com/generate_204", "interval": 300, "proxies": ["🇺🇸 芝加哥 gullo", "🇺🇸 佛罗里达 gullo", "🇺🇸 纽约 gullo", "🇲🇾 马来西亚BV"]}
         
   - {"name": "🏴‍☠️ CF Warp", "type": "load-balance", "strategy": "sticky-sessions", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🏴‍☠️ CF Warp 1", "🏴‍☠️ CF Warp 2", "🏴‍☠️ CF Warp 3"]}
 
@@ -222,7 +283,7 @@ rules:
   - DOMAIN-SUFFIX,dodi-repacks.site,🚀 节点选择
   - DOMAIN-SUFFIX,yts.mx,🚀 节点选择
 
-  - DOMAIN-SUFFIX,reddit.com,🏴‍☠️ CF worker
+  - DOMAIN-SUFFIX,reddit.com,♻️ 自动选择
   - DOMAIN-KEYWORD,zimuku,🚀 节点选择
   - DOMAIN-SUFFIX,figma.com,🚀 节点选择
   - DOMAIN-SUFFIX,srtku.com,🚀 节点选择
