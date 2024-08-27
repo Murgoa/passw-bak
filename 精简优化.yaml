@@ -118,7 +118,7 @@ proxies:
     ws-opts:
       path: "2b22a6a9-356c-40c1-bfae-2045c0ab88f3-vm"                             
       headers:
-        Host: ny6.66.now.cc
+        Host: salt.66.now.cc
   - name: 🇲🇾 马来西亚BV
     type: vmess
     server: visa.com
