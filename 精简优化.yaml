@@ -37,7 +37,8 @@ proxies:
   - name: 🇺🇸 Hy2
     type: hysteria2                                      
     server: us.66.now.cc
-    port: 5674                                
+    port: 5674
+    ports: 41000-42000
     password: 969d5bac-fc4a-4497-8b43-750b20d9ab50                     
     alpn:
       - h3
