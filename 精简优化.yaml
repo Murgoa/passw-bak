@@ -36,7 +36,7 @@ proxies:
         Host: us.66.now.cc
   - name: 🇺🇸 Hy2
     type: hysteria2                                      
-    server: us.66.now.cc
+    server: 107.175.194.42
     port: 45796
     ports: 41000-42000
     up: "20 Mbps"
@@ -46,7 +46,6 @@ proxies:
       - h3
     sni: www.bing.com                               
     skip-cert-verify: true
-    fast-open: true
   - name: 🇺🇸 TUIC
     server: 107.175.194.42                      
     port: 5674                                    
