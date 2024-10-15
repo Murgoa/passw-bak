@@ -23,7 +23,7 @@ proxies:
     type: vmess
     server: visa.com
     port: 2086
-    uuid: 969d5bac-fc4a-4497-8b43-750b20d9ab50
+    uuid: fb838947-6382-4294-9d39-9ca48082c394
     alterId: 0
     cipher: auto
     udp: true
@@ -31,17 +31,17 @@ proxies:
     network: ws
     servername: us.66.now.cc
     ws-opts:
-      path: "969d5bac-fc4a-4497-8b43-750b20d9ab50-vm"                             
+      path: "fb838947-6382-4294-9d39-9ca48082c394-vm"                             
       headers:
         Host: us.66.now.cc
   - name: 🇺🇸 Hy2
     type: hysteria2                                      
     server: us.66.now.cc
-    port: 5674
+    port: 45796
     ports: 41000-42000
     up: "20 Mbps"
     down: "200 Mbps"
-    password: 969d5bac-fc4a-4497-8b43-750b20d9ab50                     
+    password: fb838947-6382-4294-9d39-9ca48082c394                     
     alpn:
       - h3
     sni: www.bing.com                               
@@ -49,10 +49,10 @@ proxies:
     fast-open: true
   - name: 🇺🇸 TUIC
     server: 107.175.194.42                      
-    port: 37574                                    
+    port: 5674                                    
     type: tuic
-    uuid: 969d5bac-fc4a-4497-8b43-750b20d9ab50
-    password: 969d5bac-fc4a-4497-8b43-750b20d9ab50
+    uuid: fb838947-6382-4294-9d39-9ca48082c394
+    password: fb838947-6382-4294-9d39-9ca48082c394
     alpn: [h3]
     disable-sni: true
     reduce-rtt: true
