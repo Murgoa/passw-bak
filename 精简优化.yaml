@@ -300,8 +300,8 @@ rules:
   - DOMAIN-SUFFIX,adobe.io,REJECT
   - DOMAIN-KEYWORD,binance,♻️ 自动选择
   - DOMAIN-SUFFIX,binance.com,♻️ 自动选择
-  - DOMAIN-KEYWORD,spotify,🤯 自动备胎
-  - DOMAIN-SUFFIX,spotify.com,🤯 自动备胎
+  - DOMAIN-KEYWORD,spotify,🚀 节点选择
+  - DOMAIN-SUFFIX,spotify.com,🚀 节点选择
   - DOMAIN-SUFFIX,comicat.org,🚀 节点选择
   - DOMAIN-SUFFIX,torrentdownloads.info,🚀 节点选择
   - DOMAIN-SUFFIX,torrentapi.org,🚀 节点选择
