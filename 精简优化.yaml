@@ -18,7 +18,7 @@ dns:
 proxies:
   - {name: ☁️ NAS, server: 'nas.murgo.eu.org', port: 7898, type: socks5 }
 
-  #🇺🇸圣何塞
+  #🇺🇸节点
   - name: 🇺🇸 Vmess
     type: vmess
     server: visa.com
@@ -46,18 +46,29 @@ proxies:
       - h3
     sni: www.bing.com                               
     skip-cert-verify: true
-  - name: 🇺🇸 TUIC
-    server: 107.175.194.42                      
-    port: 5674                                    
-    type: tuic
-    uuid: fb838947-6382-4294-9d39-9ca48082c394
-    password: fb838947-6382-4294-9d39-9ca48082c394
-    alpn: [h3]
-    disable-sni: true
-    reduce-rtt: true
-    udp-relay-mode: native
-    congestion-controller: bbr
-    sni: www.bing.com                                
+  - name: 🇺🇸 Exovt-Hy2
+    type: hysteria2                                      
+    server: 23.27.22.11
+    port: 64013
+    ports: 50000-60000
+    up: "20 Mbps"
+    down: "200 Mbps"
+    password: 40bcf705-e483-47c9-9b33-39a19ed5b8a1
+    alpn:
+      - h3
+    sni: www.bing.com                               
+    skip-cert-verify: true
+  - name: 🇺🇸 RN2-Hy2
+    type: hysteria2                                      
+    server: 104.168.34.109
+    port: 60883
+    ports: 49999-65000
+    up: "20 Mbps"
+    down: "200 Mbps"
+    password: 8418fb71-419d-4fc3-8b29-d7fee8de76c7
+    alpn:
+      - h3
+    sni: www.bing.com                               
     skip-cert-verify: true
 
   #测试节点
@@ -221,13 +232,12 @@ proxy-groups:
     interval: 300
     proxies: 
       - 🇺🇸 美国节点
+      - 🇺🇸 Exovt-Hy2
       - 🇺🇸 Vmess
       - 🤯 自动备胎
-      - 🏴‍☠️ CF worker
       - ♻️ 自动选择
-      - 🏴‍☠️ CF Warp
 
-  - {"name": "🇺🇸 美国节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "proxies": ["🇺🇸 Hy2", "🇺🇸 TUIC"]}
+  - {"name": "🇺🇸 美国节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "proxies": ["🇺🇸 Hy2", "🇺🇸 RN2-Hy2"]}
   - {"name": "🤯 自动备胎", "type": "url-test", "url": "http://www.gstatic.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇼🇸 台湾BV", "🇲🇾 马来西亚BV", "🇺🇸 芝加哥 gullo", "🇺🇸 佛罗里达 gullo", "🇺🇸 纽约 gullo", "🇺🇸 盐湖城 酷雪云"]}
         
   - {"name": "🏴‍☠️ CF Warp", "type": "load-balance", "strategy": "sticky-sessions", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🏴‍☠️ CF Warp 1", "🏴‍☠️ CF Warp 2", "🏴‍☠️ CF Warp 3"]}
