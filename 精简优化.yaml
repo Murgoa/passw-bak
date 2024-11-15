@@ -306,13 +306,11 @@ rules:
   - DOMAIN-SUFFIX,adobe.io,REJECT
   - DOMAIN-KEYWORD,binance,♻️ 自动选择
   - DOMAIN-SUFFIX,binance.com,♻️ 自动选择
-  - DOMAIN-SUFFIX,reddit.com,♻️ 自动选择
   - DOMAIN-KEYWORD,spotify,🚀 节点选择
   - DOMAIN-SUFFIX,spotify.com,🚀 节点选择
   - DOMAIN-SUFFIX,comicat.org,🚀 节点选择
   - DOMAIN-SUFFIX,torrentdownloads.info,🚀 节点选择
   - DOMAIN-SUFFIX,torrentapi.org,🚀 节点选择
-  - DOMAIN-SUFFIX,perplexity.ai,🚀 节点选择
 
   - DOMAIN-SUFFIX,zimuku.org,🚀 节点选择
   - DOMAIN-SUFFIX,subhd.tv,🚀 节点选择
@@ -326,7 +324,6 @@ rules:
   - DOMAIN-SUFFIX,srtku.com,🚀 节点选择
   - DOMAIN-SUFFIX,zimuku.com,🚀 节点选择
   - DOMAIN-SUFFIX,subhd.tv,🚀 节点选择
-  - DOMAIN-SUFFIX,openai.com,🚀 节点选择
   - PROCESS-NAME,ddns-go.exe,DIRECT
   - PROCESS-NAME,qbittorrent.exe,DIRECT
   - DOMAIN-SUFFIX,1337x.to,🚀 节点选择
@@ -356,6 +353,13 @@ rules:
   - DOMAIN-SUFFIX,yt.be,📹 油管视频
   - DOMAIN-SUFFIX,ytimg.com,📹 油管视频
 
+  - RULE-SET,openai,🇺🇸 Exovt-Hy2
+  - DOMAIN-KEYWORD,openai,🇺🇸 Exovt-Hy2
+  - DOMAIN-KEYWORD,chatgpt,🇺🇸 Exovt-Hy2
+  - DOMAIN-KEYWORD,btdig,🇺🇸 Exovt-Hy2
+  - DOMAIN-KEYWORD,reddit,🇺🇸 Exovt-Hy2
+  - DOMAIN-SUFFIX,perplexity.ai,🚀 节点选择
+
   - DOMAIN-SUFFIX,eztv.re,DIRECT
   - DOMAIN-SUFFIX,miobt.com,DIRECT
   - DOMAIN-SUFFIX,oshen.win,DIRECT
@@ -366,7 +370,6 @@ rules:
   - DOMAIN-SUFFIX,hd.ai,DIRECT
   - DOMAIN-SUFFIX,66.now.cc,DIRECT
   
-  - RULE-SET,openai,🇺🇸 Exovt-Hy2
   - RULE-SET,applications,DIRECT
   - DOMAIN,clash.razord.top,DIRECT
   - DOMAIN,yacd.haishan.me,DIRECT
