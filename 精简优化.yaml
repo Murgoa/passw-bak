@@ -179,11 +179,6 @@ proxies:
       headers:
         host: cfcdn.66.now.cc
 
-  #Warp
-  - {"name": "🏴‍☠️ CF Warp 1", "type": "wireguard", "server": "188.114.97.234", "port": 942, "mtu": 1280, "ip": "172.16.0.2/32", "ipv6": "2606:4700:110:845f:c46b:7b99:33a6:24fc/128", "private-key": "mGx7/n86b590qWcQ38e+O/KiM7f/OPhDxk4IKVOJCUs=", "public-key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=", "udp": true}
-  - {"name": "🏴‍☠️ CF Warp 2", "type": "wireguard", "server": "188.114.97.144", "port": 942, "mtu": 1280, "ip": "172.16.0.2/32", "ipv6": "2606:4700:110:845f:c46b:7b99:33a6:24fc/128", "private-key": "mGx7/n86b590qWcQ38e+O/KiM7f/OPhDxk4IKVOJCUs=", "public-key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=", "udp": true}
-  - {"name": "🏴‍☠️ CF Warp 3", "type": "wireguard", "server": "188.114.96.137", "port": 8886, "mtu": 1280, "ip": "172.16.0.2/32", "ipv6": "2606:4700:110:845f:c46b:7b99:33a6:24fc/128", "private-key": "mGx7/n86b590qWcQ38e+O/KiM7f/OPhDxk4IKVOJCUs=", "public-key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=", "udp": true}
-
   #魔戒机场
   - { name: 台湾-优化, type: vmess, server: yes.cnmjcn.net, port: 16616, uuid: 4ebd7d8a-cc40-4c32-af1c-c459f9d672ef, alterId: 0, cipher: auto, udp: true, network: ws, ws-opts: { path: /, headers: { Host: e5363d96fabebc514475c1350d536e6d.mobgslb.tbcache.com } }, ws-path: /, ws-headers: { Host: e5363d96fabebc514475c1350d536e6d.mobgslb.tbcache.com } }
   - { name: 台湾-优化2, type: vmess, server: m.cnmjin.net, port: 16616, uuid: 4ebd7d8a-cc40-4c32-af1c-c459f9d672ef, alterId: 0, cipher: auto, udp: true, network: ws, ws-opts: { path: /, headers: { Host: e5363d96fabebc514475c1350d536e6d.mobgslb.tbcache.com } }, ws-path: /, ws-headers: { Host: e5363d96fabebc514475c1350d536e6d.mobgslb.tbcache.com } }
@@ -240,68 +235,69 @@ proxy-groups:
   - {"name": "🇺🇸 美国节点", "type": "load-balance", "strategy": "round-robin", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "proxies": ["🇺🇸 Hy2", "🇺🇸 RN2-Hy2"]}
   - {"name": "🤯 自动备胎", "type": "url-test", "url": "http://www.gstatic.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇼🇸 台湾BV", "🇲🇾 马来西亚BV", "🇺🇸 芝加哥 gullo", "🇺🇸 佛罗里达 gullo", "🇺🇸 纽约 gullo", "🇺🇸 盐湖城 酷雪云"]}
         
-  - {"name": "🏴‍☠️ CF Warp", "type": "load-balance", "strategy": "sticky-sessions", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🏴‍☠️ CF Warp 1", "🏴‍☠️ CF Warp 2", "🏴‍☠️ CF Warp 3"]}
-
 rule-providers:
   reject:
-    {"type": "http", "behavior": "domain", "url": "https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt", "path": "./ruleset/reject.yaml", "interval": 86400}
+    {"type": "http", "behavior": "domain", "url": "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt", "path": "./ruleset/reject.yaml", "interval": 86400}
 
   icloud:
-    {"type":"http","behavior":"domain","url":"https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/icloud.txt","path":"./ruleset/icloud.yaml","interval":86400}
+    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/icloud.txt","path":"./ruleset/icloud.yaml","interval":86400}
+
+  openai:
+    {"type":"http","behavior":"domain","url":"https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml","path":"./ruleset/openai.yaml","interval":86400}
 
   apple:
-    {"type":"http","behavior":"domain","url":"https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/apple.txt","path":"./ruleset/apple.yaml","interval":86400}
+    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/apple.txt","path":"./ruleset/apple.yaml","interval":86400}
 
   google:
-    {"type":"http","behavior":"domain","url":"https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/google.txt","path":"./ruleset/google.yaml","interval":86400}
+    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/google.txt","path":"./ruleset/google.yaml","interval":86400}
 
   proxy:
-    {"type":"http","behavior":"domain","url":"https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/proxy.txt","path":"./ruleset/proxy.yaml","interval":86400}
+    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/proxy.txt","path":"./ruleset/proxy.yaml","interval":86400}
 
   direct:
-    {"type":"http","behavior":"domain","url":"https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt","path":"./ruleset/direct.yaml","interval":86400}
+    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt","path":"./ruleset/direct.yaml","interval":86400}
 
   private:
-    {"type":"http","behavior":"domain","url":"https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/private.txt","path":"./ruleset/private.yaml","interval":86400}
+    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/private.txt","path":"./ruleset/private.yaml","interval":86400}
 
   gfw:
-    {"type":"http","behavior":"domain","url":"https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.txt","path":"./ruleset/gfw.yaml","interval":86400}
+    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.txt","path":"./ruleset/gfw.yaml","interval":86400}
 
   greatfire:
-    {"type":"http","behavior":"domain","url":"https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/greatfire.txt","path":"./ruleset/greatfire.yaml","interval":86400}
+    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/greatfire.txt","path":"./ruleset/greatfire.yaml","interval":86400}
 
   tld-not-cn:
     type: http
     behavior: domain
-    url: "https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/tld-not-cn.txt"
+    url: "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/tld-not-cn.txt"
     path: ./ruleset/tld-not-cn.yaml
     interval: 86400
 
   telegramcidr:
     type: http
     behavior: ipcidr
-    url: "https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt"
+    url: "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt"
     path: ./ruleset/telegramcidr.yaml
     interval: 86400
 
   cncidr:
     type: http
     behavior: ipcidr
-    url: "https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt"
+    url: "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt"
     path: ./ruleset/cncidr.yaml
     interval: 86400
 
   lancidr:
     type: http
     behavior: ipcidr
-    url: "https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/lancidr.txt"
+    url: "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/lancidr.txt"
     path: ./ruleset/lancidr.yaml
     interval: 86400
 
   applications:
     type: http
     behavior: classical
-    url: "https://cdn.jsdelivr.us/gh/Murgoa/passw-bak@main/app.txt"
+    url: "https://fastly.jsdelivr.net/gh/Murgoa/passw-bak@main/app.txt"
     path: ./ruleset/applications.yaml
     interval: 86400
 
@@ -310,6 +306,7 @@ rules:
   - DOMAIN-SUFFIX,adobe.io,REJECT
   - DOMAIN-KEYWORD,binance,♻️ 自动选择
   - DOMAIN-SUFFIX,binance.com,♻️ 自动选择
+  - DOMAIN-SUFFIX,reddit.com,♻️ 自动选择
   - DOMAIN-KEYWORD,spotify,🚀 节点选择
   - DOMAIN-SUFFIX,spotify.com,🚀 节点选择
   - DOMAIN-SUFFIX,comicat.org,🚀 节点选择
@@ -317,7 +314,6 @@ rules:
   - DOMAIN-SUFFIX,torrentapi.org,🚀 节点选择
   - DOMAIN-SUFFIX,perplexity.ai,🚀 节点选择
 
-  #ChromeGo分流
   - DOMAIN-SUFFIX,zimuku.org,🚀 节点选择
   - DOMAIN-SUFFIX,subhd.tv,🚀 节点选择
   - DOMAIN-SUFFIX,pornhub.com,🚀 节点选择
@@ -325,7 +321,6 @@ rules:
   - DOMAIN-SUFFIX,dodi-repacks.site,🚀 节点选择
   - DOMAIN-SUFFIX,yts.mx,🚀 节点选择
 
-  - DOMAIN-SUFFIX,reddit.com,♻️ 自动选择
   - DOMAIN-KEYWORD,zimuku,🚀 节点选择
   - DOMAIN-SUFFIX,figma.com,🚀 节点选择
   - DOMAIN-SUFFIX,srtku.com,🚀 节点选择
@@ -344,11 +339,11 @@ rules:
   - DOMAIN-KEYWORD,tmdb,🚀 节点选择
   - DOMAIN-KEYWORD,themoviedb,🚀 节点选择
   - DOMAIN-SUFFIX,notion.so,🚀 节点选择
+  - RULE-SET,telegramcidr,🚀 节点选择
 
   - DOMAIN-KEYWORD,youtube,📹 油管视频
   - DOMAIN,youtubei.googleapis.com,📹 油管视频
   - DOMAIN,yt3.ggpht.com,📹 油管视频
-  - DOMAIN,bard.google.com,🚀 节点选择
   - DOMAIN-SUFFIX,googlevideo.com,📹 油管视频
   - DOMAIN-SUFFIX,gvt2.com,📹 油管视频
   - DOMAIN-SUFFIX,withyoutube.com,📹 油管视频
@@ -370,9 +365,9 @@ rules:
   - DOMAIN-SUFFIX,apple.com,DIRECT
   - DOMAIN-SUFFIX,hd.ai,DIRECT
   - DOMAIN-SUFFIX,66.now.cc,DIRECT
-
+  
+  - RULE-SET,openai,🇺🇸 Exovt-Hy2
   - RULE-SET,applications,DIRECT
-  - RULE-SET,telegramcidr,🚀 节点选择
   - DOMAIN,clash.razord.top,DIRECT
   - DOMAIN,yacd.haishan.me,DIRECT
   - RULE-SET,private,DIRECT
