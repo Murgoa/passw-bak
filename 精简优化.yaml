@@ -358,7 +358,6 @@ rules:
   - RULE-SET,openai,🇺🇸 Exovt-Hy2
   - DOMAIN-KEYWORD,openai,🇺🇸 Exovt-Hy2
   - DOMAIN-KEYWORD,chatgpt,🇺🇸 Exovt-Hy2
-  - DOMAIN-KEYWORD,btdig,🇺🇸 Exovt-Hy2
   - DOMAIN-KEYWORD,reddit,🇺🇸 Exovt-Hy2
   - DOMAIN-SUFFIX,perplexity.ai,🚀 节点选择
 
