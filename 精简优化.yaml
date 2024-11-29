@@ -162,8 +162,22 @@ proxies:
       path: "0894b680-ecd1-49e5-ab7c-f66b0463885f-vm"                             
       headers:
         Host: my.66.now.cc
+  - name: 🇸🇬 gullo Vmess
+    type: vmess
+    server: cf-cname.xingpingcn.top
+    port: 2086
+    uuid: 3236fc36-6127-44cd-a3df-5f1a3aa964d8
+    alterId: 0
+    cipher: chacha20-poly1305
+    udp: true
+    tls: false
+    network: ws
+    servername: sg6.66.now.cc
+    ws-opts:
+      path: "3236fc36-6127-44cd-a3df-5f1a3aa964d8-vm"                             
+      headers:
+        Host: sg6.66.now.cc
   #CF
-  - {"name":"🏴‍☠️ CF pages","type":"vless","server":"visa.com","port":443,"uuid":"2029fbaa-0b26-4fee-be68-700ed79a3a0e","tls":true,"servername":"edgetunnel-cdd.pages.dev","network":"ws","ws-opts":{"path":"/vless/2029fbaa-0b26-4fee-be68-700ed79a3a0e?ed=2048","headers":{"host":"edgetunnel-cdd.pages.dev"}},"client-fingerprint":"randomized"}
   - type: vless
     name: 🏴‍☠️ CF worker
     server: visa.com
@@ -194,9 +208,8 @@ proxy-groups:
       - ☁️ NAS
       - 🤯 自动备胎
       - 🇺🇸 Vmess
-      - 🇺🇸 Hy2
       - 🇺🇸 美国节点
-      - 🏴‍☠️ CF worker
+      - 🇸🇬 gullo Vmess
       - DIRECT
 
   - name: ♻️ 自动选择
@@ -219,7 +232,6 @@ proxy-groups:
       - 🇺🇸 美国节点
       - ☁️ NAS
       - 🏴‍☠️ CF worker
-      - 🏴‍☠️ CF pages
 
   - name: 🔯 故障转移
     type: fallback
@@ -229,6 +241,7 @@ proxy-groups:
       - 🇺🇸 美国节点
       - 🇺🇸 Exovt-Hy2
       - 🇺🇸 Vmess
+      - 🇸🇬 gullo Vmess
       - 🤯 自动备胎
       - ♻️ 自动选择
 
