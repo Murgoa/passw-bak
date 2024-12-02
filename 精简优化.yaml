@@ -164,7 +164,7 @@ proxies:
         Host: my.66.now.cc
   - name: 🇸🇬 gullo Vmess
     type: vmess
-    server: cf-cname.xingpingcn.top
+    server: visa.cn
     port: 2086
     uuid: 3236fc36-6127-44cd-a3df-5f1a3aa964d8
     alterId: 0
