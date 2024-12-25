@@ -245,7 +245,7 @@ proxy-groups:
       - 🤯 自动备胎
       - ♻️ 自动选择
 
-  - {"name": "🇺🇸 美国节点", "type": "load-balance", "strategy": "sticky-sessions", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "proxies": ["🇺🇸 Hy2", "🇺🇸 Exovt-Hy2"]}
+  - {"name": "🇺🇸 美国节点", "type": "load-balance", "strategy": "consistent-hashing", "url": "https://cp.cloudflare.com/generate_204", "interval": 300, "proxies": ["🇺🇸 Hy2", "🇺🇸 Exovt-Hy2"]}
   - {"name": "🤯 自动备胎", "type": "url-test", "url": "http://www.gstatic.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇼🇸 台湾BV", "🇲🇾 马来西亚BV", "🇺🇸 芝加哥 gullo", "🇺🇸 佛罗里达 gullo", "🇺🇸 纽约 gullo", "🇺🇸 盐湖城 酷雪云"]}
         
 rule-providers:
