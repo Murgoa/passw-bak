@@ -21,7 +21,7 @@ proxies:
   #🇺🇸节点
   - name: 🇺🇸 Vmess
     type: vmess
-    server: visa.com
+    server: time.is
     port: 2086
     uuid: fb838947-6382-4294-9d39-9ca48082c394
     alterId: 0
@@ -74,7 +74,7 @@ proxies:
   #测试节点
   - name: 🇺🇸 佛罗里达 gullo
     type: vmess
-    server: visa.cn
+    server: time.is
     port: 2086
     uuid: c1a72e6c-4df7-4cf6-b5be-e61eccfe3c53
     alterId: 0
@@ -89,7 +89,7 @@ proxies:
         Host: fl.66.now.cc
   - name: 🇺🇸 芝加哥 gullo
     type: vmess
-    server: visa.com
+    server: time.is
     port: 2086
     uuid: b3eae68c-7769-4210-8498-7065c4066e92
     alterId: 0
@@ -104,7 +104,7 @@ proxies:
         Host: chi.66.now.cc
   - name: 🇺🇸 纽约 gullo
     type: vmess
-    server: visa.com
+    server: time.is
     port: 2095
     uuid: 629f368a-cce1-4e78-9c0c-6358b6d76681
     alterId: 0
@@ -119,7 +119,7 @@ proxies:
         Host: ny6.66.now.cc
   - name: 🇺🇸 盐湖城 酷雪云
     type: vmess
-    server: visa.com
+    server: time.is
     port: 2095
     uuid: 2b22a6a9-356c-40c1-bfae-2045c0ab88f3
     alterId: 0
@@ -134,7 +134,7 @@ proxies:
         Host: salt.66.now.cc
   - name: 🇼🇸 台湾BV
     type: vmess
-    server: visa.com
+    server: time.is
     port: 2095
     uuid: 491e34cb-c4a9-4e3c-a380-829619420fc8
     alterId: 0
@@ -149,7 +149,7 @@ proxies:
         Host: tw.66.now.cc
   - name: 🇲🇾 马来西亚BV
     type: vmess
-    server: visa.com
+    server: time.is
     port: 2086
     uuid: 0894b680-ecd1-49e5-ab7c-f66b0463885f
     alterId: 0
@@ -164,7 +164,7 @@ proxies:
         Host: my.66.now.cc
   - name: 🇸🇬 gullo Vmess
     type: vmess
-    server: visa.cn
+    server: singapore.com
     port: 2086
     uuid: 3236fc36-6127-44cd-a3df-5f1a3aa964d8
     alterId: 0
