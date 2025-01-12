@@ -193,6 +193,15 @@ proxies:
       public-key: kA4zKNx_5ENivpMUJJJDxX24L7suGimSJa-nixQyVx0    
       short-id: 0c808977                    
     client-fingerprint: chrome
+  - name: 🇯🇵 Hy2                       
+    type: hysteria2                                      
+    server: 47.79.84.35                               
+    port: 61564                                
+    password: 494159ec-217f-4b50-9cf2-1b65e6db90dc                          
+    alpn: [h3]
+    sni: www.bing.com                               
+    skip-cert-verify: true
+    fast-open: true
 
 
   #魔戒机场
@@ -209,6 +218,7 @@ proxy-groups:
       - 🔯 故障转移
       - ☁️ NAS
       - 🤯 自动备胎
+      - 🇯🇵 Hy2
       - 🇯🇵 Reality
       - 🇺🇸 Vmess
       - 🇺🇸 美国节点
@@ -240,6 +250,8 @@ proxy-groups:
     url: https://cp.cloudflare.com/generate_204
     interval: 300
     proxies: 
+      - 🇯🇵 Hy2
+      - 🇯🇵 Reality
       - 🇺🇸 美国节点
       - 🇺🇸 Exovt-Hy2
       - 🇯🇵 Reality
