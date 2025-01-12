@@ -177,21 +177,23 @@ proxies:
       path: "3236fc36-6127-44cd-a3df-5f1a3aa964d8-vm"                             
       headers:
         Host: sg6.66.now.cc
-  #CF
-  - type: vless
-    name: 🏴‍☠️ CF worker
-    server: visa.com
-    port: 443
-    uuid: 2029fbaa-0b26-4fee-be68-700ed79a3a0e
-    network: ws
+  #日本 Claw 节点
+
+  - name: 🇯🇵 Reality
+    type: vless
+    server: 47.79.84.35                           
+    port: 50203                                
+    uuid: 494159ec-217f-4b50-9cf2-1b65e6db90dc   
+    network: tcp
+    udp: true
     tls: true
-    udp: false
-    sni: cfcdn.66.now.cc
+    flow: xtls-rprx-vision
+    servername: www.yahoo.com                 
+    reality-opts: 
+      public-key: kA4zKNx_5ENivpMUJJJDxX24L7suGimSJa-nixQyVx0    
+      short-id: 0c808977                    
     client-fingerprint: chrome
-    ws-opts:
-      path: "/?ed=2048"
-      headers:
-        host: cfcdn.66.now.cc
+
 
   #魔戒机场
   - { name: 台湾-优化, type: vmess, server: yes.cnmjcn.net, port: 16616, uuid: 4ebd7d8a-cc40-4c32-af1c-c459f9d672ef, alterId: 0, cipher: auto, udp: true, network: ws, ws-opts: { path: /, headers: { Host: e5363d96fabebc514475c1350d536e6d.mobgslb.tbcache.com } }, ws-path: /, ws-headers: { Host: e5363d96fabebc514475c1350d536e6d.mobgslb.tbcache.com } }
@@ -207,6 +209,7 @@ proxy-groups:
       - 🔯 故障转移
       - ☁️ NAS
       - 🤯 自动备胎
+      - 🇯🇵 Reality
       - 🇺🇸 Vmess
       - 🇺🇸 美国节点
       - 🇸🇬 gullo Vmess
@@ -231,7 +234,6 @@ proxy-groups:
       - 🤯 自动备胎
       - 🇺🇸 美国节点
       - ☁️ NAS
-      - 🏴‍☠️ CF worker
 
   - name: 🔯 故障转移
     type: fallback
@@ -240,6 +242,7 @@ proxy-groups:
     proxies: 
       - 🇺🇸 美国节点
       - 🇺🇸 Exovt-Hy2
+      - 🇯🇵 Reality
       - 🇺🇸 Vmess
       - 🇸🇬 gullo Vmess
       - 🤯 自动备胎
