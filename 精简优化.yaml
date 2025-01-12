@@ -251,7 +251,6 @@ proxy-groups:
     interval: 300
     proxies: 
       - 🇯🇵 Hy2
-      - 🇯🇵 Reality
       - 🇺🇸 美国节点
       - 🇺🇸 Exovt-Hy2
       - 🇯🇵 Reality
