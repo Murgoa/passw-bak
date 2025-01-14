@@ -382,14 +382,13 @@ rules:
   - DOMAIN-SUFFIX,yt.be,📹 油管视频
   - DOMAIN-SUFFIX,ytimg.com,📹 油管视频
 
-  - RULE-SET,openai,🇺🇸 Exovt-Hy2
-  - DOMAIN-KEYWORD,openai,🇺🇸 Exovt-Hy2
-  - DOMAIN-KEYWORD,chatgpt,🇺🇸 Exovt-Hy2
-  - DOMAIN-KEYWORD,reddit,🇺🇸 Exovt-Hy2
-  - DOMAIN-SUFFIX,perplexity.ai,🚀 节点选择
-  - DOMAIN-SUFFIX,x.com,🇺🇸 Exovt-Hy2
-  - DOMAIN-KEYWORD,twimg,🇺🇸 Exovt-Hy2
-  - DOMAIN-KEYWORD,twitter,🇺🇸 Exovt-Hy2
+  - RULE-SET,openai,🇯🇵 Reality
+  - DOMAIN-KEYWORD,openai,🇯🇵 Reality
+  - DOMAIN-KEYWORD,chatgpt,🇯🇵 Reality
+  - DOMAIN-KEYWORD,reddit,🇯🇵 Reality
+  - DOMAIN-SUFFIX,x.com,🇯🇵 Reality
+  - DOMAIN-KEYWORD,twimg,🇯🇵 Reality
+  - DOMAIN-KEYWORD,twitter,🇯🇵 Reality
 
   - DOMAIN-SUFFIX,eztv.re,DIRECT
   - DOMAIN-SUFFIX,miobt.com,DIRECT
