@@ -17,6 +17,7 @@ dns:
 
 proxies:
   - {name: ☁️ NAS, server: 'nas.murgo.eu.org', port: 7898, type: socks5 }
+  - {name: 🖥️ Mac, server: '192.168.22.197', port: 6153, type: socks5 }
 
   #🇺🇸节点
   - name: 🇺🇸 Vmess
@@ -217,6 +218,7 @@ proxy-groups:
       - ♻️ 自动选择
       - 🔯 故障转移
       - ☁️ NAS
+      - 🖥️ Mac
       - 🤯 自动备胎
       - 🇯🇵 Hy2
       - 🇯🇵 Reality
