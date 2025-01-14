@@ -391,13 +391,13 @@ rules:
   - DOMAIN-SUFFIX,yt.be,📹 油管视频
   - DOMAIN-SUFFIX,ytimg.com,📹 油管视频
 
-  - RULE-SET,openai,🇯🇵 日本节点
-  - DOMAIN-KEYWORD,openai,🇯🇵 日本节点
-  - DOMAIN-KEYWORD,chatgpt,🇯🇵 日本节点
-  - DOMAIN-KEYWORD,reddit,🇯🇵 日本节点
-  - DOMAIN-SUFFIX,x.com,🇯🇵 日本节点
-  - DOMAIN-KEYWORD,twimg,🇯🇵 日本节点
-  - DOMAIN-KEYWORD,twitter,🇯🇵 日本节点
+  - RULE-SET,openai,🚀 节点选择
+  - DOMAIN-KEYWORD,openai,🚀 节点选择
+  - DOMAIN-KEYWORD,chatgpt,🚀 节点选择
+  - DOMAIN-KEYWORD,reddit,🚀 节点选择
+  - DOMAIN-SUFFIX,x.com,🚀 节点选择
+  - DOMAIN-KEYWORD,twimg,🚀 节点选择
+  - DOMAIN-KEYWORD,twitter,🚀 节点选择
 
   - DOMAIN-SUFFIX,eztv.re,DIRECT
   - DOMAIN-SUFFIX,miobt.com,DIRECT
