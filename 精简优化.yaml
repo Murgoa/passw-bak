@@ -389,6 +389,7 @@ rules:
   - DOMAIN-SUFFIX,perplexity.ai,🚀 节点选择
   - DOMAIN-SUFFIX,x.com,🇺🇸 Exovt-Hy2
   - DOMAIN-KEYWORD,twimg,🇺🇸 Exovt-Hy2
+  - DOMAIN-KEYWORD,twitter,🇺🇸 Exovt-Hy2
 
   - DOMAIN-SUFFIX,eztv.re,DIRECT
   - DOMAIN-SUFFIX,miobt.com,DIRECT
