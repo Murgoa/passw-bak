@@ -250,9 +250,9 @@ proxy-groups:
     url: https://cp.cloudflare.com/generate_204
     interval: 300
     proxies: 
-      - 🇯🇵 Hy2
       - 🇺🇸 美国节点
       - 🇺🇸 Exovt-Hy2
+      - 🇯🇵 Hy2
       - 🇯🇵 Reality
       - 🇺🇸 Vmess
       - 🇸🇬 gullo Vmess
@@ -389,7 +389,7 @@ rules:
   - DOMAIN-SUFFIX,x.com,🇺🇸 美国节点
   - DOMAIN-KEYWORD,twimg,🇺🇸 美国节点
   - DOMAIN-KEYWORD,twitter,🇺🇸 美国节点
-  
+
   - DOMAIN-SUFFIX,eztv.re,DIRECT
   - DOMAIN-SUFFIX,miobt.com,DIRECT
   - DOMAIN-SUFFIX,oshen.win,DIRECT
