@@ -196,7 +196,8 @@ proxies:
   - name: 🇯🇵 Hy2                       
     type: hysteria2                                      
     server: 47.79.84.35                               
-    port: 61564                                
+    port: 61564
+    ports: 64535-65535                              
     password: 494159ec-217f-4b50-9cf2-1b65e6db90dc                          
     alpn: [h3]
     sni: www.bing.com                               
@@ -389,13 +390,13 @@ rules:
   - DOMAIN-SUFFIX,yt.be,📹 油管视频
   - DOMAIN-SUFFIX,ytimg.com,📹 油管视频
 
-  - RULE-SET,openai,🇯🇵 Hy2
-  - DOMAIN-KEYWORD,openai,🇯🇵 Hy2
-  - DOMAIN-KEYWORD,chatgpt,🇯🇵 Hy2
-  - DOMAIN-KEYWORD,reddit,🇯🇵 Hy2
-  - DOMAIN-SUFFIX,x.com,🇯🇵 Hy2
-  - DOMAIN-KEYWORD,twimg,🇯🇵 Hy2
-  - DOMAIN-KEYWORD,twitter,🇯🇵 Hy2
+  - RULE-SET,openai,🇯🇵 日本节点
+  - DOMAIN-KEYWORD,openai,🇯🇵 日本节点
+  - DOMAIN-KEYWORD,chatgpt,🇯🇵 日本节点
+  - DOMAIN-KEYWORD,reddit,🇯🇵 日本节点
+  - DOMAIN-SUFFIX,x.com,🇯🇵 日本节点
+  - DOMAIN-KEYWORD,twimg,🇯🇵 日本节点
+  - DOMAIN-KEYWORD,twitter,🇯🇵 日本节点
 
   - DOMAIN-SUFFIX,eztv.re,DIRECT
   - DOMAIN-SUFFIX,miobt.com,DIRECT
