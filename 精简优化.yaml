@@ -252,12 +252,19 @@ proxy-groups:
     proxies: 
       - 🇺🇸 美国节点
       - 🇺🇸 Exovt-Hy2
-      - 🇯🇵 Hy2
-      - 🇯🇵 Reality
+      - 🇯🇵 日本节点
       - 🇺🇸 Vmess
       - 🇸🇬 gullo Vmess
       - 🤯 自动备胎
       - ♻️ 自动选择
+
+  - name: 🇯🇵 日本节点
+    type: fallback
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    proxies: 
+      - 🇯🇵 Hy2
+      - 🇯🇵 Reality
 
   - {"name": "🇺🇸 美国节点", "type": "url-test", "url": "http://www.gstatic.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇺🇸 Hy2", "🇺🇸 Exovt-Hy2", "🇺🇸 RN2-Hy2"]}
   - {"name": "🤯 自动备胎", "type": "url-test", "url": "http://www.gstatic.com/generate_204", "interval": 300, "tolerance": 50, "proxies": ["🇼🇸 台湾BV", "🇲🇾 马来西亚BV", "🇺🇸 芝加哥 gullo", "🇺🇸 佛罗里达 gullo", "🇺🇸 纽约 gullo", "🇺🇸 盐湖城 酷雪云"]}
@@ -382,13 +389,13 @@ rules:
   - DOMAIN-SUFFIX,yt.be,📹 油管视频
   - DOMAIN-SUFFIX,ytimg.com,📹 油管视频
 
-  - RULE-SET,openai,🇺🇸 Exovt-Hy2
-  - DOMAIN-KEYWORD,openai,🇺🇸 Exovt-Hy2
-  - DOMAIN-KEYWORD,chatgpt,🇺🇸 Exovt-Hy2
-  - DOMAIN-KEYWORD,reddit,🇺🇸 Exovt-Hy2
-  - DOMAIN-SUFFIX,x.com,🇺🇸 Exovt-Hy2
-  - DOMAIN-KEYWORD,twimg,🇺🇸 Exovt-Hy2
-  - DOMAIN-KEYWORD,twitter,🇺🇸 Exovt-Hy2
+  - RULE-SET,openai,🇯🇵 Hy2
+  - DOMAIN-KEYWORD,openai,🇯🇵 Hy2
+  - DOMAIN-KEYWORD,chatgpt,🇯🇵 Hy2
+  - DOMAIN-KEYWORD,reddit,🇯🇵 Hy2
+  - DOMAIN-SUFFIX,x.com,🇯🇵 Hy2
+  - DOMAIN-KEYWORD,twimg,🇯🇵 Hy2
+  - DOMAIN-KEYWORD,twitter,🇯🇵 Hy2
 
   - DOMAIN-SUFFIX,eztv.re,DIRECT
   - DOMAIN-SUFFIX,miobt.com,DIRECT
