@@ -197,7 +197,6 @@ proxies:
     type: hysteria2                                      
     server: 47.79.84.35                               
     port: 61564
-    ports: 64535-65535                              
     password: 494159ec-217f-4b50-9cf2-1b65e6db90dc                          
     alpn: [h3]
     sni: www.bing.com                               
