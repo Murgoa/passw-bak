@@ -22,7 +22,7 @@ proxies:
   #🇺🇸节点
   - name: 🇺🇸 Vmess
     type: vmess
-    server: time.is
+    server: speed.marisalnc.com
     port: 2086
     uuid: fb838947-6382-4294-9d39-9ca48082c394
     alterId: 0
@@ -198,6 +198,7 @@ proxies:
     type: hysteria2                                      
     server: 47.79.84.35                               
     port: 61564
+    #ports: 64535-65535
     password: 494159ec-217f-4b50-9cf2-1b65e6db90dc                          
     alpn: [h3]
     sni: www.bing.com                               
@@ -252,9 +253,10 @@ proxy-groups:
     url: https://cp.cloudflare.com/generate_204
     interval: 300
     proxies: 
+      - 🇯🇵 Hy2
       - 🇺🇸 美国节点
       - 🇺🇸 Exovt-Hy2
-      - 🇯🇵 日本节点
+      - 🇯🇵 Reality
       - 🇺🇸 Vmess
       - 🇸🇬 gullo Vmess
       - 🤯 自动备胎
