@@ -255,7 +255,6 @@ proxy-groups:
     proxies: 
       - 🇯🇵 Hy2
       - 🇺🇸 美国节点
-      - 🇺🇸 Exovt-Hy2
       - 🇯🇵 Reality
       - 🇺🇸 Vmess
       - 🇸🇬 gullo Vmess
