@@ -142,7 +142,7 @@ rules:
   - DOMAIN-KEYWORD,parallels,REJECT
   - DOMAIN-SUFFIX,adobe.io,REJECT
 
-  - DST-PORT,88,DIRECT
+  - DST-PORT,88,🇨🇳 回家
   #- DOMAIN-SUFFIX,murgo.eu.org,🇨🇳 回家
   - PROCESS-NAME,App Store,🇨🇳 回家
   - DOMAIN-KEYWORD,bilibili,🇨🇳 回家
