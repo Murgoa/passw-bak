@@ -1,0 +1,225 @@
+mixed-port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+external-controller: :9090
+ipv6: true
+dns:
+  enable: true
+  ipv6: false
+  default-nameserver: [223.5.5.5, 119.29.29.29]
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  use-hosts: true
+  nameserver: ['https://doh.pub/dns-query', 'https://dns.alidns.com/dns-query']
+  fallback: ['https://doh.dns.sb/dns-query', 'https://dns.cloudflare.com/dns-query', 'https://dns.twnic.tw/dns-query', 'tls://8.8.4.4:853']
+  fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
+
+proxies:
+  - {name: ☁️ NAS, server: 'nas.murgo.eu.org', port: 7898, type: socks5 }
+  - {name: 🖥️ Surge, server: '127.0.0.1', port: 6153, type: socks5 }
+  - name: 🇨🇳 回家
+    type: hysteria2                                      
+    server: murgo.eu.org
+    port: 18888
+    password: 6636                   
+    alpn:
+      - h3
+    skip-cert-verify: true
+  - name: 🇺🇸 Hy2
+    type: hysteria2                                      
+    server: 107.175.194.42
+    port: 45796
+    ports: 41000-42000
+    up: "20 Mbps"
+    down: "200 Mbps"
+    password: fb838947-6382-4294-9d39-9ca48082c394                     
+    alpn:
+      - h3
+    sni: www.bing.com                               
+    skip-cert-verify: true
+  - name: 🇺🇸 Exovt-Hy2
+    type: hysteria2                                      
+    server: 23.27.22.11
+    port: 64013
+    ports: 50000-60000
+    up: "20 Mbps"
+    down: "200 Mbps"
+    password: 40bcf705-e483-47c9-9b33-39a19ed5b8a1
+    alpn:
+      - h3
+    sni: www.bing.com                               
+    skip-cert-verify: true
+
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    url: http://www.gstatic.com/generate_204
+    proxies:
+      - 🔯 故障转移
+      - ☁️ NAS
+      - 🖥️ Surge
+      - 🇨🇳 回家
+      - DIRECT
+
+  - name: 🔯 故障转移
+    type: fallback
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    proxies: 
+      - 🖥️ Surge
+      - ☁️ NAS
+      - 🇺🇸 Exovt-Hy2
+      - 🇺🇸 Hy2
+        
+rule-providers:
+  reject:
+    {"type": "http", "behavior": "domain", "url": "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt", "path": "./ruleset/reject.yaml", "interval": 86400}
+
+  icloud:
+    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/icloud.txt","path":"./ruleset/icloud.yaml","interval":86400}
+
+  openai:
+    {"type":"http","behavior":"domain","url":"https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml","path":"./ruleset/openai.yaml","interval":86400}
+
+  apple:
+    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/apple.txt","path":"./ruleset/apple.yaml","interval":86400}
+
+  google:
+    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/google.txt","path":"./ruleset/google.yaml","interval":86400}
+
+  proxy:
+    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/proxy.txt","path":"./ruleset/proxy.yaml","interval":86400}
+
+  direct:
+    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt","path":"./ruleset/direct.yaml","interval":86400}
+
+  private:
+    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/private.txt","path":"./ruleset/private.yaml","interval":86400}
+
+  gfw:
+    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.txt","path":"./ruleset/gfw.yaml","interval":86400}
+
+  greatfire:
+    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/greatfire.txt","path":"./ruleset/greatfire.yaml","interval":86400}
+
+  tld-not-cn:
+    type: http
+    behavior: domain
+    url: "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/tld-not-cn.txt"
+    path: ./ruleset/tld-not-cn.yaml
+    interval: 86400
+
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt"
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
+
+  lancidr:
+    type: http
+    behavior: ipcidr
+    url: "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/lancidr.txt"
+    path: ./ruleset/lancidr.yaml
+    interval: 86400
+
+  applications:
+    type: http
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/Murgoa/passw-bak@main/app.txt"
+    path: ./ruleset/applications.yaml
+    interval: 86400
+
+rules:
+  - DOMAIN-KEYWORD,parallels,REJECT
+  - DOMAIN-SUFFIX,adobe.io,REJECT
+
+  - DST-PORT,88,DIRECT
+  #- DOMAIN-SUFFIX,murgo.eu.org,🇨🇳 回家
+  - PROCESS-NAME,App Store,🇨🇳 回家
+  - DOMAIN-KEYWORD,bilibili,🇨🇳 回家
+  - DOMAIN-KEYWORD,hdslb,🇨🇳 回家
+  - DOMAIN-KEYWORD,bilivideo,🇨🇳 回家
+  - DOMAIN-SUFFIX,douyin.com,🇨🇳 回家
+  - DOMAIN-KEYWORD,xiaohongshu,🇨🇳 回家
+  - DOMAIN-KEYWORD,xhscdn,🇨🇳 回家
+  - DOMAIN-SUFFIX,finder.video.qq.com,🇨🇳 回家
+  - DOMAIN-SUFFIX,es.wx.qq.com,🇨🇳 回家
+  - DOMAIN-SUFFIX,chostloc.com,🇨🇳 回家
+
+  - DOMAIN-KEYWORD,binance,🖥️ Surge
+  - DOMAIN-SUFFIX,binance.com,🖥️ Surge
+  - DOMAIN-KEYWORD,bnbstatic,🖥️ Surge
+
+  - DOMAIN-KEYWORD,spotify,🚀 节点选择
+  - DOMAIN-SUFFIX,spotify.com,🚀 节点选择
+  - DOMAIN-SUFFIX,comicat.org,🚀 节点选择
+  - DOMAIN-SUFFIX,torrentdownloads.info,🚀 节点选择
+  - DOMAIN-SUFFIX,torrentapi.org,🚀 节点选择
+
+  - DOMAIN-SUFFIX,zimuku.org,🚀 节点选择
+  - DOMAIN-SUFFIX,subhd.tv,🚀 节点选择
+  - DOMAIN-SUFFIX,pornhub.com,🚀 节点选择
+  - DOMAIN-SUFFIX,phncdn.com,🚀 节点选择
+  - DOMAIN-SUFFIX,dodi-repacks.site,🚀 节点选择
+  - DOMAIN-SUFFIX,yts.mx,🚀 节点选择
+
+  - DOMAIN-KEYWORD,zimuku,🚀 节点选择
+  - DOMAIN-SUFFIX,figma.com,🚀 节点选择
+  - DOMAIN-SUFFIX,srtku.com,🚀 节点选择
+  - DOMAIN-SUFFIX,zimuku.com,🚀 节点选择
+  - DOMAIN-SUFFIX,subhd.tv,🚀 节点选择
+  - PROCESS-NAME,ddns-go.exe,DIRECT
+  - PROCESS-NAME,qbittorrent.exe,DIRECT
+  - DOMAIN-SUFFIX,1337x.to,🚀 节点选择
+  - DOMAIN-SUFFIX,thepiratebay.org,🚀 节点选择
+  - DOMAIN-SUFFIX,apibay.org,🚀 节点选择
+  - DOMAIN-SUFFIX,mikanani.me,🚀 节点选择
+  - DOMAIN-SUFFIX,thefappeningblog.com,🚀 节点选择
+  - DOMAIN-SUFFIX,pttime.org,🚀 节点选择
+  - DOMAIN-SUFFIX,parsec.app,DIRECT
+  - DOMAIN-KEYWORD,tmdb,🚀 节点选择
+  - DOMAIN-KEYWORD,themoviedb,🚀 节点选择
+  - DOMAIN-SUFFIX,notion.so,🚀 节点选择
+  - RULE-SET,telegramcidr,🚀 节点选择
+
+  - RULE-SET,openai,🚀 节点选择
+  - DOMAIN-KEYWORD,openai,🚀 节点选择
+  - DOMAIN-KEYWORD,chatgpt,🚀 节点选择
+  - DOMAIN-KEYWORD,reddit,🚀 节点选择
+  - DOMAIN-SUFFIX,x.com,🚀 节点选择
+  - DOMAIN-KEYWORD,twimg,🚀 节点选择
+  - DOMAIN-KEYWORD,twitter,🚀 节点选择
+
+  - DOMAIN-SUFFIX,eztv.re,DIRECT
+  - DOMAIN-SUFFIX,miobt.com,DIRECT
+  - DOMAIN-SUFFIX,oshen.win,DIRECT
+  - DOMAIN-SUFFIX,hd.ai,DIRECT
+  - DOMAIN-SUFFIX,plex.tv,DIRECT
+  - DOMAIN-SUFFIX,apple.com,DIRECT
+  - DOMAIN-SUFFIX,hd.ai,DIRECT
+  - DOMAIN-SUFFIX,66.now.cc,DIRECT
+  
+  - RULE-SET,applications,DIRECT
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN,yacd.haishan.me,DIRECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,reject,REJECT
+  - RULE-SET,icloud,DIRECT
+  - RULE-SET,apple,DIRECT
+  - RULE-SET,google,DIRECT
+  - RULE-SET,direct,DIRECT
+  - RULE-SET,lancidr,DIRECT
+  - RULE-SET,cncidr,DIRECT
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - RULE-SET,proxy,🚀 节点选择
+  - MATCH,🚀 节点选择
