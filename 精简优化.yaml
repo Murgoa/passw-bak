@@ -16,7 +16,6 @@ dns:
   fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
 
 proxies:
-  - {name: ☁️ NAS, server: 'nas.murgo.eu.org', port: 7898, type: socks5 }
   - {name: 🖥️ Mac, server: '192.168.22.197', port: 6153, type: socks5 }
 
   #🇺🇸节点
@@ -218,7 +217,6 @@ proxy-groups:
     proxies:
       - ♻️ 自动选择
       - 🔯 故障转移
-      - ☁️ NAS
       - 🖥️ Mac
       - 🤯 自动备胎
       - 🇯🇵 Hy2
@@ -246,7 +244,6 @@ proxy-groups:
       - 🔯 故障转移
       - 🤯 自动备胎
       - 🇺🇸 美国节点
-      - ☁️ NAS
 
   - name: 🔯 故障转移
     type: fallback
