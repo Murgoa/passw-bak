@@ -36,8 +36,8 @@ proxies:
     sni: www.bing.com                               
     skip-cert-verify: true
 
-  - {name: 🇺🇸 Brutal, type: ss, server: us.66.now.cc, port: 2052, password: "WxfXjYW9T4lRuQ92GLmb8A==", cipher: 2022-blake3-aes-128-gcm, udp: true, smux: {enabled: true, protocol: h2mux, max-connections: 1, min-streams: 4, max-streams: 0, statistic: false, only-tcp: false, padding: true, brutal-opts: {enabled: true, up: 20, down: 100}}}
-  - {name: 🇺🇸 Brutal-Exo, type: ss, server: 23.27.22.11, port: 2052, password: "WxfXjYW9T4lRuQ92GLmb8A==", cipher: 2022-blake3-aes-128-gcm, udp: true, smux: {enabled: true, protocol: h2mux, max-connections: 1, min-streams: 4, max-streams: 0, statistic: false, only-tcp: false, padding: true, brutal-opts: {enabled: true, up: 20, down: 100}}}
+  - {name: 🇺🇸 Brutal, type: vless, server: us.66.now.cc, port: 2086, uuid: a262229c-3118-4556-a6a2-e7cf462ee7a1-vm, network: tcp, udp: true, tls: true, skip-cert-verify: true, fast-open: true, smux: {enabled: true, protocol: h2mux, max-connections: 1, min-streams: 4, max-streams: 0, statistic: false, only-tcp: false, padding: true, brutal-opts: {enabled: true, up: 20, down: 100}}}
+  #- {name: 🇺🇸 Brutal-Exo, type: ss, server: 23.27.22.11, port: 2052, password: "WxfXjYW9T4lRuQ92GLmb8A==", cipher: 2022-blake3-aes-128-gcm, udp: true, smux: {enabled: true, protocol: h2mux, max-connections: 1, min-streams: 4, max-streams: 0, statistic: false, only-tcp: false, padding: true, brutal-opts: {enabled: true, up: 20, down: 100}}}
 
   #日本 Claw 节点
   - {name: 🇯🇵 Reality, type: vless, server: 47.79.84.35, port: 50203, uuid: 494159ec-217f-4b50-9cf2-1b65e6db90dc, network: tcp, udp: true, tls: true, flow: xtls-rprx-vision, servername: www.yahoo.com, reality-opts: {public-key: kA4zKNx_5ENivpMUJJJDxX24L7suGimSJa-nixQyVx0, short-id: 0c808977}, client-fingerprint: chrome}
@@ -84,7 +84,6 @@ proxy-groups:
       - 🔯 故障转移
       - 🖥️ Surge
       - 🇺🇸 Brutal
-      - 🇺🇸 Brutal-Exo
       - 🇯🇵 Brutal
       - 🇨🇳 回家
       - DIRECT
@@ -107,7 +106,6 @@ proxy-groups:
       - 🇯🇵 Hy2
       - 🇯🇵 Brutal
       - 🇺🇸 Exovt-Hy2
-      - 🇺🇸 Brutal-Exo
       - 🇺🇸 Hy2
       - 🇺🇸 Brutal
         
