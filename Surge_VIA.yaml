@@ -63,6 +63,24 @@ proxies:
     sni: www.bing.com                               
     skip-cert-verify: true
     fast-open: true
+  - name: 🇯🇵 TUIC
+    server: 47.79.84.35
+    port: 57861
+    type: tuic
+    uuid: 494159ec-217f-4b50-9cf2-1b65e6db90dc
+    password: 494159ec-217f-4b50-9cf2-1b65e6db90dc
+    disable-sni: true
+    reduce-rtt: true
+    udp-relay-mode: native
+  - name: 🇺🇸 TUIC
+    server: us.66.now.cc
+    port: 52895
+    type: tuic
+    uuid: a262229c-3118-4556-a6a2-e7cf462ee7a1
+    password: a262229c-3118-4556-a6a2-e7cf462ee7a1
+    disable-sni: true
+    reduce-rtt: true
+    udp-relay-mode: native
 
 proxy-groups:
   - name: 🚀 节点选择
@@ -89,12 +107,24 @@ proxy-groups:
 
   - name: 🇯🇵 日本节点
     type: load-balance
+    strategy: round-robin 
     url: https://cp.cloudflare.com/generate_204
     interval: 300
     proxies: 
       - 🇯🇵 Hy2
+      - 🇯🇵 TUIC
       - 🇯🇵 Brutal
       - 🇯🇵 Reality
+
+  - name: 🇺🇸 美国节点
+    type: load-balance
+    strategy: round-robin 
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    proxies: 
+      - 🇺🇸 Hy2
+      - 🇺🇸 TUIC
+      - 🇺🇸 Brutal
       
   - name: ♻️ 自动选择
     type: url-test
@@ -103,8 +133,7 @@ proxy-groups:
     tolerance: 50
     proxies:      
       - 🇯🇵 日本节点
-      - 🇺🇸 Hy2
-      - 🇺🇸 Brutal
+      - 🇺🇸 美国节点
         
 rule-providers:
   reject:
