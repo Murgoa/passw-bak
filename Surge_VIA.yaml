@@ -224,7 +224,9 @@ rules:
   - DOMAIN-KEYWORD,openai,🚀 节点选择
   - DOMAIN-KEYWORD,chatgpt,🚀 节点选择
   - DOMAIN-KEYWORD,reddit,🚀 节点选择
-  - DOMAIN-SUFFIX,x.com,🚀 节点选择
+  - DOMAIN-SUFFIX,api.x.com,🇺🇸 Brutal
+  - DOMAIN-SUFFIX,x.ai,🇺🇸 Brutal
+  - DOMAIN-SUFFIX,grok.com,🇺🇸 Brutal
   - DOMAIN-KEYWORD,twimg,🚀 节点选择
   - DOMAIN-KEYWORD,twitter,🚀 节点选择
 
