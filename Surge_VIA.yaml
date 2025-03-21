@@ -101,8 +101,9 @@ proxy-groups:
     url: https://cp.cloudflare.com/generate_204
     interval: 300
     proxies: 
+      - 🇯🇵 日本节点
+      - 🇺🇸 美国节点
       - 🖥️ Surge
-      - ♻️ 自动选择
       - 🇨🇳 回家
 
   - name: 🇯🇵 日本节点
@@ -128,7 +129,7 @@ proxy-groups:
       
   - name: ♻️ 自动选择
     type: url-test
-    url: http://www.gstatic.com/generate_204
+    url: https://cp.cloudflare.com/generate_204
     interval: 300
     tolerance: 50
     proxies:      
