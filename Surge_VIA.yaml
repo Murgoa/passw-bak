@@ -115,7 +115,7 @@ proxy-groups:
       - 🇯🇵 Hy2
       - 🇯🇵 TUIC
       - 🇯🇵 Brutal
-      - 🇯🇵 Reality
+      #- 🇯🇵 Reality
 
   - name: 🇺🇸 美国节点
     type: load-balance
