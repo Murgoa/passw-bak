@@ -13,12 +13,12 @@ proxies:
 
   - name: 🇺🇸 Hy2
     type: hysteria2                                      
-    server: 107.175.194.42
-    port: 45796
-    ports: 41000-42000
+    server: 104.168.34.109
+    port: 60883
+    ports: 49999-65000
     up: "20 Mbps"
     down: "200 Mbps"
-    password: fb838947-6382-4294-9d39-9ca48082c394
+    password: 8418fb71-419d-4fc3-8b29-d7fee8de76c7
     alpn:
       - h3
     sni: www.bing.com                               
@@ -70,6 +70,7 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     proxies:
       - 🔯 故障转移
+      - ♻️ 自动选择
       - 🖥️ Surge
       - 🇺🇸 Brutal
       - 🇯🇵 Brutal
@@ -85,6 +86,15 @@ proxy-groups:
       - 🖥️ Surge
       - ♻️ 自动选择
       - 🇨🇳 回家
+
+  - name: 🇯🇵 日本节点
+    type: load-balance
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    proxies: 
+      - 🇯🇵 Hy2
+      - 🇯🇵 Brutal
+      - 🇯🇵 Reality
       
   - name: ♻️ 自动选择
     type: url-test
@@ -92,8 +102,7 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies:      
-      - 🇯🇵 Hy2
-      - 🇯🇵 Brutal
+      - 🇯🇵 日本节点
       - 🇺🇸 Hy2
       - 🇺🇸 Brutal
         
