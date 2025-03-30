@@ -81,6 +81,29 @@ proxies:
     disable-sni: true
     reduce-rtt: true
     udp-relay-mode: native
+  - name: 🇵🇱 Hy2                  
+    type: hysteria2                                      
+    server: 188.68.250.202                               
+    port: 45328                                
+    password: 439029a3-6950-4a17-bfc2-04db6f01ac9b
+    alpn:
+      - h3
+    sni: www.bing.com                               
+    skip-cert-verify: true
+    fast-open: true
+  - name: 🇵🇱 Reality      
+    type: vless
+    server: 188.68.250.202                           
+    port: 47326                                
+    uuid: 439029a3-6950-4a17-bfc2-04db6f01ac9b   
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: prrjanidic.serv00.net                 
+    reality-opts: 
+      public-key: g_rsCDPtLAdNTofEDBebPrCuT0JFDVyg2swqemDxKjw
+    client-fingerprint: chrome
 
 proxy-groups:
   - name: 🚀 节点选择
@@ -103,7 +126,9 @@ proxy-groups:
     proxies: 
       - 🇯🇵 日本节点
       - 🇺🇸 美国节点
-      - 🖥️ Surge
+      - 🇵🇱 Hy2
+      - 🇵🇱 Reality
+      #- 🖥️ Surge
       - 🇨🇳 回家
 
   - name: 🇯🇵 日本节点
