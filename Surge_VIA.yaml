@@ -10,100 +10,23 @@ dns: {enable: true, listen: '127.0.0.1:1053', ipv6: false, default-nameserver: [
 proxies:
   - {name: 🖥️ Surge, server: '127.0.0.1', port: 6153, type: socks5 }
   - {name: 🇨🇳 回家, type: hysteria2, server: murgo.eu.org, port: 18888, password: 6636, alpn: [h3], skip-cert-verify: true}
-
-  - name: 🇺🇸 Hy2
-    type: hysteria2                                      
-    server: 104.168.34.109
-    port: 60883
-    ports: 49999-65000
-    up: "20 Mbps"
-    down: "200 Mbps"
-    password: 8418fb71-419d-4fc3-8b29-d7fee8de76c7
-    alpn:
-      - h3
-    sni: www.bing.com                               
-    skip-cert-verify: true
-
+  #圣何塞 Racknerd
+  - {name: "🇺🇸 Hy2", type: "hysteria2", server: "104.168.34.109", port: 60883, ports: "49999-65000", up: "20 Mbps", down: "200 Mbps", password: "8418fb71-419d-4fc3-8b29-d7fee8de76c7", alpn: ["h3"], sni: "www.bing.com", skip-cert-verify: true}
   - {name: 🇺🇸 Brutal, type: vless, server: us.66.now.cc, port: 2086, uuid: a262229c-3118-4556-a6a2-e7cf462ee7a1-vm, network: tcp, udp: true, tls: true, skip-cert-verify: true, fast-open: true, smux: {enabled: true, protocol: h2mux, max-connections: 1, min-streams: 4, max-streams: 0, statistic: false, only-tcp: false, padding: true, brutal-opts: {enabled: true, up: 20, down: 100}}}
-  #- {name: 🇺🇸 Brutal-Exo, type: ss, server: 23.27.22.11, port: 2052, password: "WxfXjYW9T4lRuQ92GLmb8A==", cipher: 2022-blake3-aes-128-gcm, udp: true, smux: {enabled: true, protocol: h2mux, max-connections: 1, min-streams: 4, max-streams: 0, statistic: false, only-tcp: false, padding: true, brutal-opts: {enabled: true, up: 20, down: 100}}}
-
+  - {name: "🇺🇸 TUIC", server: "us.66.now.cc", port: 52895, type: "tuic", uuid: "a262229c-3118-4556-a6a2-e7cf462ee7a1", password: "a262229c-3118-4556-a6a2-e7cf462ee7a1", disable-sni: true, reduce-rtt: true, udp-relay-mode: "native"}
   #日本 Claw 节点
   - {name: 🇯🇵 Reality, type: vless, server: 47.79.84.35, port: 50203, uuid: 494159ec-217f-4b50-9cf2-1b65e6db90dc, network: tcp, udp: true, tls: true, flow: xtls-rprx-vision, servername: www.yahoo.com, reality-opts: {public-key: kA4zKNx_5ENivpMUJJJDxX24L7suGimSJa-nixQyVx0, short-id: 0c808977}, client-fingerprint: chrome}
-
-  - name: 🇯🇵 Brutal
-    type: vmess
-    server: 47.79.84.35
-    port: 2086
-    uuid: 494159ec-217f-4b50-9cf2-1b65e6db90dc
-    alterId: 0
-    cipher: auto
-    udp: true
-    tls: false
-    network: tcp
-    smux:
-      enabled: true
-      protocol: h2mux
-      max-connections: 1
-      min-streams: 4
-      max-streams: 0
-      statistic: false
-      only-tcp: false
-      padding: false
-      brutal-opts:
-        enabled: true
-        up: 20
-        down: 100
-  - name: 🇯🇵 Hy2
-    type: hysteria2               
-    server: 47.79.84.35                               
-    port: 61564
-    #ports: 64535-65535
-    password: 494159ec-217f-4b50-9cf2-1b65e6db90dc
-    alpn: [h3]
-    sni: www.bing.com                               
-    skip-cert-verify: true
-    fast-open: true
-  - name: 🇯🇵 TUIC
-    server: 47.79.84.35
-    port: 57861
-    type: tuic
-    uuid: 494159ec-217f-4b50-9cf2-1b65e6db90dc
-    password: 494159ec-217f-4b50-9cf2-1b65e6db90dc
-    disable-sni: true
-    reduce-rtt: true
-    udp-relay-mode: native
-  - name: 🇺🇸 TUIC
-    server: us.66.now.cc
-    port: 52895
-    type: tuic
-    uuid: a262229c-3118-4556-a6a2-e7cf462ee7a1
-    password: a262229c-3118-4556-a6a2-e7cf462ee7a1
-    disable-sni: true
-    reduce-rtt: true
-    udp-relay-mode: native
-  - name: 🇵🇱 Hy2                  
-    type: hysteria2                                      
-    server: 188.68.250.202                               
-    port: 45328                                
-    password: 439029a3-6950-4a17-bfc2-04db6f01ac9b
-    alpn:
-      - h3
-    sni: www.bing.com                               
-    skip-cert-verify: true
-    fast-open: true
-  - name: 🇵🇱 Reality      
-    type: vless
-    server: 188.68.250.202                           
-    port: 47326                                
-    uuid: 439029a3-6950-4a17-bfc2-04db6f01ac9b   
-    network: tcp
-    udp: true
-    tls: true
-    flow: xtls-rprx-vision
-    servername: prrjanidic.serv00.net                 
-    reality-opts: 
-      public-key: g_rsCDPtLAdNTofEDBebPrCuT0JFDVyg2swqemDxKjw
-    client-fingerprint: chrome
+  - {name: "🇯🇵 Brutal", type: "vmess", server: "47.79.84.35", port: 2086, uuid: "494159ec-217f-4b50-9cf2-1b65e6db90dc", alterId: 0, cipher: "auto", udp: false, tls: false, network: "tcp", smux: {enabled: true, protocol: "h2mux", max-connections: 1, min-streams: 4, max-streams: 0, statistic: false, only-tcp: false, padding: false, brutal-opts: {enabled: true, up: 20, down: 100}}}
+  - {name: "🇯🇵 Hy2", type: "hysteria2", server: "47.79.84.35", port: 61564, password: "494159ec-217f-4b50-9cf2-1b65e6db90dc", alpn: ["h3"], sni: "www.bing.com", skip-cert-verify: true, fast-open: true}
+  - {name: "🇯🇵 TUIC", server: "47.79.84.35", port: 57861, type: "tuic", uuid: "494159ec-217f-4b50-9cf2-1b65e6db90dc", password: "494159ec-217f-4b50-9cf2-1b65e6db90dc", disable-sni: true, reduce-rtt: true, udp-relay-mode: "native"}
+  #波兰 Serv00
+  - {name: "🇵🇱 Hy2", type: "hysteria2", server: "188.68.250.202", port: 45328, password: "439029a3-6950-4a17-bfc2-04db6f01ac9b", alpn: ["h3"], sni: "www.bing.com", skip-cert-verify: true, fast-open: true}
+  - {name: "🇵🇱 Reality", type: "vless", server: "188.68.250.202", port: 47326, uuid: "439029a3-6950-4a17-bfc2-04db6f01ac9b", network: "tcp", udp: true, tls: true, flow: "xtls-rprx-vision", servername: "prrjanidic.serv00.net", reality-opts: {public-key: "g_rsCDPtLAdNTofEDBebPrCuT0JFDVyg2swqemDxKjw"}, client-fingerprint: "chrome"}
+  - {name: "🇵🇱 CF", type: "vmess", server: "127.0.0.1", port: 3234, uuid: "439029a3-6950-4a17-bfc2-04db6f01ac9b", alterId: 0, cipher: "auto", udp: true, tls: true, network: "ws", servername: "serv00.66.now.cc", ws-opts: {path: "/439029a3-6950-4a17-bfc2-04db6f01ac9b-vm?ed=2048", headers: {Host: "serv00.66.now.cc"}}}
+  - {name: "🇭🇰 CF", type: "vmess", server: "127.0.0.1", port: 2234, uuid: "089a3652-b4af-44e1-86b2-4469528aa4ce", alterId: 0, cipher: "auto", udp: false, tls: false, network: "ws", servername: "hk.66.now.cc", ws-opts: {path: "089a3652-b4af-44e1-86b2-4469528aa4ce-vm", headers: {Host: "hk.66.now.cc"}}}
+  - {name: "🇭🇰 直连", type: ss, server: hk6.66.now.cc, port: 42501, cipher: 2022-blake3-aes-128-gcm, password: "WxfXjYW9T4lRuQ92GLmb8A==", udp: false}
+  - {name: "🇪🇺 CF Worker", type: "trojan", server: "127.0.0.1", port: 3234, password: "murgo1", udp: false, sni: "worker.66.now.cc", skip-cert-verify: false, network: "ws", servername: "worker.66.now.cc", ws-opts: {path: "/?ed=2560", headers: {Host: "worker.66.now.cc"}}}
+  - { name: 🇼🇸 机场, type: trojan, server: hinet.mjt000.com, port: 443, password: 4ebd7d8a-cc40-4c32-af1c-c459f9d672ef, udp: true, sni: hinet.mjt000.com }
 
 proxy-groups:
   - name: 🚀 节点选择
@@ -113,9 +36,9 @@ proxy-groups:
       - 🔯 故障转移
       - ♻️ 自动选择
       - 🖥️ Surge
-      - 🇺🇸 Brutal
-      - 🇯🇵 Brutal
-      - 🇯🇵 Reality
+      - 🇺🇸 美国节点
+      - 🇯🇵 日本节点
+      - 🇪🇺 CF Worker
       - 🇨🇳 回家
       - DIRECT
 
@@ -126,40 +49,18 @@ proxy-groups:
     proxies: 
       - 🇯🇵 日本节点
       - 🇺🇸 美国节点
-      - 🇵🇱 Hy2
-      - 🇵🇱 Reality
+      - 🇵🇱 波兰节点
+      - 🇭🇰 香港节点
+      - 🇪🇺 CF Worker
       #- 🖥️ Surge
       - 🇨🇳 回家
 
-  - name: 🇯🇵 日本节点
-    type: load-balance
-    strategy: round-robin 
-    url: https://cp.cloudflare.com/generate_204
-    interval: 300
-    proxies: 
-      - 🇯🇵 Hy2
-      - 🇯🇵 TUIC
-      - 🇯🇵 Brutal
-      #- 🇯🇵 Reality
-
-  - name: 🇺🇸 美国节点
-    type: load-balance
-    strategy: round-robin 
-    url: https://cp.cloudflare.com/generate_204
-    interval: 300
-    proxies: 
-      - 🇺🇸 Hy2
-      - 🇺🇸 TUIC
-      - 🇺🇸 Brutal
-      
-  - name: ♻️ 自动选择
-    type: url-test
-    url: https://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 50
-    proxies:      
-      - 🇯🇵 日本节点
-      - 🇺🇸 美国节点
+  - {name: "♻️ 自动选择", type: "url-test", url: "https://cp.cloudflare.com/generate_204", interval: 300, tolerance: 50, proxies: ["🇯🇵 日本节点", "🇺🇸 美国节点"]}
+  - {name: "🇯🇵 日本节点", type: "load-balance", strategy: "round-robin", url: "https://cp.cloudflare.com/generate_204", interval: 300, proxies: ["🇯🇵 Hy2", "🇯🇵 TUIC", "🇯🇵 Brutal"]}
+  - {name: "🇺🇸 美国节点", type: "load-balance", strategy: "round-robin", url: "https://cp.cloudflare.com/generate_204", interval: 300, proxies: ["🇺🇸 Hy2", "🇺🇸 TUIC", "🇺🇸 Brutal"]}
+  - {name: "🇭🇰 香港节点", type: "fallback", url: "https://cp.cloudflare.com/generate_204", interval: 300, proxies: ["🇭🇰 自动中转", "🇭🇰 CF"]}
+  - {name: "🇵🇱 波兰节点", type: "fallback", url: "https://cp.cloudflare.com/generate_204", interval: 300, proxies: ["🇵🇱 Hy2", "🇵🇱 CF", "🇵🇱 Reality"]}
+  - {name: "🇭🇰 自动中转", type: relay, proxies: ["♻️ 自动选择", "🇭🇰 直连"]}
         
 rule-providers:
   reject:
@@ -192,40 +93,11 @@ rule-providers:
   greatfire:
     {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/greatfire.txt","path":"./ruleset/greatfire.yaml","interval":86400}
 
-  tld-not-cn:
-    type: http
-    behavior: domain
-    url: "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/tld-not-cn.txt"
-    path: ./ruleset/tld-not-cn.yaml
-    interval: 86400
-
-  telegramcidr:
-    type: http
-    behavior: ipcidr
-    url: "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt"
-    path: ./ruleset/telegramcidr.yaml
-    interval: 86400
-
-  cncidr:
-    type: http
-    behavior: ipcidr
-    url: "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt"
-    path: ./ruleset/cncidr.yaml
-    interval: 86400
-
-  lancidr:
-    type: http
-    behavior: ipcidr
-    url: "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/lancidr.txt"
-    path: ./ruleset/lancidr.yaml
-    interval: 86400
-
-  applications:
-    type: http
-    behavior: classical
-    url: "https://fastly.jsdelivr.net/gh/Murgoa/passw-bak@main/app.txt"
-    path: ./ruleset/applications.yaml
-    interval: 86400
+  tld-not-cn: {type: http, behavior: domain, url: "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/tld-not-cn.txt", path: ./ruleset/tld-not-cn.yaml, interval: 86400}
+  telegramcidr: {type: http, behavior: ipcidr, url: "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt", path: ./ruleset/telegramcidr.yaml, interval: 86400}
+  cncidr: {type: http, behavior: ipcidr, url: "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt", path: ./ruleset/cncidr.yaml, interval: 86400}
+  lancidr: {type: http, behavior: ipcidr, url: "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/lancidr.txt", path: ./ruleset/lancidr.yaml, interval: 86400}
+  applications: {type: http, behavior: classical, url: "https://fastly.jsdelivr.net/gh/Murgoa/passw-bak@main/app.txt", path: ./ruleset/applications.yaml, interval: 86400}
 
 rules:
   - DOMAIN-KEYWORD,parallels,REJECT
