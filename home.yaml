@@ -61,8 +61,10 @@ proxy-groups:
   - {name: "🇯🇵 日本节点", type: "load-balance", strategy: "round-robin", url: "https://cp.cloudflare.com/generate_204", interval: 300, proxies: ["🇯🇵 Hy2", "🇯🇵 TUIC", "🇯🇵 Brutal"]}
   - {name: "🇺🇸 美国节点", type: "load-balance", strategy: "round-robin", url: "https://cp.cloudflare.com/generate_204", interval: 300, proxies: ["🇺🇸 Hy2", "🇺🇸 TUIC", "🇺🇸 Brutal"]}
   - {name: "🇭🇰 香港节点", type: "fallback", url: "https://cp.cloudflare.com/generate_204", interval: 300, proxies: ["🇭🇰 自动中转", "🇭🇰 CF"]}
-  - {name: "🇵🇱 波兰节点", type: "fallback", url: "https://cp.cloudflare.com/generate_204", interval: 300, proxies: ["🇵🇱 Hy2", "🇵🇱 CF", "🇵🇱 Reality"]}
+  - {name: "🇵🇱 波兰节点", type: "fallback", url: "https://cp.cloudflare.com/generate_204", interval: 300, proxies: ["🇵🇱 Hy2", "🇵🇱 自动中转", "🇵🇱 CF", "🇵🇱 Reality"]}
   - {name: "🇭🇰 自动中转", type: relay, proxies: ["♻️ 自动选择", "🇭🇰 直连"]}
+  - {name: "🇵🇱 自动中转", type: relay, proxies: ["♻️ 自动选择", "🇵🇱 Reality"]}
+
         
 rule-providers:
   reject:
@@ -152,7 +154,7 @@ rules:
   - RULE-SET,openai,🚀 节点选择
   - DOMAIN-KEYWORD,openai,🇼🇸 机场
   - DOMAIN-KEYWORD,chatgpt,🇼🇸 机场
-  - DOMAIN-KEYWORD,reddit,🚀 节点选择
+  - DOMAIN-KEYWORD,reddit,🇵🇱 波兰节点
   - DOMAIN-SUFFIX,api.x.com,🇺🇸 Brutal
   - DOMAIN-SUFFIX,x.ai,🇺🇸 Brutal
   - DOMAIN-SUFFIX,grok.com,🇺🇸 Brutal
