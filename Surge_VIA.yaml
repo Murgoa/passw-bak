@@ -38,7 +38,6 @@ proxy-groups:
       - 🖥️ Surge
       - 🇺🇸 美国节点
       - 🇯🇵 日本节点
-      - 🇪🇺 CF Worker
       - 🇨🇳 回家
       - DIRECT
 
@@ -51,7 +50,6 @@ proxy-groups:
       - 🇺🇸 美国节点
       - 🇵🇱 波兰节点
       - 🇭🇰 香港节点
-      - 🇪🇺 CF Worker
       #- 🖥️ Surge
       - 🇨🇳 回家
 
