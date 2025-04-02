@@ -53,6 +53,7 @@ proxy-groups:
     proxies: 
       - 🇯🇵 日本节点
       - 🇺🇸 美国节点
+      - 🇺🇸 Exovt
       - 🇵🇱 波兰节点
       - 🇭🇰 香港节点
       - 🇪🇺 CF Worker
