@@ -48,6 +48,7 @@ proxy-groups:
     interval: 300
     proxies: 
       - 🇯🇵 日本节点
+      - 🇺🇸 Exovt
       - 🇺🇸 美国节点
       - 🇭🇰 香港节点
       - 🇪🇺 CF Worker
@@ -60,7 +61,6 @@ proxy-groups:
   - {name: "🇪🇺 CF Worker", type: "fallback", url: "http://www.gstatic.com/generate_204", interval: 300, proxies: ["🇪🇺 CF1", "🇪🇺 CF2"]}
   - {name: "🇭🇰 香港节点", type: "fallback", url: "https://cp.cloudflare.com/generate_204", interval: 300, proxies: ["🇭🇰 自动中转", "🇭🇰 CF"]}
   - {name: "🇭🇰 自动中转", type: relay, proxies: ["♻️ 自动选择", "🇭🇰 直连"]}
-
         
 rule-providers:
   reject:
