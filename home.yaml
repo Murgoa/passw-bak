@@ -65,6 +65,9 @@ proxy-groups:
       - ♻️ 自动选择
       - 🔯 故障转移
       - 🇺🇸 美国节点
+      - 🇯🇵 日本节点
+      - 🇭🇰 香港节点
+      - 🇪🇺 CF Worker
 
   - {name: "♻️ 自动选择", type: "url-test", url: "https://cp.cloudflare.com/generate_204", interval: 300, tolerance: 50, proxies: ["🇺🇸 Exovt", "🇺🇸 美国节点", "🇪🇺 CF Worker"]}
   - {name: "🇯🇵 日本节点", type: "load-balance", strategy: "round-robin", url: "https://cp.cloudflare.com/generate_204", interval: 300, proxies: ["🇯🇵 Hy2", "🇯🇵 TUIC", "🇯🇵 Brutal"]}
