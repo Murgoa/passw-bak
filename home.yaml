@@ -74,7 +74,7 @@ proxy-groups:
   - {name: "🇺🇸 美国节点", type: "load-balance", strategy: "round-robin", url: "https://cp.cloudflare.com/generate_204", interval: 300, proxies: ["🇺🇸 Hy2", "🇺🇸 TUIC", "🇺🇸 Brutal"]}
   - {name: "🇪🇺 CF Worker", type: "fallback", url: "http://www.gstatic.com/generate_204", interval: 300, proxies: ["🇪🇺 CF1", "🇪🇺 CF2"]}
   - {name: "🇭🇰 香港节点", type: "fallback", url: "https://cp.cloudflare.com/generate_204", interval: 300, proxies: ["🇭🇰 Hy2", "🇭🇰 自动中转", "🇭🇰 CF"]}
-  - {name: "🇭🇰 自动中转", type: relay, proxies: ["🇪🇺 CF1", "🇭🇰 直连"]}
+  - {name: "🇭🇰 自动中转", type: relay, proxies: ["♻️ 自动选择", "🇭🇰 直连"]}
         
 rule-providers:
   reject:
