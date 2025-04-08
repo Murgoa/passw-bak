@@ -51,11 +51,9 @@ proxy-groups:
     interval: 300
     proxies: 
       #- 🇯🇵 日本节点
-      - 🇺🇸 Evoxt
       - 🇺🇸 美国节点
       - 🇪🇺 CF Worker
       - 🇭🇰 香港节点
-      #- 🖥️ Surge
       - 🇨🇳 回家
 
   - {name: "♻️ 自动选择", type: "url-test", url: "https://cp.cloudflare.com/generate_204", interval: 300, tolerance: 50, proxies: ["🇯🇵 日本节点", "🇺🇸 美国节点"]}
