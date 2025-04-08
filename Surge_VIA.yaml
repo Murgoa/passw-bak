@@ -21,7 +21,12 @@ proxies:
   - {name: "🇯🇵 Brutal", type: "vmess", server: "47.79.84.35", port: 2086, uuid: "494159ec-217f-4b50-9cf2-1b65e6db90dc", alterId: 0, cipher: "auto", udp: false, tls: false, network: "tcp", smux: {enabled: true, protocol: "h2mux", max-connections: 1, min-streams: 4, max-streams: 0, statistic: false, only-tcp: false, padding: false, brutal-opts: {enabled: true, up: 20, down: 100}}}
   - {name: "🇯🇵 Hy2", type: "hysteria2", server: "47.79.84.35", port: 61564, password: "494159ec-217f-4b50-9cf2-1b65e6db90dc", alpn: ["h3"], sni: "www.bing.com", skip-cert-verify: true, fast-open: true}
   - {name: "🇯🇵 TUIC", server: "47.79.84.35", port: 57861, type: "tuic", uuid: "494159ec-217f-4b50-9cf2-1b65e6db90dc", password: "494159ec-217f-4b50-9cf2-1b65e6db90dc", disable-sni: true, reduce-rtt: true, udp-relay-mode: "native"}
-  - {name: "🇭🇰 直连", type: "vmess", server: "hk6.66.now.cc", port: 2086, uuid: "089a3652-b4af-44e1-86b2-4469528aa4ce", alterId: 0, cipher: "auto", udp: true, tls: false, network: "ws", servername: "hk6.66.now.cc", ws-opts: {path: "/089a3652-b4af-44e1-86b2-4469528aa4ce-vm", headers: {Host: "hk6.66.now.cc"}}}
+  - name: "🇭🇰 直连"
+    type: ss
+    server: hk6.66.now.cc
+    port: 42501
+    cipher: 2022-blake3-aes-128-gcm
+    password: "WxfXjYW9T4lRuQ92GLmb8A=="
   - {name: "🇪🇺 CF Worker", type: "trojan", server: "usa.visa.com", port: 443, password: "murgo1", udp: false, sni: "worker.66.now.cc", skip-cert-verify: false, network: "ws", servername: "worker.66.now.cc", ws-opts: {path: "/?ed=2560", headers: {Host: "worker.66.now.cc"}}}
   - { name: 🇼🇸 机场, type: trojan, server: hinet.mjt000.com, port: 443, password: 4ebd7d8a-cc40-4c32-af1c-c459f9d672ef, udp: true, sni: hinet.mjt000.com }
 
@@ -56,7 +61,7 @@ proxy-groups:
   - {name: "♻️ 自动选择", type: "url-test", url: "https://cp.cloudflare.com/generate_204", interval: 300, tolerance: 50, proxies: ["🇯🇵 日本节点", "🇺🇸 美国节点"]}
   - {name: "🇯🇵 日本节点", type: "load-balance", strategy: "round-robin", url: "https://cp.cloudflare.com/generate_204", interval: 300, proxies: ["🇯🇵 Hy2", "🇯🇵 TUIC", "🇯🇵 Brutal"]}
   - {name: "🇺🇸 美国节点", type: "load-balance", strategy: "round-robin", url: "https://cp.cloudflare.com/generate_204", interval: 300, proxies: ["🇺🇸 Hy2", "🇺🇸 TUIC", "🇺🇸 Brutal"]}
-  - {name: "🇭🇰 香港节点", type: relay, proxies: ["♻️ 自动选择", "🇭🇰 直连"]}
+  - {name: "🇭🇰 香港节点", type: relay, proxies: ["🇺🇸 美国节点", "🇭🇰 直连"]}
 
 rule-providers:
   reject:
