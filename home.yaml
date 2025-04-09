@@ -10,8 +10,8 @@ dns: {enable: true, listen: '127.0.0.1:1053', ipv6: true, default-nameserver: [1
 proxies:
   - {name: 🖥️ Surge, server: '127.0.0.1', port: 6153, type: socks5 }
   - {name: 🇨🇳 回家, type: hysteria2, server: murgo.eu.org, port: 18888, password: 6636, alpn: [h3], skip-cert-verify: true}
-  #Exovt
-  - {name: "🇺🇸 Exovt", type: "hysteria2", server: "23.27.119.244", port: 30342, up: "20 Mbps", down: "99 Mbps", password: "b887ceea-67e7-450b-8c12-0e3e26d525f6", alpn: ["h3"], sni: "www.bing.com", skip-cert-verify: true} 
+  #Evoxt
+  - {name: "🇺🇸 Evoxt", type: "hysteria2", server: "23.27.119.244", port: 30342, up: "20 Mbps", down: "99 Mbps", password: "b887ceea-67e7-450b-8c12-0e3e26d525f6", alpn: ["h3"], sni: "www.bing.com", skip-cert-verify: true} 
   #圣何塞 Racknerd
   - {name: "🇺🇸 Hy2", type: "hysteria2", server: "104.168.34.109", port: 60883, ports: "49999-65000", up: "20 Mbps", down: "200 Mbps", password: "8418fb71-419d-4fc3-8b29-d7fee8de76c7", alpn: ["h3"], sni: "www.bing.com", skip-cert-verify: true}
   - {name: 🇺🇸 Brutal, type: vless, server: us.66.now.cc, port: 2086, uuid: a262229c-3118-4556-a6a2-e7cf462ee7a1-vm, network: tcp, udp: true, tls: true, skip-cert-verify: true, fast-open: true, smux: {enabled: true, protocol: h2mux, max-connections: 1, min-streams: 4, max-streams: 0, statistic: false, only-tcp: false, padding: true, brutal-opts: {enabled: true, up: 20, down: 100}}}
@@ -37,7 +37,7 @@ proxy-groups:
       - ♻️ 自动选择
       - 🖥️ Surge
       - 🇺🇸 美国节点
-      - 🇺🇸 Exovt
+      - 🇺🇸 Evoxt
       - 🇯🇵 日本节点
       - 🇭🇰 香港节点
       - 🇪🇺 CF Worker
@@ -50,7 +50,7 @@ proxy-groups:
     interval: 300
     proxies: 
       #- 🇯🇵 日本节点
-      #- 🇺🇸 Exovt
+      #- 🇺🇸 Evoxt
       - 🇺🇸 美国节点
       - 🇭🇰 香港节点
       - 🇪🇺 CF Worker
@@ -69,8 +69,8 @@ proxy-groups:
       - 🇭🇰 香港节点
       - 🇪🇺 CF Worker
 
-  - {name: "♻️ 自动选择", type: "url-test", url: "https://cp.cloudflare.com/generate_204", interval: 300, tolerance: 50, proxies: ["🇺🇸 Exovt", "🇺🇸 美国节点", "🇪🇺 CF Worker"]}
-  - {name: "💠 节点混合", type: "load-balance", strategy: "round-robin", url: "https://cp.cloudflare.com/generate_204", interval: 300, proxies: ["🇯🇵 Hy2", "🇯🇵 TUIC", "🇯🇵 Brutal", "🇺🇸 Exovt"]}
+  - {name: "♻️ 自动选择", type: "url-test", url: "https://cp.cloudflare.com/generate_204", interval: 300, tolerance: 50, proxies: ["🇺🇸 Evoxt", "🇺🇸 美国节点", "🇪🇺 CF Worker"]}
+  - {name: "💠 节点混合", type: "load-balance", strategy: "round-robin", url: "https://cp.cloudflare.com/generate_204", interval: 300, proxies: ["🇯🇵 Hy2", "🇯🇵 TUIC", "🇯🇵 Brutal", "🇺🇸 Evoxt"]}
   - {name: "🇯🇵 日本节点", type: "load-balance", strategy: "round-robin", url: "https://cp.cloudflare.com/generate_204", interval: 300, proxies: ["🇯🇵 Hy2", "🇯🇵 TUIC", "🇯🇵 Brutal"]}
   - {name: "🇺🇸 美国节点", type: "load-balance", strategy: "round-robin", url: "https://cp.cloudflare.com/generate_204", interval: 300, proxies: ["🇺🇸 Hy2", "🇺🇸 TUIC", "🇺🇸 Brutal"]}
   - {name: "🇪🇺 CF Worker", type: "fallback", url: "http://www.gstatic.com/generate_204", interval: 300, proxies: ["🇪🇺 CF1", "🇪🇺 CF2"]}
@@ -169,11 +169,11 @@ rules:
   - RULE-SET,openai,🚀 节点选择
   - DOMAIN-KEYWORD,openai,🇼🇸 机场
   - DOMAIN-KEYWORD,chatgpt,🇼🇸 机场
-  - DOMAIN-KEYWORD,reddit,🇺🇸 Exovt
-  - DOMAIN-SUFFIX,api.x.com,🇺🇸 Exovt
-  - DOMAIN-SUFFIX,x.com,🇺🇸 Exovt
-  - DOMAIN-SUFFIX,x.ai,🇺🇸 Exovt
-  - DOMAIN-SUFFIX,grok.com,🇺🇸 Exovt
+  - DOMAIN-KEYWORD,reddit,🇺🇸 Evoxt
+  - DOMAIN-SUFFIX,api.x.com,🇺🇸 Evoxt
+  - DOMAIN-SUFFIX,x.com,🇺🇸 Evoxt
+  - DOMAIN-SUFFIX,x.ai,🇺🇸 Evoxt
+  - DOMAIN-SUFFIX,grok.com,🇺🇸 Evoxt
   - DOMAIN-SUFFIX,btdig.com,🇺🇸 美国节点
   - DOMAIN-KEYWORD,twimg,🚀 节点选择
   - DOMAIN-KEYWORD,twitter,🚀 节点选择
