@@ -49,8 +49,8 @@ proxy-groups:
     url: https://cp.cloudflare.com/generate_204
     interval: 300
     proxies: 
-      #- 🇯🇵 日本节点
-      #- 🇺🇸 Evoxt
+      - 🇯🇵 日本节点
+      - 🇺🇸 Evoxt
       - 🇺🇸 美国节点
       - 🇭🇰 香港节点
       - 🇪🇺 CF Worker
