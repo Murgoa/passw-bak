@@ -149,9 +149,9 @@ rules:
   - DOMAIN-SUFFIX,notion.so,🚀 节点选择
   - RULE-SET,telegramcidr,🚀 节点选择
 
-  - RULE-SET,openai,🇼🇸 机场
-  - DOMAIN-KEYWORD,openai,🇼🇸 机场
-  - DOMAIN-KEYWORD,chatgpt,🇼🇸 机场
+  - RULE-SET,openai,🇪🇺 CF Worker
+  - DOMAIN-KEYWORD,openai,🇪🇺 CF Worker
+  - DOMAIN-KEYWORD,chatgpt,🇪🇺 CF Worker
   - DOMAIN-KEYWORD,reddit,🇺🇸 Evoxt
   - DOMAIN-SUFFIX,api.x.com,🇺🇸 Evoxt
   - DOMAIN-SUFFIX,x.com,🇺🇸 Evoxt
