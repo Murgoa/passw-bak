@@ -168,8 +168,8 @@ rules:
   - RULE-SET,telegramcidr,🚀 节点选择
 
   - RULE-SET,openai,🚀 节点选择
-  - DOMAIN-KEYWORD,openai,🇼🇸 机场
-  - DOMAIN-KEYWORD,chatgpt,🇼🇸 机场
+  - DOMAIN-KEYWORD,openai,🇺🇸 Evoxt
+  - DOMAIN-KEYWORD,chatgpt,🇺🇸 Evoxt
   - DOMAIN-KEYWORD,reddit,🇺🇸 Evoxt
   - DOMAIN-SUFFIX,api.x.com,🇺🇸 Evoxt
   - DOMAIN-SUFFIX,x.com,🇺🇸 Evoxt
