@@ -94,7 +94,6 @@ rules:
   - DOMAIN-SUFFIX,channels.weixin.qq.com,🇨🇳 回家
   - DOMAIN-SUFFIX,hostloc.com,🇨🇳 回家
 
-  - RULE-SET,openai,🇺🇸 Evoxt
   - DOMAIN-KEYWORD,binance,🇯🇵 日本节点
   - DOMAIN-SUFFIX,binance.com,🇯🇵 日本节点
   - DOMAIN-KEYWORD,bnbstatic,🇯🇵 日本节点
@@ -131,6 +130,9 @@ rules:
   - RULE-SET,telegramcidr,🚀 节点选择
 
   - DOMAIN-KEYWORD,reddit,🇺🇸 Evoxt
+  - RULE-SET,openai,🇺🇸 Evoxt
+  - DOMAIN-KEYWORD,openai,🇺🇸 Evoxt
+  - DOMAIN-KEYWORD,chatgpt,🇺🇸 Evoxt
   - DOMAIN-SUFFIX,api.x.com,🇺🇸 Evoxt
   - DOMAIN-SUFFIX,x.com,🇺🇸 Evoxt
   - DOMAIN-SUFFIX,x.ai,🇺🇸 Evoxt
