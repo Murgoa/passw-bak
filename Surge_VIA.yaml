@@ -58,41 +58,21 @@ proxy-groups:
   #- {name: "🇭🇰 香港节点", type: relay, proxies: ["🇯🇵 日本节点", "🇭🇰 直连"]}
 
 rule-providers:
-  reject:
-    {"type": "http", "behavior": "domain", "url": "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt", "path": "./ruleset/reject.yaml", "interval": 86400}
-
-  icloud:
-    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/icloud.txt","path":"./ruleset/icloud.yaml","interval":86400}
-
-  openai:
-    {"type":"http","behavior":"domain","url":"https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml","path":"./ruleset/openai.yaml","interval":86400}
-
-  apple:
-    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/apple.txt","path":"./ruleset/apple.yaml","interval":86400}
-
-  google:
-    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/google.txt","path":"./ruleset/google.yaml","interval":86400}
-
-  proxy:
-    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/proxy.txt","path":"./ruleset/proxy.yaml","interval":86400}
-
-  direct:
-    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt","path":"./ruleset/direct.yaml","interval":86400}
-
-  private:
-    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/private.txt","path":"./ruleset/private.yaml","interval":86400}
-
-  gfw:
-    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.txt","path":"./ruleset/gfw.yaml","interval":86400}
-
-  greatfire:
-    {"type":"http","behavior":"domain","url":"https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/greatfire.txt","path":"./ruleset/greatfire.yaml","interval":86400}
-
-  tld-not-cn: {type: http, behavior: domain, url: "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/tld-not-cn.txt", path: ./ruleset/tld-not-cn.yaml, interval: 86400}
-  telegramcidr: {type: http, behavior: ipcidr, url: "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt", path: ./ruleset/telegramcidr.yaml, interval: 86400}
-  cncidr: {type: http, behavior: ipcidr, url: "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt", path: ./ruleset/cncidr.yaml, interval: 86400}
-  lancidr: {type: http, behavior: ipcidr, url: "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/lancidr.txt", path: ./ruleset/lancidr.yaml, interval: 86400}
-  applications: {type: http, behavior: classical, url: "https://fastly.jsdelivr.net/gh/Murgoa/passw-bak@main/app.txt", path: ./ruleset/applications.yaml, interval: 86400}
+  reject: {"type": "http", "behavior": "domain", "url": "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt", "path": "./ruleset/reject.yaml", "interval": 86400}
+  icloud: {"type": "http", "behavior": "domain", "url": "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/icloud.txt", "path": "./ruleset/icloud.yaml", "interval": 86400}
+  openai: {"type": "http", "behavior": "domain", "url": "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml", "path": "./ruleset/openai.yaml", "interval": 86400}
+  apple: {"type": "http", "behavior": "domain", "url": "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/apple.txt", "path": "./ruleset/apple.yaml", "interval": 86400}
+  google: {"type": "http", "behavior": "domain", "url": "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/google.txt", "path": "./ruleset/google.yaml", "interval": 86400}
+  proxy: {"type": "http", "behavior": "domain", "url": "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/proxy.txt", "path": "./ruleset/proxy.yaml", "interval": 86400}
+  direct: {"type": "http", "behavior": "domain", "url": "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt", "path": "./ruleset/direct.yaml", "interval": 86400}
+  private: {"type": "http", "behavior": "domain", "url": "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/private.txt", "path": "./ruleset/private.yaml", "interval": 86400}
+  gfw: {"type": "http", "behavior": "domain", "url": "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.txt", "path": "./ruleset/gfw.yaml", "interval": 86400}
+  greatfire: {"type": "http", "behavior": "domain", "url": "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/greatfire.txt", "path": "./ruleset/greatfire.yaml", "interval": 86400}
+  tld-not-cn: {"type": "http", "behavior": "domain", "url": "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/tld-not-cn.txt", "path": "./ruleset/tld-not-cn.yaml", "interval": 86400}
+  telegramcidr: {"type": "http", "behavior": "ipcidr", "url": "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt", "path": "./ruleset/telegramcidr.yaml", "interval": 86400}
+  cncidr: {"type": "http", "behavior": "ipcidr", "url": "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt", "path": "./ruleset/cncidr.yaml", "interval": 86400}
+  lancidr: {"type": "http", "behavior": "ipcidr", "url": "https://ghproxy.net/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/lancidr.txt", "path": "./ruleset/lancidr.yaml", "interval": 86400}
+  applications: {"type": "http", "behavior": "classical", "url": "https://fastly.jsdelivr.net/gh/Murgoa/passw-bak@main/app.txt", "path": "./ruleset/applications.yaml", "interval": 86400}
 
 rules:
   - DOMAIN-KEYWORD,parallels,REJECT
@@ -149,9 +129,6 @@ rules:
   - DOMAIN-SUFFIX,notion.so,🚀 节点选择
   - RULE-SET,telegramcidr,🚀 节点选择
 
-  - RULE-SET,openai,🇺🇸 Evoxt
-  - DOMAIN-KEYWORD,openai,🇺🇸 Evoxt
-  - DOMAIN-KEYWORD,chatgpt,🇺🇸 Evoxt
   - DOMAIN-KEYWORD,reddit,🇺🇸 Evoxt
   - DOMAIN-SUFFIX,api.x.com,🇺🇸 Evoxt
   - DOMAIN-SUFFIX,x.com,🇺🇸 Evoxt
@@ -176,6 +153,7 @@ rules:
   - DOMAIN,yacd.haishan.me,DIRECT
   - RULE-SET,private,DIRECT
   - RULE-SET,reject,REJECT
+  - RULE-SET,openai,🇺🇸 Evoxt
   - RULE-SET,icloud,DIRECT
   - RULE-SET,apple,DIRECT
   - RULE-SET,google,DIRECT
