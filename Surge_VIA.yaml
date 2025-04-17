@@ -5,7 +5,8 @@ log-level: info
 ipv6: false
 geodata-mode: true
 tcp-concurrent: true
-dns: {enable: true, listen: ":53", enhanced-mode: redir-host, ipv6: false, nameserver: ["https://dns.alidns.com/dns-query", "tls://dns.alidns.com:853", "https://doh.pub/dns-query", "tls://dot.pub:853"], cache: {enable: true, size: 4000}, use-hosts: true}
+dns: {enable: true, listen: ":53", ipv6: false, default-nameserver: ["223.5.5.5"], enhanced-mode: "fake-ip", fake-ip-range: "198.18.0.1/16", fake-ip-filter-mode: "blacklist", fake-ip-filter: ["*.lan"], nameserver-policy: {"+.arpa": "10.0.0.1", "geoip-code:cn": ["https://doh.pub/dns-query", "https://dns.alidns.com/dns-query"]}, nameserver: ["https://doh.pub/dns-query", "https://dns.alidns.com/dns-query"], fallback: ["tls://8.8.4.4", "tls://1.1.1.1"], proxy-server-nameserver: ["https://doh.pub/dns-query"], direct-nameserver: ["system"], direct-nameserver-follow-policy: false, fallback-filter: {geoip: true, geoip-code: "CN", geosite: ["gfw"], ipcidr: ["240.0.0.0/4"], domain: ["+.google.com", "+.facebook.com", "+.youtube.com"]}}
+
 
 proxies:
   - {name: 🖥️ Surge, server: '127.0.0.1', port: 6153, type: socks5 }
