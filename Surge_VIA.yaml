@@ -94,6 +94,7 @@ rules:
   - DOMAIN-SUFFIX,channels.weixin.qq.com,🇨🇳 回家
   - DOMAIN-SUFFIX,hostloc.com,🇨🇳 回家
 
+  - RULE-SET,openai,🇺🇸 Evoxt
   - DOMAIN-KEYWORD,binance,🇯🇵 日本节点
   - DOMAIN-SUFFIX,binance.com,🇯🇵 日本节点
   - DOMAIN-KEYWORD,bnbstatic,🇯🇵 日本节点
@@ -153,7 +154,6 @@ rules:
   - DOMAIN,yacd.haishan.me,DIRECT
   - RULE-SET,private,DIRECT
   - RULE-SET,reject,REJECT
-  - RULE-SET,openai,🇺🇸 Evoxt
   - RULE-SET,icloud,DIRECT
   - RULE-SET,apple,DIRECT
   - RULE-SET,google,DIRECT
