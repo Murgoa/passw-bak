@@ -5,7 +5,7 @@ log-level: info
 ipv6: false
 geodata-mode: true
 tcp-concurrent: true
-dns: {enable: true, listen: '127.0.0.1:1053', ipv6: false, default-nameserver: [114.114.114.114, 223.5.5.5, 119.29.29.29], enhanced-mode: redir-host, fake-ip-range: 28.0.0.1/8, use-hosts: true}
+dns: {enable: true, listen: ":53", enhanced-mode: redir-host, ipv6: false, nameserver: ["https://dns.alidns.com/dns-query", "tls://dns.alidns.com:853", "https://doh.pub/dns-query", "tls://dot.pub:853"], cache: {enable: true, size: 4000}, use-hosts: true}
 
 proxies:
   - {name: 🖥️ Surge, server: '127.0.0.1', port: 6153, type: socks5 }
@@ -149,9 +149,9 @@ rules:
   - DOMAIN-SUFFIX,notion.so,🚀 节点选择
   - RULE-SET,telegramcidr,🚀 节点选择
 
-  - RULE-SET,openai,🇪🇺 CF Worker
-  - DOMAIN-KEYWORD,openai,🇪🇺 CF Worker
-  - DOMAIN-KEYWORD,chatgpt,🇪🇺 CF Worker
+  - RULE-SET,openai,🇺🇸 Evoxt
+  - DOMAIN-KEYWORD,openai,🇺🇸 Evoxt
+  - DOMAIN-KEYWORD,chatgpt,🇺🇸 Evoxt
   - DOMAIN-KEYWORD,reddit,🇺🇸 Evoxt
   - DOMAIN-SUFFIX,api.x.com,🇺🇸 Evoxt
   - DOMAIN-SUFFIX,x.com,🇺🇸 Evoxt
