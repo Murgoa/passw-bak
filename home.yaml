@@ -175,6 +175,7 @@ rules:
   - DOMAIN-SUFFIX,x.com,🇺🇸 Evoxt
   - DOMAIN-SUFFIX,x.ai,🇺🇸 Evoxt
   - DOMAIN-SUFFIX,grok.com,🇺🇸 Evoxt
+  - DOMAIN-SUFFIX,intercom.com,🇺🇸 Evoxt
   - DOMAIN-SUFFIX,btdig.com,🇺🇸 美国节点
   - DOMAIN-KEYWORD,twimg,🚀 节点选择
   - DOMAIN-KEYWORD,twitter,🚀 节点选择
