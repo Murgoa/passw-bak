@@ -37,9 +37,16 @@ case $ARCH in
     *)       echo "不支持的架构: $ARCH"; exit 1 ;;
 esac
 
+
+# 拉取最新版本
+LATEST_VER=$(curl -s https://api.github.com/repos/anytls/anytls-go/releases/latest | grep '"tag_name":' | cut -d'"' -f4)
+if [ -z "$LATEST_VER" ]; then
+    LATEST_VER="v0.0.8"
+fi
+DOWNLOAD_URL="https://github.com/anytls/anytls-go/releases/download/${LATEST_VER}/anytls_${LATEST_VER#v}_linux_${BINARY_ARCH}.zip"
+ZIP_FILE="/tmp/anytls_${LATEST_VER#v}_linux_${BINARY_ARCH}.zip"
+
 # 配置参数
-DOWNLOAD_URL="https://github.com/anytls/anytls-go/releases/download/v0.0.8/anytls_0.0.8_linux_${BINARY_ARCH}.zip"
-ZIP_FILE="/tmp/anytls_0.0.8_linux_${BINARY_ARCH}.zip"
 BINARY_DIR="/usr/local/bin"
 BINARY_NAME="anytls-server"
 SERVICE_NAME="anytls"
@@ -79,7 +86,7 @@ show_menu() {
 
 install_anytls() {
     # 下载
-    echo "[1/5] 下载 anytls (${BINARY_ARCH}架构)..."
+    echo "[1/6] 下载 anytls (${BINARY_ARCH}架构)..."
     wget "$DOWNLOAD_URL" -O "$ZIP_FILE" || {
         echo "下载失败！可能原因："
         echo "1. 网络连接问题"
@@ -88,12 +95,24 @@ install_anytls() {
     }
 
     # 解压
-    echo "[2/5] 解压文件..."
+    echo "[2/6] 解压文件..."
     unzip -o "$ZIP_FILE" -d "$BINARY_DIR" || {
         echo "解压失败！文件可能损坏"
         exit 1
     }
     chmod +x "$BINARY_DIR/$BINARY_NAME"
+
+    # 输入端口
+    DEFAULT_PORT="30602"
+    printf "请输入监听端口 [默认: $DEFAULT_PORT]: "
+    read CUSTOM_PORT
+    if [ -z "$CUSTOM_PORT" ]; then
+        CUSTOM_PORT="$DEFAULT_PORT"
+    fi
+    if ! echo "$CUSTOM_PORT" | grep -Eq '^[0-9]{1,5}$' || [ "$CUSTOM_PORT" -lt 1 ] || [ "$CUSTOM_PORT" -gt 65535 ]; then
+        echo "端口号不合法，必须为1-65535之间的数字"
+        exit 1
+    fi
 
     # 输入密码
     printf "设置 anytls 的密码: "
@@ -104,13 +123,13 @@ install_anytls() {
     }
 
     # 配置 OpenRC 服务脚本
-    echo "[3/5] 配置 openrc 服务..."
+    echo "[3/6] 配置 openrc 服务..."
     cat > /etc/init.d/$SERVICE_NAME <<EOF
 #!/sbin/openrc-run
 
 description="anytls Service"
 command="${BINARY_DIR}/${BINARY_NAME}"
-command_args="-l 0.0.0.0:30602 -p $PASSWORD"
+command_args="-l 0.0.0.0:${CUSTOM_PORT} -p $PASSWORD"
 command_background="yes"
 pidfile="/var/run/${SERVICE_NAME}.pid"
 EOF
@@ -118,7 +137,7 @@ EOF
     chmod +x /etc/init.d/$SERVICE_NAME
 
     # 启动服务
-    echo "[4/5] 启动服务..."
+    echo "[4/6] 启动服务..."
     rc-update add $SERVICE_NAME default
     rc-service $SERVICE_NAME restart
 
@@ -132,7 +151,7 @@ EOF
     echo -e "\n\033[32m√ 安装完成！\033[0m"
     echo -e "\033[32m√ 架构类型: ${BINARY_ARCH}\033[0m"
     echo -e "\033[32m√ 服务名称: $SERVICE_NAME\033[0m"
-    echo -e "\033[32m√ 监听端口: 0.0.0.0:30602\033[0m"
+    echo -e "\033[32m√ 监听端口: 0.0.0.0:${CUSTOM_PORT}\033[0m"
     echo -e "\033[32m√ 密码已设置为: $PASSWORD\033[0m"
     echo -e "\n\033[33m管理命令:\033[0m"
     echo -e "  启动: rc-service $SERVICE_NAME start"
@@ -142,7 +161,7 @@ EOF
 
     # 高亮显示连接信息
     echo -e "\n\033[36m\033[1m〓 NekoBox连接信息 〓\033[0m"
-    echo -e "\033[30;43m\033[1m anytls://$PASSWORD@$SERVER_IP:30602/?insecure=1 \033[0m"
+    echo -e "\033[30;43m\033[1m anytls://$PASSWORD@$SERVER_IP:${CUSTOM_PORT}/?insecure=1 \033[0m"
     echo -e "\033[33m\033[1m请妥善保管此连接信息！\033[0m"
 }
 
