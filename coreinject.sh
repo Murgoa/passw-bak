@@ -37,7 +37,7 @@ fi
 if [ -f "$STARTUP_SCRIPT" ]; then
     echo "启动秋城落叶_启动.command ..."
     chmod +x "$STARTUP_SCRIPT"  # 确保脚本有执行权限
-    ./"$STARTUP_SCRIPT" &
+    。"$STARTUP_SCRIPT" &
     if [ $? -eq 0 ]; then
         echo "启动脚本成功"
     else
