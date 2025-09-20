@@ -8,7 +8,7 @@ STARTUP_SCRIPT="$COREINJECT_DIR/秋城落叶_启动.command"
 # 0. 先获取 sudo 权限并缓存
 echo "需要管理员权限来继续执行..."
 sudo -v
-if [ $? -ne 0 ]; 键，然后
+if [ $? -ne 0 ]; then
     echo "获取 sudo 权限失败，请检查密码是否正确"
     exit 1
 fi
