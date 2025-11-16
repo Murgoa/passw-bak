@@ -33,7 +33,7 @@ cd "$DOWNLOADS_DIR" || { echo "无法切换到 $DOWNLOADS_DIR，请检查路径"
 
 # 3. 克隆 Git 仓库 (depth=1)
 echo "正在克隆 CoreInject 仓库..."
-git clone --depth=1 https://git.sr.ht/~qiuchenly/CoreInject
+git clone https://git.sr.ht/~qiuchenly/CoreInject --depth=1
 if [ $? -eq 0 ]; then
     echo "仓库克隆成功"
 else
