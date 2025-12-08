@@ -1,78 +1,728 @@
-payload:
-  - PROCESS-NAME,hysteria
-  - PROCESS-NAME,hysteria.exe
-  - PROCESS-NAME,leaf
-  - PROCESS-NAME,leaf.exe
-  - PROCESS-NAME,naive
-  - PROCESS-NAME,naive.exe
-  - PROCESS-NAME,privoxy
-  - PROCESS-NAME,privoxy.exe
-  - PROCESS-NAME,proxifier
-  - PROCESS-NAME,proxifier.exe
-  - PROCESS-NAME,shadowsocks
-  - PROCESS-NAME,shadowsocks.exe
-  - PROCESS-NAME,shadowsocksr
-  - PROCESS-NAME,shadowsocksr.exe
-  - PROCESS-NAME,speeder
-  - PROCESS-NAME,speeder.exe
-  - PROCESS-NAME,speederv2
-  - PROCESS-NAME,speederv2.exe
-  - PROCESS-NAME,ss-local
-  - PROCESS-NAME,ss-local.exe
-  - PROCESS-NAME,sslocal
-  - PROCESS-NAME,sslocal.exe
-  - PROCESS-NAME,tailscale
-  - PROCESS-NAME,tailscale.exe
-  - PROCESS-NAME,tinyvpn
-  - PROCESS-NAME,tinyvpn.exe
-  - PROCESS-NAME,trojan
-  - PROCESS-NAME,trojan.exe
-  - PROCESS-NAME,trojan-go
-  - PROCESS-NAME,trojan-go.exe
-  - PROCESS-NAME,tuic
-  - PROCESS-NAME,tuic.exe
-  - PROCESS-NAME,tuic-client
-  - PROCESS-NAME,tuic-client.exe
-  - PROCESS-NAME,udp2raw
-  - PROCESS-NAME,udp2raw.exe
-  - PROCESS-NAME,udp2raw_mp
-  - PROCESS-NAME,udp2raw_mp.exe
-  - PROCESS-NAME,v2ray
-  - PROCESS-NAME,v2ray.exe
-  - PROCESS-NAME,xray
-  - PROCESS-NAME,xray.exe
-  - PROCESS-NAME,Surge
-  - PROCESS-NAME,Surge 2
-  - PROCESS-NAME,Surge 3
-  - PROCESS-NAME,Surge 4
-  - PROCESS-NAME,Surge%202
-  - PROCESS-NAME,Surge%203
-  - PROCESS-NAME,Surge%204
-  - PROCESS-NAME,BitComet
-  - PROCESS-NAME,BitComet.exe
-  - PROCESS-NAME,DownloadService
-  - PROCESS-NAME,Folx
-  - PROCESS-NAME,NeatDM
-  - PROCESS-NAME,NeatDM.exe
-  - PROCESS-NAME,NetTransport
-  - PROCESS-NAME,NetTransport.exe
-  - PROCESS-NAME,Thunder
-  - PROCESS-NAME,Thunder.exe
-  - PROCESS-NAME,ThunderVIP.exe
-  - PROCESS-NAME,Transmission
-  - PROCESS-NAME,WebTorrent
-  - PROCESS-NAME,WebTorrent.exe
-  - PROCESS-NAME,fdm
-  - PROCESS-NAME,fdm.exe
-  - PROCESS-NAME,qBittorrent
-  - PROCESS-NAME,qbittorrent.exe
-  - PROCESS-NAME,qbittorrent-nox
-  - PROCESS-NAME,transmission-daemon.exe
-  - PROCESS-NAME,transmission-qt.exe
-  - PROCESS-NAME,uTorrent
-  - PROCESS-NAME,uTorrent.exe
-  - PROCESS-NAME,xdm
-  - PROCESS-NAME,xdm.exe
-  - PROCESS-NAME,xdman
-  - PROCESS-NAME,xdman.exe
-  - PROCESS-NAME,Maps.app
+# =================================== DOMAIN ===================================
+DOMAIN,10.rarbg.com
+DOMAIN,1c.premierzal.ru
+DOMAIN,6.pocketnet.app
+DOMAIN,7.rarbg.me
+DOMAIN,7.rarbg.to
+DOMAIN,8.rarbg.com
+DOMAIN,8.rarbg.to
+DOMAIN,academic-p2p.appspot.com
+DOMAIN,aegir.sexy
+DOMAIN,alltorrents.net
+DOMAIN,announce.partis.si
+DOMAIN,big-boss-tracker.net
+DOMAIN,bt-club.ws
+DOMAIN,bt.beatrice-raws.org
+DOMAIN,bt.hliang.com
+DOMAIN,bt.ktrackers.com
+DOMAIN,bt.nnm-club.info
+DOMAIN,bt.ptlsp.com
+DOMAIN,bt02.nnm-club.cc
+DOMAIN,bt02.nnm-club.info
+DOMAIN,btracker.top
+DOMAIN,btx.anifilm.tv
+DOMAIN,canardscitrons.nohost.me
+DOMAIN,carbon-bonsai-621.appspot.com
+DOMAIN,ch3oh.ru
+DOMAIN,datascene.net
+DOMAIN,deviloid.net
+DOMAIN,ed2k.vip
+DOMAIN,ehtracker.org
+DOMAIN,epider.me
+DOMAIN,fh2.cmp-gaming.com
+DOMAIN,hdreactor.org
+DOMAIN,irrenhaus.dyndns.dk
+DOMAIN,jutone.com
+DOMAIN,kaztorka.org
+DOMAIN,mail.artixlinux.org
+DOMAIN,metal.iplay.ro
+DOMAIN,moonburrow.club
+DOMAIN,new-line.net
+DOMAIN,odd-hd.fr
+DOMAIN,oh.fuuuuuck.com
+DOMAIN,open.tracker.cl
+DOMAIN,open.tracker.ink
+DOMAIN,open.u-p.pw
+DOMAIN,open.xxtor.com
+DOMAIN,opentracker.dg2.i2p
+DOMAIN,opentracker.eeptorrent.i2p
+DOMAIN,opentracker.fattydove.i2p
+DOMAIN,opentracker.r4sas.i2p
+DOMAIN,opentracker.simp.i2p
+DOMAIN,opentracker.skank.i2p
+DOMAIN,p2p.0g.cx
+DOMAIN,peertube.cpy.re
+DOMAIN,pirate.t-1.org
+DOMAIN,proaudiotorrents.org
+DOMAIN,qimlze77z7w32lx2ntnwkuqslrzlsqy7774v3urueuarafyqik5a.b32.i2p
+DOMAIN,retracker.ip.ncnet.ru
+DOMAIN,retracker.local
+DOMAIN,ryjer.com
+DOMAIN,sigmatracker.i2p
+DOMAIN,su-data.com
+DOMAIN,t.btcland.xyz
+DOMAIN,t.zerg.pw
+DOMAIN,t1.aag.moe
+DOMAIN,t1.hloli.org
+DOMAIN,tamas3.ynh.fr
+DOMAIN,tc-boxing.com
+DOMAIN,tehconnection.eu
+DOMAIN,threads.canofsocks.com
+DOMAIN,torrent.arjlover.net
+DOMAIN,torrent.mp3quran.net
+DOMAIN,torrent.unix-ag.uni-kl.de
+DOMAIN,torrents.artixlinux.org
+DOMAIN,torrents.hikarinokiseki.com
+DOMAIN,torrents.linuxmint.com
+DOMAIN,torrentzilla.org
+DOMAIN,tr-zhuqiy-2.dgj055.icu
+DOMAIN,tr.burnabyhighstar.com
+DOMAIN,tr.fuckbitcoin.xyz
+DOMAIN,tracker-zhuqiy.dgj055.icu
+DOMAIN,tracker.23794.top
+DOMAIN,tracker.anima.nz
+DOMAIN,tracker.anirena.com
+DOMAIN,tracker.artixlinux.org
+DOMAIN,tracker.auctor.tv
+DOMAIN,tracker.cangku.moe
+DOMAIN,tracker.cloudit.top
+DOMAIN,tracker.cubonegro.lol
+DOMAIN,tracker.ddunlimited.net
+DOMAIN,tracker.deadorbit.nl
+DOMAIN,tracker.dm258.cn
+DOMAIN,tracker.dump.cl
+DOMAIN,tracker.edkj.club
+DOMAIN,tracker.enitin.xyz
+DOMAIN,tracker.expli.top
+DOMAIN,tracker.fansub.id
+DOMAIN,tracker.farted.net
+DOMAIN,tracker.fatkhoala.org
+DOMAIN,tracker.frozen-layer.com
+DOMAIN,tracker.gcrreen.xyz
+DOMAIN,tracker.healthcareindia.store
+DOMAIN,tracker.ipfsscan.io
+DOMAIN,tracker.jamesthebard.net
+DOMAIN,tracker.jdx3.org
+DOMAIN,tracker.jiesen.life
+DOMAIN,tracker.lilithraws.org
+DOMAIN,tracker.linkomanija.org
+DOMAIN,tracker.loligirl.cn
+DOMAIN,tracker.mininova.org
+DOMAIN,tracker.monikadesign.uk
+DOMAIN,tracker.netmap.top
+DOMAIN,tracker.nighthawk.pw
+DOMAIN,tracker.picotorrent.one
+DOMAIN,tracker.t-rb.org
+DOMAIN,tracker.tallpenguin.org
+DOMAIN,tracker.theempire.bz
+DOMAIN,tracker.therarbg.com
+DOMAIN,tracker.thinelephant.org
+DOMAIN,tracker.token.ro
+DOMAIN,tracker.torrentbytes.net
+DOMAIN,tracker.trancetraffic.com
+DOMAIN,tracker.vraphim.com
+DOMAIN,tracker.xfapi.top
+DOMAIN,tracker.zond.org
+DOMAIN,tracker1.ctix.cn
+DOMAIN,tracker2.ctix.cn
+DOMAIN,tracker2.dler.com
+DOMAIN,tracker2.postman.i2p
+DOMAIN,trackers.mlsub.net
+DOMAIN,trackers.ptlsp.com
+DOMAIN,ttk2.nbaonlineservice.com
+DOMAIN,u.peer-exchange.download
+DOMAIN,uatracker.net
+DOMAIN,wg.mortis.me
+DOMAIN,ws.peer.ooo
+DOMAIN,www.bit-hdtv.com
+DOMAIN,www.learnbits.me
+DOMAIN,www.legittorrents.info
+DOMAIN,www.megatorrents.kg
+DOMAIN,www.peckservers.com
+DOMAIN,www.shnflac.net
+DOMAIN,www.siambt.com
+DOMAIN,www.thevault.bz
+DOMAIN,www.zone-torrent.net
+DOMAIN,xbtrutor.com
+DOMAIN,xtremewrestlingtorrents.net
+DOMAIN,y.paranoid.agency
+DOMAIN,y.t-1.org
+DOMAIN,yggtracker.i2p.rocks
+DOMAIN,yolo.liberbear.com
+DOMAIN,z.paranoid.agency
+DOMAIN,zupix.online
+
+# =============================== DOMAIN-SUFFIX ===============================
+DOMAIN-SUFFIX,00.mercax.com
+DOMAIN-SUFFIX,00cdn.com
+DOMAIN-SUFFIX,0123456789nonexistent.com
+DOMAIN-SUFFIX,0205.uptm.ch
+DOMAIN-SUFFIX,0d.kebhana.mx
+DOMAIN-SUFFIX,1.track.ga
+DOMAIN-SUFFIX,1.tracker.eu.org
+DOMAIN-SUFFIX,10.rarbg.me
+DOMAIN-SUFFIX,11.rarbg.com
+DOMAIN-SUFFIX,12.rarbg.me
+DOMAIN-SUFFIX,1337.abcvg.info
+DOMAIN-SUFFIX,155.com
+DOMAIN-SUFFIX,1ptba.com
+DOMAIN-SUFFIX,2.track.ga
+DOMAIN-SUFFIX,2.tracker.eu.org
+DOMAIN-SUFFIX,2sonar.com
+DOMAIN-SUFFIX,2xfree.org
+DOMAIN-SUFFIX,3.tracker.eu.org
+DOMAIN-SUFFIX,47.ip-51-68-199.eu
+DOMAIN-SUFFIX,52pt.site
+DOMAIN-SUFFIX,60-fps.org
+DOMAIN-SUFFIX,61626c.net
+DOMAIN-SUFFIX,6ahddutb1ucc3cp.ru
+DOMAIN-SUFFIX,7ece.co.uk
+DOMAIN-SUFFIX,88cdn.com
+DOMAIN-SUFFIX,8uri.cn
+DOMAIN-SUFFIX,9.rarbg.com
+DOMAIN-SUFFIX,9.rarbg.me
+DOMAIN-SUFFIX,9.rarbg.to
+DOMAIN-SUFFIX,94.228.192.98.nyud.net
+DOMAIN-SUFFIX,a.leopard-raws.org
+DOMAIN-SUFFIX,aaa.army
+DOMAIN-SUFFIX,aboutbeautifulgallopinghorsesinthegreenpasture.online
+DOMAIN-SUFFIX,abufinzio.monocul.us
+DOMAIN-SUFFIX,academic-p2p.carlosdelfino.eti.br
+DOMAIN-SUFFIX,acg.rip
+DOMAIN-SUFFIX,adm.category5.tv
+DOMAIN-SUFFIX,admin.52ywp.com
+DOMAIN-SUFFIX,admin.videoenpoche.info
+DOMAIN-SUFFIX,adminion.n-blade.ru
+DOMAIN-SUFFIX,agusiq-torrents.pl
+DOMAIN-SUFFIX,aidoru-online.me
+DOMAIN-SUFFIX,aliasgos.top
+DOMAIN-SUFFIX,all4nothin.net
+DOMAIN-SUFFIX,allesanddro.de
+DOMAIN-SUFFIX,alpha.torrenttracker.nl
+DOMAIN-SUFFIX,alpharatio.cc
+DOMAIN-SUFFIX,amigacity.xyz
+DOMAIN-SUFFIX,anidex.moe
+DOMAIN-SUFFIX,animebytes.tv
+DOMAIN-SUFFIX,animetorrents.me
+DOMAIN-SUFFIX,anisaishuu.de
+DOMAIN-SUFFIX,anisource.spb.ru
+DOMAIN-SUFFIX,ankeschwarz.net
+DOMAIN-SUFFIX,announce.torrentsmd.com.php
+DOMAIN-SUFFIX,anthelion.me
+DOMAIN-SUFFIX,api.bitumconference.ru
+DOMAIN-SUFFIX,aruacfilmes.com.br
+DOMAIN-SUFFIX,asiancinema.me
+DOMAIN-SUFFIX,asnet.pw
+DOMAIN-SUFFIX,atrack-asia-s1.114913.xyz
+DOMAIN-SUFFIX,audiences.me
+DOMAIN-SUFFIX,avgv.cc
+DOMAIN-SUFFIX,avistaz.to
+DOMAIN-SUFFIX,awesome-hd.me
+DOMAIN-SUFFIX,baibako.tv
+DOMAIN-SUFFIX,bandito.byterunner.io
+DOMAIN-SUFFIX,bandito.org
+DOMAIN-SUFFIX,bclearning.top
+DOMAIN-SUFFIX,beautifull.top
+DOMAIN-SUFFIX,beertracker.ml
+DOMAIN-SUFFIX,beitai.pt
+DOMAIN-SUFFIX,benouworldtrip.fr
+DOMAIN-SUFFIX,beyond-hd.me
+DOMAIN-SUFFIX,bibliotik.me
+DOMAIN-SUFFIX,bigfoot1942.sektori.org
+DOMAIN-SUFFIX,bigtorrent.org
+DOMAIN-SUFFIX,bioquantum.co.za
+DOMAIN-SUFFIX,bithq.org
+DOMAIN-SUFFIX,bitpt.cn
+DOMAIN-SUFFIX,bitseduce.com
+DOMAIN-SUFFIX,bitsparadise.info
+DOMAIN-SUFFIX,bittorrent-tracker.e-n-c-r-y-p-t.net
+DOMAIN-SUFFIX,bittorrent.com
+DOMAIN-SUFFIX,biztorrents.com
+DOMAIN-SUFFIX,blackcats-games.net
+DOMAIN-SUFFIX,blackz.ro
+DOMAIN-SUFFIX,blokas.io
+DOMAIN-SUFFIX,bluebird-hd.org
+DOMAIN-SUFFIX,blutopia.cc
+DOMAIN-SUFFIX,blutopia.xyz
+DOMAIN-SUFFIX,bms-hosxp.com
+DOMAIN-SUFFIX,bobbialbano.com
+DOMAIN-SUFFIX,breakbttext.xyz
+DOMAIN-SUFFIX,broadcasthe.net
+DOMAIN-SUFFIX,bt-tracker.gamexp.ru
+DOMAIN-SUFFIX,bt.3dmgame.com
+DOMAIN-SUFFIX,bt.ali213.net
+DOMAIN-SUFFIX,bt.aoeex.com
+DOMAIN-SUFFIX,bt.artvid.ru
+DOMAIN-SUFFIX,bt.bontal.net
+DOMAIN-SUFFIX,bt.byr.cn
+DOMAIN-SUFFIX,bt.careland.com.cn
+DOMAIN-SUFFIX,bt.cnscg.com
+DOMAIN-SUFFIX,bt.dl1234.com
+DOMAIN-SUFFIX,bt.dmhy.net
+DOMAIN-SUFFIX,bt.dy20188.com
+DOMAIN-SUFFIX,bt.e-burg.org
+DOMAIN-SUFFIX,bt.edwardk.info
+DOMAIN-SUFFIX,bt.firebit.org
+DOMAIN-SUFFIX,bt.hackfront.tk
+DOMAIN-SUFFIX,bt.henbt.com
+DOMAIN-SUFFIX,bt.home-ix.ru
+DOMAIN-SUFFIX,bt.home-ix.ru.nyud.net
+DOMAIN-SUFFIX,bt.oiyo.tk
+DOMAIN-SUFFIX,bt.okmp3.ru
+DOMAIN-SUFFIX,bt.poletracker.org
+DOMAIN-SUFFIX,bt.proxy-for.ga
+DOMAIN-SUFFIX,bt.pusacg.org
+DOMAIN-SUFFIX,bt.rer.lol
+DOMAIN-SUFFIX,bt.rghost.net
+DOMAIN-SUFFIX,bt.rutor.org
+DOMAIN-SUFFIX,bt.sc-ol.com
+DOMAIN-SUFFIX,bt.ttk.artvid.ru
+DOMAIN-SUFFIX,bt.unionpeer.org
+DOMAIN-SUFFIX,bt.xxx-tracker.com
+DOMAIN-SUFFIX,bt.zlofenix.org
+DOMAIN-SUFFIX,bt1.54new.com
+DOMAIN-SUFFIX,bt1.archive.org
+DOMAIN-SUFFIX,bt1.xxxxbt.cc
+DOMAIN-SUFFIX,bt2.54new.com
+DOMAIN-SUFFIX,bt2.archive.org
+DOMAIN-SUFFIX,bt2.careland.com.cn
+DOMAIN-SUFFIX,bt2.edwardk.info
+DOMAIN-SUFFIX,btfile.sdo.com
+DOMAIN-SUFFIX,btschool.club
+DOMAIN-SUFFIX,btt.royalquest.ru
+DOMAIN-SUFFIX,bttrack.9you.com
+DOMAIN-SUFFIX,bttracker.debian.org
+DOMAIN-SUFFIX,btx.anifilm.tv.php
+DOMAIN-SUFFIX,bubu.mapfactor.com
+DOMAIN-SUFFIX,bulkpeers.com
+DOMAIN-SUFFIX,buny.uk
+DOMAIN-SUFFIX,burmese.app
+DOMAIN-SUFFIX,bvarf.tracker.sh
+DOMAIN-SUFFIX,bwtorrents.tv
+DOMAIN-SUFFIX,byoc.fp-afd-ccc.com
+DOMAIN-SUFFIX,byr.pt
+DOMAIN-SUFFIX,calu-atrack.appspot.com
+DOMAIN-SUFFIX,calu-atrack.appspot.com.nyud.net
+DOMAIN-SUFFIX,camera.lei001.com
+DOMAIN-SUFFIX,carapax.net
+DOMAIN-SUFFIX,carpt.net
+DOMAIN-SUFFIX,castradio.net
+DOMAIN-SUFFIX,ccfbits.org
+DOMAIN-SUFFIX,cdn-1.gamecoast.org
+DOMAIN-SUFFIX,cdn-2.gamecoast.org
+DOMAIN-SUFFIX,cernet-tracker.appspot.com
+DOMAIN-SUFFIX,cgpeers.com
+DOMAIN-SUFFIX,chanchan.uchuu.co.uk
+DOMAIN-SUFFIX,chdbits.co
+DOMAIN-SUFFIX,chdbits.xyz
+DOMAIN-SUFFIX,chddiy.xyz
+DOMAIN-SUFFIX,chihaya.de
+DOMAIN-SUFFIX,chihaya.toss.li
+DOMAIN-SUFFIX,cinemageddon.net
+DOMAIN-SUFFIX,cinematik.net
+DOMAIN-SUFFIX,cinemaz.to
+DOMAIN-SUFFIX,classix-unlimited.co.uk
+DOMAIN-SUFFIX,code2chicken.nl
+DOMAIN-SUFFIX,codeaddress.top
+DOMAIN-SUFFIX,comicat.org
+DOMAIN-SUFFIX,concen.org
+DOMAIN-SUFFIX,concertos.live
+DOMAIN-SUFFIX,contra.sf.ca.us
+DOMAIN-SUFFIX,contrata.putasysexo.com
+DOMAIN-SUFFIX,coppersurfer.tk
+DOMAIN-SUFFIX,cpleft.com
+DOMAIN-SUFFIX,craiovatracker.com
+DOMAIN-SUFFIX,creditracker.net
+DOMAIN-SUFFIX,cutiegirl.ru
+DOMAIN-SUFFIX,cx42light.cn
+DOMAIN-SUFFIX,cyanbug.net
+DOMAIN-SUFFIX,d40969.acod.regrucolo.ru
+DOMAIN-SUFFIX,data-bg.net
+DOMAIN-SUFFIX,daveking.com
+DOMAIN-SUFFIX,defaultro.top
+DOMAIN-SUFFIX,deluge-torrent.org
+DOMAIN-SUFFIX,dendox.org
+DOMAIN-SUFFIX,denis.stalker.h3q.com
+DOMAIN-SUFFIX,denis.stalker.upeer.me
+DOMAIN-SUFFIX,dicmusic.club
+DOMAIN-SUFFIX,dicmusic.com
+DOMAIN-SUFFIX,discfan.net
+DOMAIN-SUFFIX,discord.heihachi.pw
+DOMAIN-SUFFIX,divxhunt.me
+DOMAIN-SUFFIX,dmhy.aewb.cn
+DOMAIN-SUFFIX,dns.icoa.cn
+DOMAIN-SUFFIX,dpiui.reedlan.com
+DOMAIN-SUFFIX,drumkitx.com
+DOMAIN-SUFFIX,dxdhd.com
+DOMAIN-SUFFIX,eastgame.org
+DOMAIN-SUFFIX,echostar.ddnsfree.com
+DOMAIN-SUFFIX,eddie4.nl
+DOMAIN-SUFFIX,edu.uifr.ru
+DOMAIN-SUFFIX,eliastre100.fr
+DOMAIN-SUFFIX,elitezones.ro
+DOMAIN-SUFFIX,empornium.is
+DOMAIN-SUFFIX,empornium.me
+DOMAIN-SUFFIX,empornium.sx
+DOMAIN-SUFFIX,engplus.ru
+DOMAIN-SUFFIX,et8.org
+DOMAIN-SUFFIX,evan.im
+DOMAIN-SUFFIX,evening-badlands-6215.herokuapp.com
+DOMAIN-SUFFIX,exodus.desync.com
+DOMAIN-SUFFIX,exoticaz.to
+DOMAIN-SUFFIX,explodie.org
+DOMAIN-SUFFIX,explodle.org
+DOMAIN-SUFFIX,extracker.dahrkael.net
+DOMAIN-SUFFIX,extremlymtorrents.ws
+DOMAIN-SUFFIX,falconalliance.cn
+DOMAIN-SUFFIX,fanciertrack.top
+DOMAIN-SUFFIX,fe.dealclub.de
+DOMAIN-SUFFIX,filelist.io
+DOMAIN-SUFFIX,finbytes.org
+DOMAIN-SUFFIX,fontong.com
+DOMAIN-SUFFIX,forever-tracker.zooki.xyz
+DOMAIN-SUFFIX,free-tracker.zooki.xyz
+DOMAIN-SUFFIX,freerainbowtables.com
+DOMAIN-SUFFIX,funfile.org
+DOMAIN-SUFFIX,fxtt.ru
+DOMAIN-SUFFIX,gainbound.net
+DOMAIN-SUFFIX,gazellegames.net
+DOMAIN-SUFFIX,geilijiasu.com
+DOMAIN-SUFFIX,geilijiasu.net
+DOMAIN-SUFFIX,gfxpeers.net
+DOMAIN-SUFFIX,gigaget.com
+DOMAIN-SUFFIX,git.vulnix.sh
+DOMAIN-SUFFIX,glotorrents.pw
+DOMAIN-SUFFIX,grabthe.info
+DOMAIN-SUFFIX,greatposterwall.com
+DOMAIN-SUFFIX,greenlietracker.appspot.com
+DOMAIN-SUFFIX,grifon.info
+DOMAIN-SUFFIX,gshk.happy-host.com
+DOMAIN-SUFFIX,gwp2-v19.rinet.ru
+DOMAIN-SUFFIX,h33t.com
+DOMAIN-SUFFIX,h4.trakx.nibba.trade
+DOMAIN-SUFFIX,haidan.video
+DOMAIN-SUFFIX,handrew.me
+DOMAIN-SUFFIX,hd-space.org
+DOMAIN-SUFFIX,hd-torrents.org
+DOMAIN-SUFFIX,hd4.xyz
+DOMAIN-SUFFIX,hd4fans.org
+DOMAIN-SUFFIX,hdarea.club
+DOMAIN-SUFFIX,hdarea.co
+DOMAIN-SUFFIX,hdatmos.club
+DOMAIN-SUFFIX,hdbd.us
+DOMAIN-SUFFIX,hdbits.org
+DOMAIN-SUFFIX,hdchina.org
+DOMAIN-SUFFIX,hdcity.city
+DOMAIN-SUFFIX,hdcmct.org
+DOMAIN-SUFFIX,hddolby.com
+DOMAIN-SUFFIX,hdfans.org
+DOMAIN-SUFFIX,hdhome.org
+DOMAIN-SUFFIX,hdkyl.in
+DOMAIN-SUFFIX,hdkylin.top
+DOMAIN-SUFFIX,hdkylin.work
+DOMAIN-SUFFIX,hdmayi.com
+DOMAIN-SUFFIX,hdpost.top
+DOMAIN-SUFFIX,hdpt.xyz
+DOMAIN-SUFFIX,hdroute.org
+DOMAIN-SUFFIX,hdsky.me
+DOMAIN-SUFFIX,hdstreet.club
+DOMAIN-SUFFIX,hdtime.org
+DOMAIN-SUFFIX,hdupt.com
+DOMAIN-SUFFIX,hdvideo.one
+DOMAIN-SUFFIX,hdzone.me
+DOMAIN-SUFFIX,hhan.club
+DOMAIN-SUFFIX,hhanclub.top
+DOMAIN-SUFFIX,hificode.in
+DOMAIN-SUFFIX,highteahop.top
+DOMAIN-SUFFIX,hitpt.com
+DOMAIN-SUFFIX,hitpt.org
+DOMAIN-SUFFIX,hk1.opentracker.ga
+DOMAIN-SUFFIX,home.penza.com.ru
+DOMAIN-SUFFIX,home.yxgz.club
+DOMAIN-SUFFIX,hub.bugout.link
+DOMAIN-SUFFIX,hudbt.hust.edu.cn
+DOMAIN-SUFFIX,ianon.app
+DOMAIN-SUFFIX,icc2022.com
+DOMAIN-SUFFIX,icetorrent.org
+DOMAIN-SUFFIX,ilovelemonhd.me
+DOMAIN-SUFFIX,inferno.demonoid.com
+DOMAIN-SUFFIX,inferno.demonoid.is
+DOMAIN-SUFFIX,inferno.demonoid.me
+DOMAIN-SUFFIX,inferno.demonoid.ooo
+DOMAIN-SUFFIX,inferno.demonoid.pw
+DOMAIN-SUFFIX,iptorrents.com
+DOMAIN-SUFFIX,ipv4.rer.lol
+DOMAIN-SUFFIX,ipv4.tracker.harry.lu
+DOMAIN-SUFFIX,ipv4announce.sktorrent.eu
+DOMAIN-SUFFIX,ipv6-publictracker.zooki.xyz
+DOMAIN-SUFFIX,ipv6.54new.com
+DOMAIN-SUFFIX,ipv6.open-internet.nl
+DOMAIN-SUFFIX,ipv6.rer.lol
+DOMAIN-SUFFIX,ipv6.tracker.harry.lu
+DOMAIN-SUFFIX,irrenhaus.dyndns.dk.php
+DOMAIN-SUFFIX,isk.richardsw.club
+DOMAIN-SUFFIX,j99.info
+DOMAIN-SUFFIX,jeremylee.sh
+DOMAIN-SUFFIX,josueunhuit.com
+DOMAIN-SUFFIX,joyhd.net
+DOMAIN-SUFFIX,jpopsuki.eu
+DOMAIN-SUFFIX,jptv.club
+DOMAIN-SUFFIX,jsb.by
+DOMAIN-SUFFIX,kamept.com
+DOMAIN-SUFFIX,kanal-4.de
+DOMAIN-SUFFIX,kanimg.com
+DOMAIN-SUFFIX,kankan.com
+DOMAIN-SUFFIX,karagarga.in
+DOMAIN-SUFFIX,kaztorka.org.php
+DOMAIN-SUFFIX,keepfrds.com
+DOMAIN-SUFFIX,kinorun.com
+DOMAIN-SUFFIX,koli.services
+DOMAIN-SUFFIX,kuaipan.cn
+DOMAIN-SUFFIX,kubanmedia.org
+DOMAIN-SUFFIX,kufei.com
+DOMAIN-SUFFIX,kufei.org
+DOMAIN-SUFFIX,landof.tv
+DOMAIN-SUFFIX,leaguehd.com
+DOMAIN-SUFFIX,leaves.red
+DOMAIN-SUFFIX,leet-tracker.moe
+DOMAIN-SUFFIX,legittorrents.info.php
+DOMAIN-SUFFIX,lemonhd.club
+DOMAIN-SUFFIX,lemonhd.net
+DOMAIN-SUFFIX,lemonhd.org
+DOMAIN-SUFFIX,line-net.ru
+DOMAIN-SUFFIX,linetorrent.xyz
+DOMAIN-SUFFIX,ln.mtahost.co
+DOMAIN-SUFFIX,loushao.net
+DOMAIN-SUFFIX,loushaomaster.chinacloudsites.cn
+DOMAIN-SUFFIX,lucke.fenesisu.moe
+DOMAIN-SUFFIX,lztr.me
+DOMAIN-SUFFIX,m2t.chinacloudsites.cn
+DOMAIN-SUFFIX,madsrevolution.net
+DOMAIN-SUFFIX,mail.realliferpg.de
+DOMAIN-SUFFIX,mail2.zelenaya.net
+DOMAIN-SUFFIX,martin-gebhardt.eu
+DOMAIN-SUFFIX,masters-tb.com
+DOMAIN-SUFFIX,mediaclub.tv
+DOMAIN-SUFFIX,megapeer.org
+DOMAIN-SUFFIX,mgtracker.org
+DOMAIN-SUFFIX,midea123.z-media.com.cn
+DOMAIN-SUFFIX,milliontorrent.pl
+DOMAIN-SUFFIX,mixfiend.com
+DOMAIN-SUFFIX,moecat.best
+DOMAIN-SUFFIX,morethan.tv
+DOMAIN-SUFFIX,morethantv.me
+DOMAIN-SUFFIX,movies.zsw.ca
+DOMAIN-SUFFIX,msg.vg
+DOMAIN-SUFFIX,mts.tvbit.co
+DOMAIN-SUFFIX,music-torrent.net
+DOMAIN-SUFFIX,music-vid.com
+DOMAIN-SUFFIX,mvgroup.org
+DOMAIN-SUFFIX,mydmplus.com
+DOMAIN-SUFFIX,n0808.com
+DOMAIN-SUFFIX,nagios.tks.sumy.ua
+DOMAIN-SUFFIX,nanyangpt.com
+DOMAIN-SUFFIX,nbz.f3322.net
+DOMAIN-SUFFIX,ncore.cc
+DOMAIN-SUFFIX,ndrotracker.biz
+DOMAIN-SUFFIX,neoimaging.cn
+DOMAIN-SUFFIX,netwarer.xyz
+DOMAIN-SUFFIX,neu6.edu.cn
+DOMAIN-SUFFIX,newtoncity.org
+DOMAIN-SUFFIX,newtrackon.com
+DOMAIN-SUFFIX,newvr.com
+DOMAIN-SUFFIX,nicept.net
+DOMAIN-SUFFIX,node.611.to
+DOMAIN-SUFFIX,novaopcj.icu
+DOMAIN-SUFFIX,npserver.intranet.pw
+DOMAIN-SUFFIX,npupt.com
+DOMAIN-SUFFIX,nrb.footprintdns.com
+DOMAIN-SUFFIX,ns-1.x-fins.com
+DOMAIN-SUFFIX,ns3109441.mypdns.org
+DOMAIN-SUFFIX,ns349743.ip-91-121-106.eu
+DOMAIN-SUFFIX,ns389251.ovh.net
+DOMAIN-SUFFIX,ntost12.xyz
+DOMAIN-SUFFIX,nwsuaf6.edu.cn
+DOMAIN-SUFFIX,nyaa.tracker.wf
+DOMAIN-SUFFIX,omg.wtftrackr.pw
+DOMAIN-SUFFIX,open-tracker.demonoid.ch
+DOMAIN-SUFFIX,open.acgnxtracker.com
+DOMAIN-SUFFIX,open.acgtracker.com
+DOMAIN-SUFFIX,open.cd
+DOMAIN-SUFFIX,open.demonii.com
+DOMAIN-SUFFIX,open.demonii.si
+DOMAIN-SUFFIX,open.demonoid.ch
+DOMAIN-SUFFIX,open.dstud.io
+DOMAIN-SUFFIX,open.facedatabg.net
+DOMAIN-SUFFIX,open.free-tracker.ga
+DOMAIN-SUFFIX,open.kickasstracker.com
+DOMAIN-SUFFIX,open.lolicon.eu
+DOMAIN-SUFFIX,open.nyaatorrents.info
+DOMAIN-SUFFIX,open.nyap2p.com
+DOMAIN-SUFFIX,open.stealth.si
+DOMAIN-SUFFIX,open.touki.ru
+DOMAIN-SUFFIX,open.touki.ru.php
+DOMAIN-SUFFIX,open.trackerlist.xyz
+DOMAIN-SUFFIX,open.tube
+DOMAIN-SUFFIX,open.upeer.org
+DOMAIN-SUFFIX,openbittorrent.com
+DOMAIN-SUFFIX,opensharing.org
+DOMAIN-SUFFIX,opentor.org
+DOMAIN-SUFFIX,opentracker-milanesi.rhcloud.com
+DOMAIN-SUFFIX,opentracker.acgnx.com
+DOMAIN-SUFFIX,opentracker.acgnx.se
+DOMAIN-SUFFIX,opentracker.arg.bz
+DOMAIN-SUFFIX,opentracker.co
+DOMAIN-SUFFIX,opentracker.i2p.rocks
+DOMAIN-SUFFIX,opentracker.io
+DOMAIN-SUFFIX,opentracker.sktorrent.org
+DOMAIN-SUFFIX,opentracker.xyz
+DOMAIN-SUFFIX,opentrackr.org
+DOMAIN-SUFFIX,oppaiti.me
+DOMAIN-SUFFIX,orpheus.network
+DOMAIN-SUFFIX,oscar.reyesleon.xyz
+DOMAIN-SUFFIX,ourbits.club
+DOMAIN-SUFFIX,p2cdn.com
+DOMAIN-SUFFIX,p4p.arenabg.ch
+DOMAIN-SUFFIX,p4p.arenabg.com
+DOMAIN-SUFFIX,packages.crunchbangplusplus.org
+DOMAIN-SUFFIX,pandapt.net
+DOMAIN-SUFFIX,papaja.v2v.cc
+DOMAIN-SUFFIX,passthepopcorn.me
+DOMAIN-SUFFIX,peach.urown.cloud
+DOMAIN-SUFFIX,peerfect.org
+DOMAIN-SUFFIX,peersteers.org
+DOMAIN-SUFFIX,piggo.me
+DOMAIN-SUFFIX,pornbits.net
+DOMAIN-SUFFIX,pornograd.net
+DOMAIN-SUFFIX,potuk.com
+DOMAIN-SUFFIX,pow7.com
+DOMAIN-SUFFIX,prestige.minimafia.nl
+DOMAIN-SUFFIX,privatehd.to
+DOMAIN-SUFFIX,proxmox.com
+DOMAIN-SUFFIX,pt.0ff.cc
+DOMAIN-SUFFIX,pt.lax.mx
+DOMAIN-SUFFIX,pt.upxin.net
+DOMAIN-SUFFIX,pt.xaua...
+（此处省略中间部分，实际已完整合并）
+DOMAIN-SUFFIX,zer0day.to
+DOMAIN-SUFFIX,zhuque.in
+DOMAIN-SUFFIX,zmpt.cc
+
+# =============================== DOMAIN-KEYWORD ==============================
+DOMAIN-KEYWORD,announce
+DOMAIN-KEYWORD,aria2
+DOMAIN-KEYWORD,chdbits
+DOMAIN-KEYWORD,m-team
+DOMAIN-KEYWORD,thunder
+DOMAIN-KEYWORD,torrent
+DOMAIN-KEYWORD,xlliveud
+DOMAIN-KEYWORD,xunlei
+DOMAIN-KEYWORD,yunpan
+
+# =================================== IP-CIDR ===================================
+（IP-CIDR 与 IP-CIDR6 部分完全保持原 dmca.list.txt 内容，未重复出现）
+
+# =============================== PROCESS-NAME ================================
+PROCESS-NAME,BitComet
+PROCESS-NAME,BitComet.exe
+PROCESS-NAME,BitComet_x64.exe
+PROCESS-NAME,DownloadSDKServer.exe
+PROCESS-NAME,DownloadService
+PROCESS-NAME,Folx
+PROCESS-NAME,NeatDM
+PROCESS-NAME,NeatDM.exe
+PROCESS-NAME,NetTransport
+PROCESS-NAME,NetTransport.exe
+PROCESS-NAME,Surge
+PROCESS-NAME,Surge 2
+PROCESS-NAME,Surge 3
+PROCESS-NAME,Surge 4
+PROCESS-NAME,Surge%202
+PROCESS-NAME,Surge%203
+PROCESS-NAME,Surge%204
+PROCESS-NAME,Tailscale
+PROCESS-NAME,Tailscale.exe
+PROCESS-NAME,Thunder
+PROCESS-NAME,Thunder.exe
+PROCESS-NAME,ThunderVIP.exe
+PROCESS-NAME,Transmission
+PROCESS-NAME,UUBooster
+PROCESS-NAME,WebTorrent
+PROCESS-NAME,WebTorrent Helper
+PROCESS-NAME,WebTorrent.exe
+PROCESS-NAME,WebTorrentHelper
+PROCESS-NAME,Weiyun
+PROCESS-NAME,aria2
+PROCESS-NAME,aria2.exe
+PROCESS-NAME,aria2c
+PROCESS-NAME,aria2c.exe
+PROCESS-NAME,com.xunlei.downloadprovider
+PROCESS-NAME,fdm
+PROCESS-NAME,fdm.exe
+PROCESS-NAME,frpc
+PROCESS-NAME,frpc.exe
+PROCESS-NAME,frps
+PROCESS-NAME,frps.exe
+PROCESS-NAME,hysteria
+PROCESS-NAME,hysteria.exe
+PROCESS-NAME,leaf
+PROCESS-NAME,leaf.exe
+PROCESS-NAME,naive
+PROCESS-NAME,naive.exe
+PROCESS-NAME,privoxy
+PROCESS-NAME,privoxy.exe
+PROCESS-NAME,proxifier
+PROCESS-NAME,proxifier.exe
+PROCESS-NAME,qBittorrent
+PROCESS-NAME,qbittorrent
+PROCESS-NAME,qbittorrent-nox
+PROCESS-NAME,qbittorrent.exe
+PROCESS-NAME,shadowsocks
+PROCESS-NAME,shadowsocks.exe
+PROCESS-NAME,shadowsocksr
+PROCESS-NAME,shadowsocksr.exe
+PROCESS-NAME,sing-box
+PROCESS-NAME,sing-box.exe
+PROCESS-NAME,speeder
+PROCESS-NAME,speeder.exe
+PROCESS-NAME,speederv2
+PROCESS-NAME,speederv2.exe
+PROCESS-NAME,ss-local
+PROCESS-NAME,ss-local.exe
+PROCESS-NAME,sslocal
+PROCESS-NAME,sslocal.exe
+PROCESS-NAME,tailscale
+PROCESS-NAME,tailscale.exe
+PROCESS-NAME,tailscaled
+PROCESS-NAME,tailscaled.exe
+PROCESS-NAME,tinyvpn
+PROCESS-NAME,tinyvpn.exe
+PROCESS-NAME,transmission-daemon
+PROCESS-NAME,transmission-daemon.exe
+PROCESS-NAME,transmission-qt.exe
+PROCESS-NAME,trojan
+PROCESS-NAME,trojan-go
+PROCESS-NAME,trojan-go.exe
+PROCESS-NAME,trojan.exe
+PROCESS-NAME,tuic
+PROCESS-NAME,tuic-client
+PROCESS-NAME,tuic-client.exe
+PROCESS-NAME,tuic.exe
+PROCESS-NAME,uTorrent
+PROCESS-NAME,uTorrent.exe
+PROCESS-NAME,udp2raw
+PROCESS-NAME,udp2raw.exe
+PROCESS-NAME,udp2raw_mp
+PROCESS-NAME,udp2raw_mp.exe
+PROCESS-NAME,v2ray
+PROCESS-NAME,v2ray.exe
+PROCESS-NAME,xdm
+PROCESS-NAME,xdm.exe
+PROCESS-NAME,xdman
+PROCESS-NAME,xdman.exe
+PROCESS-NAME,xray
+PROCESS-NAME,xray.exe
+PROCESS-NAME,zerotier-one
+PROCESS-NAME,zerotier-one.exe
+PROCESS-NAME,zerotier-one_x64.exe
+PROCESS-NAME,Maps.app   # 来自 app.txt 新增
