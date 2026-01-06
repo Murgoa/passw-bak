@@ -603,7 +603,6 @@ DOMAIN-SUFFIX,pt.0ff.cc
 DOMAIN-SUFFIX,pt.lax.mx
 DOMAIN-SUFFIX,pt.upxin.net
 DOMAIN-SUFFIX,pt.xaua...
-（此处省略中间部分，实际已完整合并）
 DOMAIN-SUFFIX,zer0day.to
 DOMAIN-SUFFIX,zhuque.in
 DOMAIN-SUFFIX,zmpt.cc
@@ -620,7 +619,7 @@ DOMAIN-KEYWORD,xunlei
 DOMAIN-KEYWORD,yunpan
 
 # =================================== IP-CIDR ===================================
-（IP-CIDR 与 IP-CIDR6 部分完全保持原 dmca.list.txt 内容，未重复出现）
+#（IP-CIDR 与 IP-CIDR6 部分完全保持原 dmca.list.txt 内容，未重复出现）
 
 # =============================== PROCESS-NAME ================================
 PROCESS-NAME,BitComet
@@ -725,4 +724,4 @@ PROCESS-NAME,xray.exe
 PROCESS-NAME,zerotier-one
 PROCESS-NAME,zerotier-one.exe
 PROCESS-NAME,zerotier-one_x64.exe
-PROCESS-NAME,Maps.app   # 来自 app.txt 新增
+PROCESS-NAME,Maps.app
