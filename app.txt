@@ -725,3 +725,5 @@ PROCESS-NAME,zerotier-one
 PROCESS-NAME,zerotier-one.exe
 PROCESS-NAME,zerotier-one_x64.exe
 PROCESS-NAME,Maps.app
+PROCESS-NAME,NeteaseMusic.app,DIRECT
+PROCESS-NAME,Blip.app,DIRECT
