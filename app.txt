@@ -401,6 +401,7 @@ DOMAIN-SUFFIX,gwp2-v19.rinet.ru
 DOMAIN-SUFFIX,h33t.com
 DOMAIN-SUFFIX,h4.trakx.nibba.trade
 DOMAIN-SUFFIX,haidan.video
+DOMAIN-SUFFIX,hapigo.com
 DOMAIN-SUFFIX,handrew.me
 DOMAIN-SUFFIX,hd-space.org
 DOMAIN-SUFFIX,hd-torrents.org
