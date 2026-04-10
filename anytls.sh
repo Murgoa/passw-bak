@@ -1,0 +1,275 @@
+#!/bin/sh
+
+# anytls 安装/卸载管理脚本
+# 功能：安装 anytls 或彻底卸载（含 systemd/openrc 服务清理）
+# 支持架构：amd64 (x86_64)、arm64 (aarch64)、armv7 (armv7l)
+# 自动识别 Debian/Ubuntu、Alpine 与 Arch Linux
+
+# 检查 root 权限
+if [ "$(id -u)" -ne 0 ]; then
+    echo "必须使用 root 或 sudo 运行！"
+    exit 1
+fi
+
+# 自动检测系统类型
+if [ -f /etc/alpine-release ]; then
+    OS_FAMILY="alpine"
+    SERVICE_NAME="anytls"
+elif [ -f /etc/arch-release ] || grep -qi 'arch' /etc/os-release 2>/dev/null; then
+    OS_FAMILY="arch"
+    SERVICE_NAME="anytls"
+elif [ -f /etc/debian_version ] || grep -qiE 'debian|ubuntu' /etc/os-release 2>/dev/null; then
+    OS_FAMILY="debian"
+    SERVICE_NAME="anytls"
+else
+    echo "暂不支持当前系统，仅支持 Debian/Ubuntu/Alpine/Arch Linux"
+    exit 1
+fi
+
+# 安装必要工具：wget, curl, unzip
+install_dependencies() {
+    echo "[初始化] 正在安装必要依赖（wget, curl, unzip）..."
+
+    if [ "$OS_FAMILY" = "alpine" ]; then
+        apk update >/dev/null 2>&1
+        for dep in wget curl unzip; do
+            if ! command -v "$dep" >/dev/null 2>&1; then
+                echo "正在安装 $dep..."
+                apk add --no-cache "$dep" || {
+                    echo "无法安装依赖: $dep，请手动运行 'apk add $dep' 后再继续。"
+                    exit 1
+                }
+            fi
+        done
+    elif [ "$OS_FAMILY" = "arch" ]; then
+        for dep in wget curl unzip; do
+            if ! command -v "$dep" >/dev/null 2>&1; then
+                echo "正在安装 $dep..."
+                pacman -Sy --noconfirm "$dep" || {
+                    echo "无法安装依赖: $dep，请手动运行 'pacman -S $dep' 后再继续。"
+                    exit 1
+                }
+            fi
+        done
+    else
+        apt update -y >/dev/null 2>&1
+        for dep in wget curl unzip; do
+            if ! command -v "$dep" >/dev/null 2>&1; then
+                echo "正在安装 $dep..."
+                apt install -y "$dep" || {
+                    echo "无法安装依赖: $dep，请手动运行 'sudo apt install $dep' 后再继续。"
+                    exit 1
+                }
+            fi
+        done
+    fi
+}
+
+install_dependencies
+
+# 自动检测系统架构
+ARCH=$(uname -m)
+case $ARCH in
+    x86_64) BINARY_ARCH="amd64" ;;
+    aarch64) BINARY_ARCH="arm64" ;;
+    armv7l|armv7) BINARY_ARCH="armv7" ;;
+    *) echo "不支持的架构: $ARCH"; exit 1 ;;
+esac
+
+# 拉取最新版本
+LATEST_VER=$(curl -s https://api.github.com/repos/anytls/anytls-go/releases/latest | grep '"tag_name":' | cut -d'"' -f4)
+if [ -z "$LATEST_VER" ]; then
+    LATEST_VER="v0.0.12"
+fi
+DOWNLOAD_URL="https://github.com/anytls/anytls-go/releases/download/${LATEST_VER}/anytls_${LATEST_VER#v}_linux_${BINARY_ARCH}.zip"
+ZIP_FILE="/tmp/anytls_${LATEST_VER#v}_linux_${BINARY_ARCH}.zip"
+BINARY_DIR="/usr/local/bin"
+BINARY_NAME="anytls-server"
+
+# IP获取函数
+get_ip() {
+    ip=""
+    ip=$(ip -o -4 addr show scope global 2>/dev/null | awk '{print $4}' | cut -d'/' -f1 | head -n1)
+    [ -z "$ip" ] && ip=$(ifconfig 2>/dev/null | grep -oE 'inet ([0-9]{1,3}\.){3}[0-9]{1,3}' | grep -v '127.0.0.1' | awk '{print $2}' | head -n1)
+    [ -z "$ip" ] && ip=$(curl -4 -s --connect-timeout 3 ifconfig.me 2>/dev/null || curl -4 -s --connect-timeout 3 icanhazip.com 2>/dev/null)
+
+    if [ -z "$ip" ]; then
+        echo "未能自动获取IP，请手动输入服务器IP地址"
+        printf "请输入服务器IP地址: "
+        read ip
+    fi
+
+    echo "$ip"
+}
+
+show_menu() {
+    clear
+    echo "-------------------------------------"
+    echo " anytls 服务管理脚本 (${OS_FAMILY}/${BINARY_ARCH}) "
+    echo "-------------------------------------"
+    echo "1. 安装 anytls"
+    echo "2. 卸载 anytls"
+    echo "0. 退出"
+    echo "-------------------------------------"
+    printf "请输入选项 [0-2]: "
+    read choice
+    case $choice in
+        1) install_anytls ;;
+        2) uninstall_anytls ;;
+        0) exit 0 ;;
+        *) echo "无效选项！"; sleep 1; show_menu ;;
+    esac
+}
+
+install_anytls() {
+    echo "[1/6] 下载 anytls (${BINARY_ARCH}架构)..."
+    wget "$DOWNLOAD_URL" -O "$ZIP_FILE" || {
+        echo "下载失败！可能原因："
+        echo "1. 网络连接问题"
+        echo "2. 该架构的二进制文件不存在"
+        exit 1
+    }
+
+    echo "[2/6] 解压文件..."
+    unzip -o "$ZIP_FILE" -d "$BINARY_DIR" || {
+        echo "解压失败！文件可能损坏"
+        exit 1
+    }
+    chmod +x "$BINARY_DIR/$BINARY_NAME"
+
+    DEFAULT_PORT="30602"
+    printf "请输入监听端口 [默认: $DEFAULT_PORT]: "
+    read CUSTOM_PORT
+    if [ -z "$CUSTOM_PORT" ]; then
+        CUSTOM_PORT="$DEFAULT_PORT"
+    fi
+    if ! echo "$CUSTOM_PORT" | grep -Eq '^[0-9]{1,5}$' || [ "$CUSTOM_PORT" -lt 1 ] || [ "$CUSTOM_PORT" -gt 65535 ]; then
+        echo "端口号不合法，必须为1-65535之间的数字"
+        exit 1
+    fi
+
+    printf "设置 anytls 的密码: "
+    read PASSWORD
+    [ -z "$PASSWORD" ] && {
+        echo "错误：密码不能为空！"
+        exit 1
+    }
+
+    if [ "$OS_FAMILY" = "alpine" ]; then
+        echo "[3/6] 配置 openrc 服务..."
+        cat > "/etc/init.d/$SERVICE_NAME" <<EOF
+#!/sbin/openrc-run
+
+description="anytls Service"
+command="${BINARY_DIR}/${BINARY_NAME}"
+command_args="-l 0.0.0.0:${CUSTOM_PORT} -p $PASSWORD"
+command_background="yes"
+pidfile="/var/run/${SERVICE_NAME}.pid"
+EOF
+        chmod +x "/etc/init.d/$SERVICE_NAME"
+
+        echo "[4/6] 启动服务..."
+        rc-update add "$SERVICE_NAME" default
+        rc-service "$SERVICE_NAME" restart
+    else
+        echo "[3/6] 配置 systemd 服务..."
+        cat > "/etc/systemd/system/$SERVICE_NAME.service" <<EOF
+[Unit]
+Description=anytls Service
+After=network.target
+
+[Service]
+ExecStart=$BINARY_DIR/$BINARY_NAME -l 0.0.0.0:$CUSTOM_PORT -p $PASSWORD
+Restart=always
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+        echo "[4/6] 启动服务..."
+        systemctl daemon-reload
+        systemctl enable "$SERVICE_NAME"
+        systemctl restart "$SERVICE_NAME"
+    fi
+
+    rm -f "$ZIP_FILE"
+
+    SERVER_IP=$(get_ip)
+
+    echo -e "\n\033[32m√ 安装完成！\033[0m"
+    echo -e "\033[32m√ 系统类型: ${OS_FAMILY}\033[0m"
+    echo -e "\033[32m√ 架构类型: ${BINARY_ARCH}\033[0m"
+    echo -e "\033[32m√ 服务名称: $SERVICE_NAME\033[0m"
+    echo -e "\033[32m√ 监听端口: 0.0.0.0:${CUSTOM_PORT}\033[0m"
+    echo -e "\033[32m√ 密码已设置为: $PASSWORD\033[0m"
+    echo -e "\n\033[33m管理命令:\033[0m"
+
+    if [ "$OS_FAMILY" = "alpine" ]; then
+        echo -e "  启动: rc-service $SERVICE_NAME start"
+        echo -e "  停止: rc-service $SERVICE_NAME stop"
+        echo -e "  重启: rc-service $SERVICE_NAME restart"
+        echo -e "  状态: rc-service $SERVICE_NAME status"
+    else
+        echo -e "  启动: systemctl start $SERVICE_NAME"
+        echo -e "  停止: systemctl stop $SERVICE_NAME"
+        echo -e "  重启: systemctl restart $SERVICE_NAME"
+        echo -e "  状态: systemctl status $SERVICE_NAME"
+    fi
+
+    echo -e "\n\033[36m\033[1m〓 NekoBox连接信息 〓\033[0m"
+    echo -e "\033[30;43m\033[1m anytls://$PASSWORD@$SERVER_IP:${CUSTOM_PORT}/?insecure=1 \033[0m"
+    echo -e "\033[33m\033[1m请妥善保管此连接信息！\033[0m"
+}
+
+uninstall_anytls() {
+    echo "正在卸载 anytls..."
+
+    if [ "$OS_FAMILY" = "alpine" ]; then
+        if rc-service "$SERVICE_NAME" status 2>/dev/null | grep -q started; then
+            rc-service "$SERVICE_NAME" stop
+            echo "[1/4] 已停止服务"
+        fi
+
+        if rc-update show 2>/dev/null | grep -q "$SERVICE_NAME"; then
+            rc-update del "$SERVICE_NAME" default
+            echo "[2/4] 已移除自启"
+        fi
+
+        if [ -f "$BINARY_DIR/$BINARY_NAME" ]; then
+            rm -f "$BINARY_DIR/$BINARY_NAME"
+            echo "[3/4] 已删除二进制文件"
+        fi
+
+        if [ -f "/etc/init.d/$SERVICE_NAME" ]; then
+            rm -f "/etc/init.d/$SERVICE_NAME"
+            echo "[4/4] 已删除 openrc 服务脚本"
+        fi
+    else
+        if systemctl is-active --quiet "$SERVICE_NAME"; then
+            systemctl stop "$SERVICE_NAME"
+            echo "[1/4] 已停止服务"
+        fi
+
+        if systemctl is-enabled --quiet "$SERVICE_NAME"; then
+            systemctl disable "$SERVICE_NAME"
+            echo "[2/4] 已禁用开机启动"
+        fi
+
+        if [ -f "$BINARY_DIR/$BINARY_NAME" ]; then
+            rm -f "$BINARY_DIR/$BINARY_NAME"
+            echo "[3/4] 已删除二进制文件"
+        fi
+
+        if [ -f "/etc/systemd/system/$SERVICE_NAME.service" ]; then
+            rm -f "/etc/systemd/system/$SERVICE_NAME.service"
+            systemctl daemon-reload
+            echo "[4/4] 已移除服务配置"
+        fi
+    fi
+
+    echo -e "\n\033[32m[结果]\033[0m anytls 已完全卸载！"
+}
+
+show_menu
