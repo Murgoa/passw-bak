@@ -48,20 +48,22 @@ function main(config) {
   addRegion("🇸🇬 新加坡节点", sg);
   addRegion("🇺🇸 美国节点", us);
 
-  groups.push({
-    name: "🚀 节点选择",
-    type: "select",
-    proxies: ["♻️ 自动选择", "DIRECT"].concat(regionNames),
-  });
-  groups.push({
-    name: "♻️ 自动选择",
-    type: "url-test",
-    proxies: proxies,
-    url: "http://www.gstatic.com/generate_204",
-    interval: 300,
-    tolerance: 50,
-    lazy: true,
-  });
+  groups.unshift(
+    {
+      name: "🚀 节点选择",
+      type: "select",
+      proxies: ["♻️ 自动选择", "DIRECT"].concat(regionNames),
+    },
+    {
+      name: "♻️ 自动选择",
+      type: "url-test",
+      proxies: proxies,
+      url: "http://www.gstatic.com/generate_204",
+      interval: 300,
+      tolerance: 50,
+      lazy: true,
+    }
+  );
   if (others.length)
     groups.push({ name: "🌍 其他节点", type: "select", proxies: others });
 
@@ -77,6 +79,7 @@ function main(config) {
     name: "🚫 广告拦截",
     type: "select",
     proxies: ["REJECT", "DIRECT"],
+    hidden: true,
   });
   groups.push({
     name: "🐟 漏网之鱼",
@@ -103,8 +106,7 @@ function main(config) {
     "IP-CIDR6,fe80::/10,DIRECT,no-resolve",
 
     // AI 服务
-    "GEOSITE,openai,🤖 AI 服务",
-    "GEOSITE,anthropic,🤖 AI 服务",
+    "GEOSITE,category-ai-!cn,🤖 AI 服务",
     "DOMAIN-SUFFIX,openai.com,🤖 AI 服务",
     "DOMAIN-SUFFIX,chatgpt.com,🤖 AI 服务",
     "DOMAIN-SUFFIX,oaistatic.com,🤖 AI 服务",
@@ -121,10 +123,6 @@ function main(config) {
 
     // YouTube
     "GEOSITE,youtube,▶️ YouTube",
-    "DOMAIN-SUFFIX,youtube.com,▶️ YouTube",
-    "DOMAIN-SUFFIX,youtu.be,▶️ YouTube",
-    "DOMAIN-SUFFIX,googlevideo.com,▶️ YouTube",
-    "DOMAIN-SUFFIX,ytimg.com,▶️ YouTube",
 
     // 苹果服务（国内直连）
     "GEOSITE,apple-cn,DIRECT",
