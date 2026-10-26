@@ -29,7 +29,7 @@ function main(config) {
     proxies: list,
     url: "http://www.gstatic.com/generate_204",
     interval: 300,
-    tolerance: 50,
+    tolerance: 150,
     lazy: true,
   });
 
@@ -66,7 +66,7 @@ function main(config) {
       proxies: proxies,
       url: "http://www.gstatic.com/generate_204",
       interval: 300,
-      tolerance: 50,
+      tolerance: 150,
       lazy: true,
     },
     service("🤖 AI 服务"),
@@ -105,6 +105,9 @@ function main(config) {
     "IP-CIDR6,fc00::/7,DIRECT,no-resolve",
     "IP-CIDR6,fe80::/10,DIRECT,no-resolve",
 
+    // 拒绝 QUIC(UDP 443)，让应用回退到 TCP，避免 Google Play 下载卡住
+    "AND,((NETWORK,UDP),(DST-PORT,443)),REJECT",
+
     // AI 服务
     "GEOSITE,category-ai-!cn,🤖 AI 服务",
     "DOMAIN-SUFFIX,openai.com,🤖 AI 服务",
@@ -123,6 +126,20 @@ function main(config) {
 
     // YouTube
     "GEOSITE,youtube,▶️ YouTube",
+
+    // Google Play / 谷歌下载（须在 cn 直连规则之前，且走手动可控的节点选择）
+    "GEOSITE,google-play,🚀 节点选择",
+    "DOMAIN-SUFFIX,play.google.com,🚀 节点选择",
+    "DOMAIN-SUFFIX,play.googleapis.com,🚀 节点选择",
+    "DOMAIN-SUFFIX,android.clients.google.com,🚀 节点选择",
+    "DOMAIN-SUFFIX,android.googleapis.com,🚀 节点选择",
+    "DOMAIN-SUFFIX,googleapis.cn,🚀 节点选择",
+    "DOMAIN-SUFFIX,dl.google.com,🚀 节点选择",
+    "DOMAIN-SUFFIX,gvt1.com,🚀 节点选择",
+    "DOMAIN-SUFFIX,gvt2.com,🚀 节点选择",
+    "DOMAIN-SUFFIX,ggpht.com,🚀 节点选择",
+    "DOMAIN-SUFFIX,gstatic.com,🚀 节点选择",
+    "DOMAIN-SUFFIX,googleusercontent.com,🚀 节点选择",
 
     // 苹果服务（国内直连）
     "GEOSITE,apple-cn,DIRECT",
@@ -146,7 +163,7 @@ function main(config) {
   config["allow-lan"] = config["allow-lan"] !== undefined ? config["allow-lan"] : true;
   config["mode"] = config.mode || "rule";
   config["log-level"] = config["log-level"] || "info";
-  config["ipv6"] = config.ipv6 !== undefined ? config.ipv6 : true;
+  config["ipv6"] = config.ipv6 !== undefined ? config.ipv6 : false;
   config["unified-delay"] = true;
   config["tcp-concurrent"] = true;
   config["find-process-mode"] = "strict";
