@@ -48,6 +48,12 @@ function main(config) {
   addRegion("🇸🇬 新加坡节点", sg);
   addRegion("🇺🇸 美国节点", us);
 
+  const service = (name) => ({
+    name: name,
+    type: "select",
+    proxies: ["♻️ 自动选择", "🚀 节点选择", "DIRECT"],
+  });
+
   groups.unshift(
     {
       name: "🚀 节点选择",
@@ -62,19 +68,13 @@ function main(config) {
       interval: 300,
       tolerance: 50,
       lazy: true,
-    }
+    },
+    service("🤖 AI 服务"),
+    service("▶️ YouTube")
   );
   if (others.length)
     groups.push({ name: "🌍 其他节点", type: "select", proxies: others });
 
-  const service = (name) => ({
-    name: name,
-    type: "select",
-    proxies: ["♻️ 自动选择", "🚀 节点选择", "DIRECT"],
-  });
-
-  groups.push(service("🤖 AI 服务"));
-  groups.push(service("▶️ YouTube"));
   groups.push({
     name: "🚫 广告拦截",
     type: "select",
