@@ -1,2 +1,0 @@
-🇺🇸 洛杉矶v6=tuic-v5,2607:9d00:2000:1e5::499c:54db,50212,uuid=9BA82629-E00B-4B76-B0CA-4F87D9C88BD3,password="9ba82629-e00b-4b76-b0ca-4f87d9c88bd3",sni="udp.896868.xyz",alpn="h3",skip-cert-verify=true,tfo=true,ecn=true
-🇸🇬 新加坡v6=hysteria2,2001:470:36:de8:1::c1,51444,password="a5b41e82-bdd0-4a4b-b8e0-b2373dba1f05",sni="www.bing.com",skip-cert-verify=true,tfo=true
