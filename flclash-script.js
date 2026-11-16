@@ -105,9 +105,6 @@ function main(config) {
     "IP-CIDR6,fc00::/7,DIRECT,no-resolve",
     "IP-CIDR6,fe80::/10,DIRECT,no-resolve",
 
-    // 拒绝 QUIC(UDP 443)，让应用回退到 TCP，避免 Google Play 下载卡住
-    "AND,((NETWORK,UDP),(DST-PORT,443)),REJECT",
-
     // AI 服务
     "GEOSITE,category-ai-!cn,🤖 AI 服务",
     "DOMAIN-SUFFIX,openai.com,🤖 AI 服务",
@@ -124,19 +121,40 @@ function main(config) {
     "DOMAIN-SUFFIX,x.ai,🤖 AI 服务",
     "DOMAIN-SUFFIX,perplexity.ai,🤖 AI 服务",
 
-    // YouTube
-    "GEOSITE,youtube,▶️ YouTube",
+    // ★ Play 下载 CDN：国内有联通 GGC 节点，必须直连。
+    //   送到海外代理会变成「美国服务器回连中国 CDN」，表现为下载卡 0%、转圈。
+    //   这几条必须排在任何 google / google-play 代理规则之前（规则首个命中即止）。
+    "DOMAIN-SUFFIX,dl.google.com,DIRECT",
+    "DOMAIN-SUFFIX,xn--ngstr-lra8j.com,DIRECT",
+    "DOMAIN-SUFFIX,gvt1.com,DIRECT",
+    "DOMAIN-SUFFIX,gvt2.com,DIRECT",
+    "DOMAIN-SUFFIX,gvt3.com,DIRECT",
 
-    // Google Play / 谷歌下载（须在 cn 直连规则之前，且走手动可控的节点选择）
+    // ★ googlevideo 是「混合体」，不能整包走代理：
+    //   rrN---sn-*.googlevideo.com → 真实 IP 是国内联通 GGC，只能直连
+    //   redirector.googlevideo.com → 在境外，只能走代理
+    //   若你的网络里 YouTube 反而变卡（说明拿到的是境外边缘节点），
+    //   把下面这条 DIRECT 改成 ▶️ YouTube 即可，其余不用动。
+    "DOMAIN,redirector.googlevideo.com,▶️ YouTube",
+    "DOMAIN-SUFFIX,googlevideo.com,DIRECT",
+
+    // YouTube 页面 / 封面 / 播放接口
+    "GEOSITE,youtube,▶️ YouTube",
+    "DOMAIN-SUFFIX,youtube.com,▶️ YouTube",
+    "DOMAIN-SUFFIX,ytimg.com,▶️ YouTube",
+    "DOMAIN-SUFFIX,youtubei.googleapis.com,▶️ YouTube",
+
+    // Google Play 商店 API（下载 CDN 已在上面拦走）
     "GEOSITE,google-play,🚀 节点选择",
     "DOMAIN-SUFFIX,play.google.com,🚀 节点选择",
     "DOMAIN-SUFFIX,play.googleapis.com,🚀 节点选择",
     "DOMAIN-SUFFIX,android.clients.google.com,🚀 节点选择",
     "DOMAIN-SUFFIX,android.googleapis.com,🚀 节点选择",
-    "DOMAIN-SUFFIX,googleapis.cn,🚀 节点选择",
-    "DOMAIN-SUFFIX,dl.google.com,🚀 节点选择",
-    "DOMAIN-SUFFIX,gvt1.com,🚀 节点选择",
-    "DOMAIN-SUFFIX,gvt2.com,🚀 节点选择",
+
+    // dl-ssl 名字像下载域名，但解析到境外 IP，直连必挂 → 走代理
+    "DOMAIN-SUFFIX,dl-ssl.google.com,🚀 节点选择",
+
+    // 商店资源
     "DOMAIN-SUFFIX,ggpht.com,🚀 节点选择",
     "DOMAIN-SUFFIX,gstatic.com,🚀 节点选择",
     "DOMAIN-SUFFIX,googleusercontent.com,🚀 节点选择",
@@ -151,6 +169,12 @@ function main(config) {
     "DOMAIN-SUFFIX,163.com,DIRECT",
     "DOMAIN-SUFFIX,qq.com,DIRECT",
     "DOMAIN-SUFFIX,weixin.qq.com,DIRECT",
+    // Google 中国区服务端点，实测国内解析 114.250.66.x、直连 0.5s
+    "DOMAIN-SUFFIX,googleapis.cn,DIRECT",
+
+    // 拒绝 QUIC(UDP 443)，让应用回退到 TCP。
+    // 放在国内直连规则之后：国内应用的 QUIC 照常直连，只有要走代理的才被拒。
+    "AND,((NETWORK,UDP),(DST-PORT,443)),REJECT",
 
     // 兜底
     "MATCH,🐟 漏网之鱼",
@@ -193,6 +217,21 @@ function main(config) {
         geoip: true,
         "geoip-code": "CN",
         geosite: ["gfw"],
+      },
+
+      // ★ 按域名指定解析器（关键）
+      //   Play 下载域名 → 必须「国内视角」，才会返回国内联通 GGC，直连才快
+      //   googlevideo  → 必须「干净解析」（经代理查询），国内 DNS 对它是投毒的
+      //   注意：加密 DNS ≠ 干净 DNS。墙内的 DoH（如阿里）一样会返回假 IP，
+      //         判断标准是「解析器在墙的哪一边」，不是「是否加密」。
+      "nameserver-policy": {
+        "dl.google.com": ["https://223.5.5.5/dns-query"],
+        "+.dl.google.com": ["https://223.5.5.5/dns-query"],
+        "+.gvt1.com": ["https://223.5.5.5/dns-query"],
+        "+.gvt2.com": ["https://223.5.5.5/dns-query"],
+        "+.gvt3.com": ["https://223.5.5.5/dns-query"],
+        "+.xn--ngstr-lra8j.com": ["https://223.5.5.5/dns-query"],
+        "+.googlevideo.com": ["https://1.1.1.1/dns-query#🚀 节点选择"],
       },
     };
   }
