@@ -1,26 +1,52 @@
 // FlClash 扩展脚本（脚本模式）
 // FlClash -> 扩展 -> 扩展模式选「脚本」-> 新建脚本，粘贴本文件内容，保存并启用
 // 作用：为自建节点订阅补全 proxy-groups（策略组）与 rules（分流规则）
-// 内核要求：Mihomo / Clash.Meta（支持 GEOSITE、GEOIP）
+// 内核要求：Mihomo / Clash.Meta（支持 GEOSITE、GEOIP、AND 逻辑规则）
+//
+// ==== 使用注意（踩过的坑，别改回去）====
+// 1. DNS 的 listen 绝对不能写 :53。Android 非 root 应用无法绑 1024 以下端口，
+//    mihomo 会 bind: permission denied，TUN 又把系统 DNS 全劫到那个死端口，
+//    结果「规则/全局/直连」三种模式全部解析失败 = 彻底断网。这里统一改到 1053。
+// 2. 不要在脚本里写死 config.mode，否则 App 里切的「全局/直连」会被覆盖回 rule。
+// 3. nameserver-policy 里用代理组做 DNS 出口时，必须同时给 proxy-server-nameserver，
+//    否则节点域名解析环回，查询挂起超时。
 
 function main(config) {
   config = config || {};
   const proxies = (config.proxies || []).map((p) => p.name);
   if (!proxies.length) return config;
 
+  // 是否拒绝 UDP 443（QUIC）。排查「全断」时第一件事就是把它改成 false。
+  const QUIC_REJECT = true;
+
   // ---------- 节点自动归类 ----------
+  // 短英文标签（us / sg / jp / hk）必须按词边界匹配，
+  // 否则 "us" 会命中 australia / plus / business，节点串组。
   const pick = (kws) =>
-    proxies.filter((n) =>
-      kws.some((k) => n.toLowerCase().includes(k.toLowerCase()))
-    );
+    proxies.filter((n) => {
+      const s = n.toLowerCase();
+      return kws.some((k) => {
+        const kk = k.toLowerCase();
+        if (/^[a-z]{2,3}$/.test(kk)) {
+          return new RegExp("(^|[^a-z])" + kk + "([^a-z]|$)").test(s);
+        }
+        return s.indexOf(kk) !== -1;
+      });
+    });
 
-  const hk = pick(["香港", "hk", "hongkong"]);
+  const hk = pick(["香港", "hk", "hongkong", "🇭🇰"]);
   const mo = pick(["澳门", "macau", "macao", "🇲🇴"]);
-  const jp = pick(["日本", "jp", "japan", "东京", "tokyo"]);
-  const sg = pick(["新加坡", "sg", "singapore"]);
-  const us = pick(["美国", "us", "洛杉矶", "los angeles"]);
+  const jp = pick(["日本", "jp", "japan", "东京", "tokyo", "大阪", "osaka", "🇯🇵"]);
+  const sg = pick(["新加坡", "sg", "singapore", "狮城", "🇸🇬"]);
+  const us = pick([
+    "美国", "us", "united states", "洛杉矶", "los angeles",
+    "圣何塞", "san jose", "西雅图", "seattle", "🇺🇸",
+  ]);
 
-  const used = [].concat(hk, mo, jp, sg, us);
+  const used = [];
+  [hk, mo, jp, sg, us].forEach((list) =>
+    list.forEach((n) => used.indexOf(n) === -1 && used.push(n))
+  );
   const others = proxies.filter((n) => used.indexOf(n) === -1);
 
   const urlTest = (name, list) => ({
@@ -144,6 +170,9 @@ function main(config) {
     "DOMAIN-SUFFIX,ytimg.com,▶️ YouTube",
     "DOMAIN-SUFFIX,youtubei.googleapis.com,▶️ YouTube",
 
+    // Google CN 域名直连（不直连会导致部分地区 Play Store 异常）
+    "GEOSITE,google-cn,DIRECT",
+
     // Google Play 商店 API（下载 CDN 已在上面拦走）
     "GEOSITE,google-play,🚀 节点选择",
     "DOMAIN-SUFFIX,play.google.com,🚀 节点选择",
@@ -164,28 +193,28 @@ function main(config) {
 
     // 国内直连
     "GEOSITE,cn,DIRECT",
-    "GEOIP,CN,DIRECT,no-resolve",
     "GEOSITE,geolocation-cn,DIRECT",
+    "GEOIP,CN,DIRECT,no-resolve",
     "DOMAIN-SUFFIX,163.com,DIRECT",
     "DOMAIN-SUFFIX,qq.com,DIRECT",
-    "DOMAIN-SUFFIX,weixin.qq.com,DIRECT",
     // Google 中国区服务端点，实测国内解析 114.250.66.x、直连 0.5s
     "DOMAIN-SUFFIX,googleapis.cn,DIRECT",
-
-    // 拒绝 QUIC(UDP 443)，让应用回退到 TCP。
-    // 放在国内直连规则之后：国内应用的 QUIC 照常直连，只有要走代理的才被拒。
-    "AND,((NETWORK,UDP),(DST-PORT,443)),REJECT",
-
-    // 兜底
-    "MATCH,🐟 漏网之鱼",
   ];
+
+  // 拒绝 QUIC(UDP 443)，让应用回退到 TCP。
+  // 放在国内直连规则之后：国内应用的 QUIC 照常直连，只有要走代理的才被拒。
+  // 排查「全断」时先把上面的 QUIC_REJECT 改成 false，排除这条的影响。
+  if (QUIC_REJECT) rules.push("AND,((NETWORK,UDP),(DST-PORT,443)),REJECT");
+
+  // 兜底
+  rules.push("MATCH,🐟 漏网之鱼");
 
   config.rules = rules;
 
   // ---------- 基础设置 ----------
   config["mixed-port"] = config["mixed-port"] || 7890;
   config["allow-lan"] = config["allow-lan"] !== undefined ? config["allow-lan"] : true;
-  config["mode"] = config.mode || "rule";
+  // 不写 config.mode：脚本里钉死 mode 会覆盖 App 里的「规则 / 全局 / 直连」切换
   config["log-level"] = config["log-level"] || "info";
   config["ipv6"] = config.ipv6 !== undefined ? config.ipv6 : false;
   config["unified-delay"] = true;
@@ -197,44 +226,87 @@ function main(config) {
     config.profile || {}
   );
 
-  // DNS：交给 FlClash 内置 DNS，避免污染
-  if (!config.dns) {
-    config.dns = {
-      enable: true,
-      listen: "0.0.0.0:53",
-      "enhanced-mode": "fake-ip",
-      "fake-ip-range": "198.18.0.1/16",
-      "default-nameserver": ["223.5.5.5", "119.29.29.29"],
-      nameserver: [
-        "https://223.5.5.5/dns-query",
-        "https://doh.pub/dns-query",
-      ],
-      fallback: [
-        "https://1.1.1.1/dns-query",
-        "https://dns.google/dns-query",
-      ],
-      "fallback-filter": {
-        geoip: true,
-        "geoip-code": "CN",
-        geosite: ["gfw"],
-      },
+  // ---------- DNS ----------
+  // 与订阅 / FlClash 自带 dns 合并：自带的键优先，只补缺的，并强制修掉特权端口。
+  const FAKE_IP_FILTER = [
+    "*.lan",
+    "*.local",
+    "*.localdomain",
+    "*.home.arpa",
+    "localhost.*",
+    "time.*",
+    "time1.*",
+    "ntp.*",
+    "*.ntp.org",
+    "stun.*",
+    "*.stun.*",
+    "+.stun.*",
+    "+.msftconnecttest.com",
+    "+.msftncsi.com",
+    "*.push.apple.com",
+    "+.push.apple.com",
+  ];
 
-      // ★ 按域名指定解析器（关键）
-      //   Play 下载域名 → 必须「国内视角」，才会返回国内联通 GGC，直连才快
-      //   googlevideo  → 必须「干净解析」（经代理查询），国内 DNS 对它是投毒的
-      //   注意：加密 DNS ≠ 干净 DNS。墙内的 DoH（如阿里）一样会返回假 IP，
-      //         判断标准是「解析器在墙的哪一边」，不是「是否加密」。
-      "nameserver-policy": {
-        "dl.google.com": ["https://223.5.5.5/dns-query"],
-        "+.dl.google.com": ["https://223.5.5.5/dns-query"],
-        "+.gvt1.com": ["https://223.5.5.5/dns-query"],
-        "+.gvt2.com": ["https://223.5.5.5/dns-query"],
-        "+.gvt3.com": ["https://223.5.5.5/dns-query"],
-        "+.xn--ngstr-lra8j.com": ["https://223.5.5.5/dns-query"],
-        "+.googlevideo.com": ["https://1.1.1.1/dns-query#🚀 节点选择"],
-      },
-    };
-  }
+  const NS_DOMESTIC = [
+    "https://223.5.5.5/dns-query",
+    "https://doh.pub/dns-query",
+  ];
+
+  const DNS_DEFAULTS = {
+    enable: true,
+    // ★ 关键：绝不能是 :53（Android 无法绑特权端口）
+    listen: "127.0.0.1:1053",
+    "enhanced-mode": "fake-ip",
+    "fake-ip-range": "198.18.0.1/16",
+    ipv6: false,
+    "default-nameserver": ["223.5.5.5", "119.29.29.29"],
+    // 解析「节点服务器域名」用的解析器。用代理组做 DNS 出口时必须有它，否则环回。
+    "proxy-server-nameserver": NS_DOMESTIC,
+    nameserver: NS_DOMESTIC,
+
+    // ★ 按域名指定解析器（关键）
+    //   Play 下载域名 → 必须「国内视角」，才会返回国内联通 GGC，直连才快
+    //   googlevideo  → 必须「干净解析」（经代理查询），国内 DNS 对它是投毒的
+    //   注意：加密 DNS ≠ 干净 DNS。墙内的 DoH（如阿里）一样会返回假 IP，
+    //         判断标准是「解析器在墙的哪一边」，不是「是否加密」。
+    "nameserver-policy": {
+      "dl.google.com": ["https://223.5.5.5/dns-query"],
+      "+.dl.google.com": ["https://223.5.5.5/dns-query"],
+      "+.gvt1.com": ["https://223.5.5.5/dns-query"],
+      "+.gvt2.com": ["https://223.5.5.5/dns-query"],
+      "+.gvt3.com": ["https://223.5.5.5/dns-query"],
+      "+.xn--ngstr-lra8j.com": ["https://223.5.5.5/dns-query"],
+      "+.googlevideo.com": ["https://1.1.1.1/dns-query#🚀 节点选择"],
+    },
+  };
+
+  // 特权端口（<1024）在 Android 上绑不上，一律改到 1053
+  const safeListen = (l) => {
+    if (!l) return "127.0.0.1:1053";
+    const m = /:(\d+)\s*$/.exec(String(l));
+    return m && Number(m[1]) < 1024 ? "127.0.0.1:1053" : l;
+  };
+
+  const baseDns = config.dns || {};
+  const dns = Object.assign({}, DNS_DEFAULTS, baseDns);
+
+  dns.listen = safeListen(dns.listen);
+
+  // fake-ip-filter 一定保留，否则投屏 / 本地服务 / NTP / 连通性检测全挂
+  dns["fake-ip-filter"] = []
+    .concat(baseDns["fake-ip-filter"] || [], FAKE_IP_FILTER)
+    .filter((v, i, a) => a.indexOf(v) === i);
+
+  dns["proxy-server-nameserver"] =
+    dns["proxy-server-nameserver"] || DNS_DEFAULTS["proxy-server-nameserver"];
+
+  dns["nameserver-policy"] = Object.assign(
+    {},
+    DNS_DEFAULTS["nameserver-policy"],
+    baseDns["nameserver-policy"] || {}
+  );
+
+  config.dns = dns;
 
   return config;
 }
