@@ -22,11 +22,17 @@ function main(config) {
   //   想省 YouTube 的 QUIC 带宽就改 true，但要知道 Play 可能会卡。
   const QUIC_REJECT = false;
 
-  // Play 下载 CDN 直连开关。
-  // true  = dl.google.com / gvt / xn--ngstr 直连（国内联通 GGC 通常更快）
-  // false = 全部走代理（当你的网络拿不到国内 GGC、下载卡 0% / 等待中时用这个）
-  const PLAY_CDN_DIRECT = true;
+  // Play 下载 CDN 开关（规则与 DNS 会一起跟着变，不要只改一半）。
+  // true  = dl.google.com / gvt / xn--ngstr 直连 + 国内 DNS 解析（联通 GGC 更快）
+  // false = 全部走代理 + 经代理解析（拿不到国内 GGC、下载一直「等待中」时用这个）
+  // ★ 默认 false：Play 全部卡「等待中」时，直连 CDN 是最常见的元凶。
+  const PLAY_CDN_DIRECT = false;
   const PLAY_CDN = PLAY_CDN_DIRECT ? "DIRECT" : "🚀 节点选择";
+  // 下载域名的 DNS 解析出口必须跟代理出口一致：
+  // 直连时用国内 DNS 拿 GGC，走代理时必须用「干净解析」，否则拿到的是国内视角的 IP。
+  const PLAY_CDN_DNS = PLAY_CDN_DIRECT
+    ? ["https://223.5.5.5/dns-query"]
+    : ["https://1.1.1.1/dns-query#🚀 节点选择"];
 
   // ---------- 节点自动归类 ----------
   // 短英文标签（us / sg / jp / hk）必须按词边界匹配，
@@ -280,17 +286,17 @@ function main(config) {
     nameserver: NS_DOMESTIC,
 
     // ★ 按域名指定解析器（关键）
-    //   Play 下载域名 → 必须「国内视角」，才会返回国内联通 GGC，直连才快
+    //   Play 下载域名 → 解析出口跟着 PLAY_CDN 开关走（见文件头部开关）
     //   googlevideo  → 必须「干净解析」（经代理查询），国内 DNS 对它是投毒的
     //   注意：加密 DNS ≠ 干净 DNS。墙内的 DoH（如阿里）一样会返回假 IP，
     //         判断标准是「解析器在墙的哪一边」，不是「是否加密」。
     "nameserver-policy": {
-      "dl.google.com": ["https://223.5.5.5/dns-query"],
-      "+.dl.google.com": ["https://223.5.5.5/dns-query"],
-      "+.gvt1.com": ["https://223.5.5.5/dns-query"],
-      "+.gvt2.com": ["https://223.5.5.5/dns-query"],
-      "+.gvt3.com": ["https://223.5.5.5/dns-query"],
-      "+.xn--ngstr-lra8j.com": ["https://223.5.5.5/dns-query"],
+      "dl.google.com": PLAY_CDN_DNS,
+      "+.dl.google.com": PLAY_CDN_DNS,
+      "+.gvt1.com": PLAY_CDN_DNS,
+      "+.gvt2.com": PLAY_CDN_DNS,
+      "+.gvt3.com": PLAY_CDN_DNS,
+      "+.xn--ngstr-lra8j.com": PLAY_CDN_DNS,
       "+.googlevideo.com": ["https://1.1.1.1/dns-query#🚀 节点选择"],
     },
   };
