@@ -199,6 +199,12 @@ function main(config) {
     "DOMAIN-SUFFIX,gstatic.com,🚀 节点选择",
     "DOMAIN-SUFFIX,googleusercontent.com,🚀 节点选择",
 
+    // ★ Google 的 .cn 端点（services.googleapis.cn 等）实际解析到境外 IP、已被墙。
+    //   直连只会 0 B/s 超时，Play 客户端在设备注册/账号校验这步挂住，
+    //   表现就是商店「所有项目一直等待中」。必须走代理，且要排在 GEOSITE,cn 之前。
+    "DOMAIN-SUFFIX,googleapis.cn,🚀 节点选择",
+    "DOMAIN-SUFFIX,services.googleapis.cn,🚀 节点选择",
+
     // 苹果服务（国内直连）
     "GEOSITE,apple-cn,DIRECT",
 
@@ -208,8 +214,6 @@ function main(config) {
     "GEOIP,CN,DIRECT,no-resolve",
     "DOMAIN-SUFFIX,163.com,DIRECT",
     "DOMAIN-SUFFIX,qq.com,DIRECT",
-    // Google 中国区服务端点，实测国内解析 114.250.66.x、直连 0.5s
-    "DOMAIN-SUFFIX,googleapis.cn,DIRECT",
   ];
 
   // 拒绝 QUIC(UDP 443)，让应用回退到 TCP。
