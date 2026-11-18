@@ -16,8 +16,17 @@ function main(config) {
   const proxies = (config.proxies || []).map((p) => p.name);
   if (!proxies.length) return config;
 
-  // 是否拒绝 UDP 443（QUIC）。排查「全断」时第一件事就是把它改成 false。
-  const QUIC_REJECT = true;
+  // 是否拒绝 UDP 443（QUIC）。
+  // ★ 默认关闭：Google Play 的下载器走 QUIC 且回退很差，
+  //   一拦 UDP 443，商店就表现为所有项目「等待中…」/「无法更新」。
+  //   想省 YouTube 的 QUIC 带宽就改 true，但要知道 Play 可能会卡。
+  const QUIC_REJECT = false;
+
+  // Play 下载 CDN 直连开关。
+  // true  = dl.google.com / gvt / xn--ngstr 直连（国内联通 GGC 通常更快）
+  // false = 全部走代理（当你的网络拿不到国内 GGC、下载卡 0% / 等待中时用这个）
+  const PLAY_CDN_DIRECT = true;
+  const PLAY_CDN = PLAY_CDN_DIRECT ? "DIRECT" : "🚀 节点选择";
 
   // ---------- 节点自动归类 ----------
   // 短英文标签（us / sg / jp / hk）必须按词边界匹配，
@@ -147,14 +156,15 @@ function main(config) {
     "DOMAIN-SUFFIX,x.ai,🤖 AI 服务",
     "DOMAIN-SUFFIX,perplexity.ai,🤖 AI 服务",
 
-    // ★ Play 下载 CDN：国内有联通 GGC 节点，必须直连。
-    //   送到海外代理会变成「美国服务器回连中国 CDN」，表现为下载卡 0%、转圈。
+    // ★ Play 下载 CDN：国内有联通 GGC 节点，直连通常更快。
+    //   但若下载一直卡 0% / 等待中（网络拿不到国内 GGC），
+    //   把上面 PLAY_CDN_DIRECT 改成 false 让它们全部走代理。
     //   这几条必须排在任何 google / google-play 代理规则之前（规则首个命中即止）。
-    "DOMAIN-SUFFIX,dl.google.com,DIRECT",
-    "DOMAIN-SUFFIX,xn--ngstr-lra8j.com,DIRECT",
-    "DOMAIN-SUFFIX,gvt1.com,DIRECT",
-    "DOMAIN-SUFFIX,gvt2.com,DIRECT",
-    "DOMAIN-SUFFIX,gvt3.com,DIRECT",
+    `DOMAIN-SUFFIX,dl.google.com,${PLAY_CDN}`,
+    `DOMAIN-SUFFIX,xn--ngstr-lra8j.com,${PLAY_CDN}`,
+    `DOMAIN-SUFFIX,gvt1.com,${PLAY_CDN}`,
+    `DOMAIN-SUFFIX,gvt2.com,${PLAY_CDN}`,
+    `DOMAIN-SUFFIX,gvt3.com,${PLAY_CDN}`,
 
     // ★ googlevideo 是「混合体」，不能整包走代理：
     //   rrN---sn-*.googlevideo.com → 真实 IP 是国内联通 GGC，只能直连
@@ -170,8 +180,9 @@ function main(config) {
     "DOMAIN-SUFFIX,ytimg.com,▶️ YouTube",
     "DOMAIN-SUFFIX,youtubei.googleapis.com,▶️ YouTube",
 
-    // Google CN 域名直连（不直连会导致部分地区 Play Store 异常）
-    "GEOSITE,google-cn,DIRECT",
+    // 注意：不要在这里加 GEOSITE,google-cn,DIRECT。
+    // google-cn 里含 dl-ssl.google.com 等仍在境外的下载域名，
+    // 一旦整组直连，Play 商店会表现为全部「等待中…」。
 
     // Google Play 商店 API（下载 CDN 已在上面拦走）
     "GEOSITE,google-play,🚀 节点选择",
