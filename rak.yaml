@@ -1,0 +1,198 @@
+proxies:
+- type: hysteria2
+  name: 🇺🇸 硅谷 UDP
+  server: 137.175.93.155
+  port: 28795
+  ports: 20000-30000
+  password: EelIYEc5ZR8RT6thWcK9ohYkp3bYZGcn
+  sni: www.microsoft.com
+  skip-cert-verify: true
+  tfo: false
+  down: '99'
+  udp: true
+- type: anytls
+  name: 🇺🇸 硅谷 TCP
+  server: 137.175.93.155
+  port: 8443
+  udp: true
+  sni: www.microsoft.com
+  skip-cert-verify: true
+  packet-encoding: xudp
+  password: /Iv6o3dkx/WkiUkxoEaApBE+D4gxlt8S
+  idle-session-check-interval: 30
+  idle-session-timeout: 30
+  min-idle-session: 5
+  allowInsecure: 'true'
+- type: trojan
+  password: vhtFglDvQE2G0LjU6Ui6Ea2CKFyFx3ay
+  server: rak.896868.xyz
+  port: 443
+  name: 🇺🇸 硅谷 CF
+  sni: rak.896868.xyz
+  network: ws
+  ws-opts:
+    path: /ws-c59e456e
+    headers:
+      Host: rak.896868.xyz
+  udp: true
+  client-fingerprint: chrome
+proxy-groups:
+- name: 🚀 节点选择
+  type: select
+  proxies:
+  - ♻️ 自动选择
+  - DIRECT
+  - 🇺🇸 美国节点
+- name: ♻️ 自动选择
+  type: fallback
+  proxies:
+  - 🇺🇸 硅谷 UDP
+  - 🇺🇸 硅谷 CF
+  - 🇺🇸 硅谷 TCP
+  url: http://cp.cloudflare.com/generate_204
+  interval: 300
+  lazy: true
+- name: 🤖 AI 服务
+  type: select
+  proxies:
+  - ♻️ 自动选择
+  - 🚀 节点选择
+  - DIRECT
+- name: ▶️ YouTube
+  type: select
+  proxies:
+  - ♻️ 自动选择
+  - 🚀 节点选择
+  - DIRECT
+- name: 🇺🇸 美国节点
+  type: fallback
+  proxies:
+  - 🇺🇸 硅谷 UDP
+  - 🇺🇸 硅谷 CF
+  - 🇺🇸 硅谷 TCP
+  url: http://cp.cloudflare.com/generate_204
+  interval: 300
+  lazy: true
+- name: 🚫 广告拦截
+  type: select
+  proxies:
+  - REJECT
+  - DIRECT
+  hidden: true
+- name: 🐟 漏网之鱼
+  type: select
+  proxies:
+  - ♻️ 自动选择
+  - 🚀 节点选择
+  - DIRECT
+rules:
+- GEOSITE,category-ads-all,🚫 广告拦截
+- IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+- IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+- IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+- IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+- IP-CIDR,169.254.0.0/16,DIRECT,no-resolve
+- IP-CIDR,100.64.0.0/10,DIRECT,no-resolve
+- IP-CIDR6,::1/128,DIRECT,no-resolve
+- IP-CIDR6,fc00::/7,DIRECT,no-resolve
+- IP-CIDR6,fe80::/10,DIRECT,no-resolve
+- GEOSITE,category-ai-!cn,🤖 AI 服务
+- DOMAIN-SUFFIX,openai.com,🤖 AI 服务
+- DOMAIN-SUFFIX,chatgpt.com,🤖 AI 服务
+- DOMAIN-SUFFIX,oaistatic.com,🤖 AI 服务
+- DOMAIN-SUFFIX,oaiusercontent.com,🤖 AI 服务
+- DOMAIN-SUFFIX,sora.com,🤖 AI 服务
+- DOMAIN-SUFFIX,anthropic.com,🤖 AI 服务
+- DOMAIN-SUFFIX,claude.ai,🤖 AI 服务
+- DOMAIN,gemini.google.com,🤖 AI 服务
+- DOMAIN,aistudio.google.com,🤖 AI 服务
+- DOMAIN-SUFFIX,generativelanguage.googleapis.com,🤖 AI 服务
+- DOMAIN-SUFFIX,grok.com,🤖 AI 服务
+- DOMAIN-SUFFIX,x.ai,🤖 AI 服务
+- DOMAIN-SUFFIX,perplexity.ai,🤖 AI 服务
+- DOMAIN-SUFFIX,dl.google.com,🚀 节点选择
+- DOMAIN-SUFFIX,xn--ngstr-lra8j.com,🚀 节点选择
+- DOMAIN-SUFFIX,gvt1.com,🚀 节点选择
+- DOMAIN-SUFFIX,gvt2.com,🚀 节点选择
+- DOMAIN-SUFFIX,gvt3.com,🚀 节点选择
+- DOMAIN,redirector.googlevideo.com,▶️ YouTube
+- DOMAIN-SUFFIX,googlevideo.com,DIRECT
+- GEOSITE,youtube,▶️ YouTube
+- DOMAIN-SUFFIX,youtube.com,▶️ YouTube
+- DOMAIN-SUFFIX,ytimg.com,▶️ YouTube
+- DOMAIN-SUFFIX,youtubei.googleapis.com,▶️ YouTube
+- GEOSITE,google-play,🚀 节点选择
+- DOMAIN-SUFFIX,play.google.com,🚀 节点选择
+- DOMAIN-SUFFIX,play.googleapis.com,🚀 节点选择
+- DOMAIN-SUFFIX,android.clients.google.com,🚀 节点选择
+- DOMAIN-SUFFIX,android.googleapis.com,🚀 节点选择
+- DOMAIN-SUFFIX,dl-ssl.google.com,🚀 节点选择
+- DOMAIN-SUFFIX,ggpht.com,🚀 节点选择
+- DOMAIN-SUFFIX,gstatic.com,🚀 节点选择
+- DOMAIN-SUFFIX,googleusercontent.com,🚀 节点选择
+- DOMAIN-SUFFIX,googleapis.cn,🚀 节点选择
+- DOMAIN-SUFFIX,services.googleapis.cn,🚀 节点选择
+- GEOSITE,apple-cn,DIRECT
+- GEOSITE,cn,DIRECT
+- GEOSITE,geolocation-cn,DIRECT
+- GEOIP,CN,DIRECT,no-resolve
+- DOMAIN-SUFFIX,163.com,DIRECT
+- DOMAIN-SUFFIX,qq.com,DIRECT
+- MATCH,🐟 漏网之鱼
+mixed-port: 7890
+allow-lan: true
+log-level: info
+ipv6: false
+unified-delay: true
+tcp-concurrent: true
+find-process-mode: strict
+profile:
+  store-selected: true
+  store-fake-ip: true
+dns:
+  enable: true
+  listen: 127.0.0.1:1053
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  ipv6: false
+  default-nameserver:
+  - 223.5.5.5
+  - 119.29.29.29
+  proxy-server-nameserver:
+  - https://223.5.5.5/dns-query
+  - https://doh.pub/dns-query
+  nameserver:
+  - https://223.5.5.5/dns-query
+  - https://doh.pub/dns-query
+  nameserver-policy:
+    dl.google.com:
+    - https://1.1.1.1/dns-query#🚀 节点选择
+    +.dl.google.com:
+    - https://1.1.1.1/dns-query#🚀 节点选择
+    +.gvt1.com:
+    - https://1.1.1.1/dns-query#🚀 节点选择
+    +.gvt2.com:
+    - https://1.1.1.1/dns-query#🚀 节点选择
+    +.gvt3.com:
+    - https://1.1.1.1/dns-query#🚀 节点选择
+    +.xn--ngstr-lra8j.com:
+    - https://1.1.1.1/dns-query#🚀 节点选择
+    +.googlevideo.com:
+    - https://1.1.1.1/dns-query#🚀 节点选择
+  fake-ip-filter:
+  - '*.lan'
+  - '*.local'
+  - '*.localdomain'
+  - '*.home.arpa'
+  - localhost.*
+  - time.*
+  - time1.*
+  - ntp.*
+  - '*.ntp.org'
+  - stun.*
+  - '*.stun.*'
+  - +.stun.*
+  - +.msftconnecttest.com
+  - +.msftncsi.com
+  - '*.push.apple.com'
+  - +.push.apple.com
