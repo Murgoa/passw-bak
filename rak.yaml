@@ -28,7 +28,7 @@ proxies:
   server: rak.896868.xyz
   port: 443
   name: 🇺🇸 硅谷 CF
-  sni: rak.896868.xyz
+  sni: cf.877774.xyz
   network: ws
   ws-opts:
     path: /ws-c59e456e
