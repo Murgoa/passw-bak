@@ -10,9 +10,123 @@
 // 2. 不要在脚本里写死 config.mode，否则 App 里切的「全局/直连」会被覆盖回 rule。
 // 3. nameserver-policy 里用代理组做 DNS 出口时，必须同时给 proxy-server-nameserver，
 //    否则节点域名解析环回，查询挂起超时。
+// 4. Mihomo 对节点超时/心跳等参数要求纯整数（而不是 sing-box 风格的 "30s" / "1m"），
+//    例如 anytls 的 idle-session-check-interval / idle-session-timeout（秒）、
+//    tuic 的 heartbeat-interval / request-timeout（毫秒）。main(config) 必须先清洗 config.proxies。
 
 function main(config) {
   config = config || {};
+
+  // ---------- 节点参数清洗 ----------
+  // 部分订阅（如 sing-box 转换）会输出带单位的时长字符串（如 "30s" / "1m"），
+  // 但 Mihomo 内核的 structure.Decoder 按 int 解析，会报 strconv.ParseInt invalid syntax。
+  const parseDuration = (val, targetUnit) => {
+    if (val === null || val === undefined) return undefined;
+    if (typeof val === "number") {
+      return Number.isFinite(val) && val >= 0 ? Math.round(val) : undefined;
+    }
+    if (typeof val !== "string") return undefined;
+    const s = val.trim();
+    if (!s) return undefined;
+    if (/^\d+(?:\.\d+)?$/.test(s)) return Math.round(Number(s));
+    if (!/^(?:\d+(?:\.\d+)?\s*(?:ms|us|\u00b5s|\u03bcs|ns|s|m|h)\s*)+$/i.test(s)) {
+      return undefined;
+    }
+    const unitToMs = {
+      ns: 1e-6,
+      us: 1e-3,
+      "\u00b5s": 1e-3,
+      "\u03bcs": 1e-3,
+      ms: 1,
+      s: 1000,
+      m: 60000,
+      h: 3600000,
+    };
+    const tokenRe = /(\d+(?:\.\d+)?)\s*(ms|us|\u00b5s|\u03bcs|ns|s|m|h)/gi;
+    let totalMs = 0;
+    let match;
+    while ((match = tokenRe.exec(s)) !== null) {
+      totalMs += Number(match[1]) * unitToMs[match[2].toLowerCase()];
+    }
+    if (!Number.isFinite(totalMs)) return undefined;
+    if (totalMs === 0) return 0;
+    if (targetUnit === "ms") return Math.max(1, Math.round(totalMs));
+    return Math.max(1, Math.round(totalMs / 1000));
+  };
+
+  const parseIntField = (val) => {
+    if (typeof val === "number") {
+      return Number.isFinite(val) ? Math.round(val) : undefined;
+    }
+    if (typeof val !== "string") return undefined;
+    const s = val.trim();
+    return /^-?\d+(?:\.\d+)?$/.test(s) ? Math.round(Number(s)) : undefined;
+  };
+
+  const SECONDS_INT_FIELDS = [
+    "idle-session-check-interval",
+    "idle-session-timeout",
+    "handshake-timeout",
+    "persistent-keepalive",
+    "refresh-server-ip-interval",
+    "ping",
+    "ping-restart",
+  ];
+  const MS_INT_FIELDS = [
+    "heartbeat-interval",
+    "request-timeout",
+    "keep-alive-interval",
+  ];
+  const PLAIN_INT_FIELDS = ["min-idle-session"];
+
+  const has = (obj, k) => Object.prototype.hasOwnProperty.call(obj, k);
+  const normalizeField = (obj, k, parser) => {
+    if (!has(obj, k)) return;
+    const v = parser(obj[k]);
+    if (v === undefined) delete obj[k];
+    else obj[k] = v;
+  };
+  const fieldParsers = [
+    [SECONDS_INT_FIELDS, (v) => parseDuration(v, "s")],
+    [MS_INT_FIELDS, (v) => parseDuration(v, "ms")],
+    [PLAIN_INT_FIELDS, parseIntField],
+  ];
+
+  const sanitizeProxy = (p) => {
+    if (!p || typeof p !== "object") return;
+    fieldParsers.forEach(([fields, parser]) => {
+      fields.forEach((k) => normalizeField(p, k, parser));
+    });
+    if (has(p, "hop-interval")) {
+      if (p.type === "hysteria2") {
+        const raw = p["hop-interval"];
+        const rangeMatch =
+          typeof raw === "string"
+            ? /^\s*([^-]+?)\s*-\s*([^-]+?)\s*$/.exec(raw)
+            : null;
+        if (rangeMatch) {
+          const a = parseDuration(rangeMatch[1], "s");
+          const b = parseDuration(rangeMatch[2], "s");
+          if (a !== undefined && b !== undefined) {
+            p["hop-interval"] = `${a}-${b}`;
+          } else {
+            delete p["hop-interval"];
+          }
+        } else {
+          const v = parseDuration(raw, "s");
+          if (v === undefined) delete p["hop-interval"];
+          else p["hop-interval"] = String(v);
+        }
+      } else {
+        normalizeField(p, "hop-interval", (v) => parseDuration(v, "s"));
+      }
+    }
+  };
+
+  if (Array.isArray(config.proxies)) {
+    config.proxies.forEach(sanitizeProxy);
+  }
+
   const proxies = (config.proxies || []).map((p) => p.name);
   if (!proxies.length) return config;
 
