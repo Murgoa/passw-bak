@@ -2,7 +2,6 @@ proxy-providers:
   sub:
     type: http
     url: "https://sb.murgo.eu.org/kamikaze-charts-rubber/download/collection/%E6%B2%90%E6%80%BB%E7%BB%84%E5%90%88?target=ClashMeta"
-    path: ./proxy_providers/sub.yaml
     interval: 3600
     health-check:
       enable: true
