@@ -2,6 +2,7 @@ proxy-providers:
   sub:
     type: http
     url: "https://sb.murgo.eu.org/kamikaze-charts-rubber/download/collection/%E6%B2%90%E6%80%BB%E7%BB%84%E5%90%88?target=ClashMeta"
+    proxy: DIRECT
     interval: 3600
     health-check:
       enable: true
@@ -47,6 +48,7 @@ proxy-groups:
   - 🚀 节点选择
   - DIRECT
 rules:
+- DOMAIN,sb.murgo.eu.org,DIRECT
 - GEOSITE,category-ads-all,🚫 广告拦截
 - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
 - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
