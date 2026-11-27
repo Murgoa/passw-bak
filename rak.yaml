@@ -1,54 +1,25 @@
-proxies:
-- type: hysteria2
-  name: 🇺🇸 硅谷 UDP
-  server: 137.175.93.155
-  port: 28795
-  ports: 20000-30000
-  password: EelIYEc5ZR8RT6thWcK9ohYkp3bYZGcn
-  sni: www.microsoft.com
-  skip-cert-verify: true
-  tfo: false
-  down: '99'
-  udp: true
-- type: anytls
-  name: 🇺🇸 硅谷 TCP
-  server: 137.175.93.155
-  port: 8443
-  udp: true
-  sni: www.microsoft.com
-  skip-cert-verify: true
-  packet-encoding: xudp
-  password: /Iv6o3dkx/WkiUkxoEaApBE+D4gxlt8S
-  idle-session-check-interval: 30
-  idle-session-timeout: 30
-  min-idle-session: 5
-  allowInsecure: 'true'
-- type: trojan
-  password: vhtFglDvQE2G0LjU6Ui6Ea2CKFyFx3ay
-  server: rak.896868.xyz
-  port: 443
-  name: 🇺🇸 硅谷 CF
-  sni: cf.877774.xyz
-  network: ws
-  ws-opts:
-    path: /ws-c59e456e
-    headers:
-      Host: rak.896868.xyz
-  udp: true
-  client-fingerprint: chrome
+proxy-providers:
+  sub:
+    type: http
+    url: "https://sb.murgo.eu.org/kamikaze-charts-rubber/download/collection/%E6%B2%90%E6%80%BB%E7%BB%84%E5%90%88?target=ClashMeta"
+    path: ./proxy_providers/sub.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      url: http://cp.cloudflare.com/generate_204
+      interval: 300
 proxy-groups:
 - name: 🚀 节点选择
   type: select
   proxies:
   - ♻️ 自动选择
   - DIRECT
-  - 🇺🇸 美国节点
+  use:
+  - sub
 - name: ♻️ 自动选择
   type: fallback
-  proxies:
-  - 🇺🇸 硅谷 UDP
-  - 🇺🇸 硅谷 CF
-  - 🇺🇸 硅谷 TCP
+  use:
+  - sub
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   lazy: true
@@ -64,15 +35,6 @@ proxy-groups:
   - ♻️ 自动选择
   - 🚀 节点选择
   - DIRECT
-- name: 🇺🇸 美国节点
-  type: fallback
-  proxies:
-  - 🇺🇸 硅谷 UDP
-  - 🇺🇸 硅谷 CF
-  - 🇺🇸 硅谷 TCP
-  url: http://cp.cloudflare.com/generate_204
-  interval: 300
-  lazy: true
 - name: 🚫 广告拦截
   type: select
   proxies:
