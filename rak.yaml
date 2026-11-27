@@ -79,7 +79,7 @@ rules:
 - DOMAIN-SUFFIX,gvt2.com,🚀 节点选择
 - DOMAIN-SUFFIX,gvt3.com,🚀 节点选择
 - DOMAIN,redirector.googlevideo.com,▶️ YouTube
-- DOMAIN-SUFFIX,googlevideo.com,DIRECT
+- DOMAIN-SUFFIX,googlevideo.com,▶️ YouTube
 - GEOSITE,youtube,▶️ YouTube
 - DOMAIN-SUFFIX,youtube.com,▶️ YouTube
 - DOMAIN-SUFFIX,ytimg.com,▶️ YouTube

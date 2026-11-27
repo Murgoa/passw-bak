@@ -286,13 +286,9 @@ function main(config) {
     `DOMAIN-SUFFIX,gvt2.com,${PLAY_CDN}`,
     `DOMAIN-SUFFIX,gvt3.com,${PLAY_CDN}`,
 
-    // ★ googlevideo 是「混合体」，不能整包走代理：
-    //   rrN---sn-*.googlevideo.com → 真实 IP 是国内联通 GGC，只能直连
-    //   redirector.googlevideo.com → 在境外，只能走代理
-    //   若你的网络里 YouTube 反而变卡（说明拿到的是境外边缘节点），
-    //   把下面这条 DIRECT 改成 ▶️ YouTube 即可，其余不用动。
+    // googlevideo 走代理，与 nameserver-policy 里的干净解析保持一致
     "DOMAIN,redirector.googlevideo.com,▶️ YouTube",
-    "DOMAIN-SUFFIX,googlevideo.com,DIRECT",
+    "DOMAIN-SUFFIX,googlevideo.com,▶️ YouTube",
 
     // YouTube 页面 / 封面 / 播放接口
     "GEOSITE,youtube,▶️ YouTube",
